@@ -290,7 +290,7 @@ Returns all the drinks in database.
 
 ### Get all Spots owned by the Current User
 
-# Returns all the drinks owned (created) and reviewed by the current user.
+# ??Returns all the drinks owned (created) and reviewed by the current user.
 
 - Require Authentication: true
 - Request
