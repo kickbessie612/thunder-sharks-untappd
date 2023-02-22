@@ -4,7 +4,7 @@
 
 ### Features
 
-- Drinks (CRUD)
+- Beers (CRUD)
 - Reviews (CRUD)
 - Review Feed
 - Profiles
@@ -62,7 +62,7 @@ Returns the information about the current user that is logged in.
 - Request
 
   - Method: GET
-  - URL: /api/me
+  - URL: api/me
   - Body: none
 
 - Successful Response
@@ -91,7 +91,7 @@ information.
 - Request
 
   - Method: POST
-  - URL: /api/session
+  - URL: api/session
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -162,7 +162,7 @@ user's information.
 - Request
 
   - Method: POST
-  - URL: /users
+  - URL: api/users
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -249,17 +249,17 @@ user's information.
     }
     ```
 
-## DRINKS
+## Beers
 
-### Get all Drinks
+### Get all Beers
 
-Returns all the drinks in database.
+Returns all the beers in database.
 
 - Require Authentication: false
 - Request
 
   - Method: GET
-  - URL: /drinks
+  - URL: api/beers
   - Body: none
 
 - Successful Response
@@ -271,7 +271,7 @@ Returns all the drinks in database.
 
     ```json
     {
-      "Drinks": [
+      "Beers": [
         {
           "id": 1,
           "ownerId": 1,
@@ -288,15 +288,15 @@ Returns all the drinks in database.
     }
     ```
 
-### Get all Spots owned by the Current User
+### Get all Beers owned by the Current User
 
-# ??Returns all the drinks owned (created) and reviewed by the current user.
+??Returns all the beers owned (created) and reviewed by the current user.
 
 - Require Authentication: true
 - Request
 
   - Method: GET
-  - URL: /me/drinks
+  - URL: api/me/beers
   - Body: none
 
 - Successful Response
@@ -308,7 +308,7 @@ Returns all the drinks in database.
 
     ```json
     {
-      "Drinks": [
+      "Beers": [
         {
           "id": 1,
           "ownerId": 1,
@@ -325,15 +325,15 @@ Returns all the drinks in database.
     }
     ```
 
-### Get details of a Drink from an id
+### Get details of a Beer from an id
 
-Returns the details of a drink specified by its id.
+Returns the details of a beer specified by its id.
 
 - Require Authentication: false
 - Request
 
   - Method: GET
-  - URL: /drinks/:drinkId
+  - URL: api/beers/:beerId
   - Body: none
 
 - Successful Response
@@ -363,7 +363,7 @@ Returns the details of a drink specified by its id.
     }
     ```
 
-- Error response: Couldn't find a Drink with the specified id
+- Error response: Couldn't find a Beer with the specified id
 
   - Status Code: 404
   - Headers:
@@ -372,20 +372,20 @@ Returns the details of a drink specified by its id.
 
     ```json
     {
-      "message": "Drink couldn't be found",
+      "message": "Beer couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Create a Drink
+### Create a Beer
 
-Creates and returns a new drink.
+Creates and returns a new beer.
 
 - Require Authentication: true
 - Request
 
   - Method: POST
-  - URL: /drinks
+  - URL: api/beers
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -443,16 +443,16 @@ Creates and returns a new drink.
     }
     ```
 
-### Edit a Drink
+### Edit a Beer
 
-Updates and returns an existing drink.
+Updates and returns an existing beer.
 
 - Require Authentication: true
-- Require proper authorization: Drink must belong to the current user
+- Require proper authorization: Beer must belong to the current user
 - Request
 
   - Method: PUT
-  - URL: /drinks/:drinkId
+  - URL: api/beers/:beerId
   - Headers:
     - Content-Type: application/json
   - Body:
@@ -510,7 +510,7 @@ Updates and returns an existing drink.
     }
     ```
 
-- Error response: Couldn't find a Drink with the specified id
+- Error response: Couldn't find a Beer with the specified id
 
   - Status Code: 404
   - Headers:
@@ -519,21 +519,21 @@ Updates and returns an existing drink.
 
     ```json
     {
-      "message": "Drink couldn't be found",
+      "message": "Beer couldn't be found",
       "statusCode": 404
     }
     ```
 
-### Delete a Drink
+### Delete a Beer
 
-Deletes an existing drink.
+Deletes an existing beer.
 
 - Require Authentication: true
 - Require proper authorization: Spot must belong to the current user
 - Request
 
   - Method: DELETE
-  - URL: /drinks/:drinkId
+  - URL: api/beers/:beerId
   - Body: none
 
 - Successful Response
@@ -550,7 +550,7 @@ Deletes an existing drink.
     }
     ```
 
-- Error response: Couldn't find a Drink with the specified id
+- Error response: Couldn't find a Beer with the specified id
 
   - Status Code: 404
   - Headers:
@@ -559,10 +559,123 @@ Deletes an existing drink.
 
     ```json
     {
-      "message": "Drink couldn't be found",
+      "message": "Beer couldn't be found",
       "statusCode": 404
     }
     ```
+
+## Beer Reveiews
+
+### Get all reviews by a Beer's id
+
+Gets all reviews of a beer
+
+- Require Authentication: false
+- Require proper authorization: Spot must belong to the current user
+- Request
+  - Method: GET
+  - URL: api/beer/:beerId/reviews
+  - Body: none
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "Reviews": [
+        {
+          "id": 1,
+          "userId": 1,
+          "beerId": 1,
+          "body": "I love this beer!",
+          "rating": 4.5,
+          "pictures": "stringUrl",
+          "createdAt": "2021-11-19 20:39:36",
+          "updatedAt": "2021-11-19 20:39:36",
+          "User": {
+            "id": 1,
+            "username": "JohnSmith"
+          }
+        }
+      ]
+    }
+    ```
+
+- Error response: Couldn't find any reviews for beer
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Reviews couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+### Create a review by Beer Id *UNFINISHED
+
+Create and return a new review for a beer specified by id.
+
+- Require Authentication: True
+- Require proper authorization: User must be logged in
+- Request
+  - Method: POST
+  - URL: api/beer/:beerId/reviews
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "body": "I love this beer!",
+      "images": "stringURLs",
+      "ratings": 4.5
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+
+    ```json
+    {
+      "id": 1,
+      "userId": 1,
+      "beerId": 1,
+      "body": "I love this beer!",
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-19 20:39:36" ,
+    }
+    ```
+
+- Error response: Couldn't find any reviews for beer
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Reviews couldn't be found",
+      "statusCode": 404
+    }
+    ```
+
+### Edit Review
+
+### Delete review
 
 ## Browser Application (Frontend)
 
