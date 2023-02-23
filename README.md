@@ -619,7 +619,7 @@ Gets all reviews of a beer
     }
     ```
 
-### Create a review by Beer Id *UNFINISHED
+### Create a review by Beer Id
 
 Create and return a new review for a beer specified by id.
 
@@ -654,12 +654,14 @@ Create and return a new review for a beer specified by id.
       "userId": 1,
       "beerId": 1,
       "body": "I love this beer!",
+      "images": "stringURLs",
+      "ratings": 4.5,
       "createdAt": "2021-11-19 20:39:36",
       "updatedAt": "2021-11-19 20:39:36" ,
     }
     ```
 
-- Error response: Couldn't find any reviews for beer
+- Error response: Validation error
 
   - Status Code: 404
   - Headers:
@@ -668,14 +670,136 @@ Create and return a new review for a beer specified by id.
 
     ```json
     {
-      "message": "Reviews couldn't be found",
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "body": "Review body text is required"
+      }
+    }
+    ```
+
+- Error response: Couldn't find a Beer with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Beer ID couldn't be found",
       "statusCode": 404
     }
     ```
 
 ### Edit Review
 
+Edit an existing review of a beer
+
+- Require Authentication: True
+- Require proper authorization: Review must be created by same user editing
+- Request
+  - Method: PUT
+  - URL: api/reviews/:reviewId
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "body": "I hate this beer!",
+      "ratings": 1
+    }
+    ```
+
+- Successful Response
+
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+
+    ```json
+    {
+      "id": 1,
+      "userId": 1,
+      "beerId": 1,
+      "body": "I hate this beer!",
+      "images": "stringURLs",
+      "ratings": 1,
+      "createdAt": "2021-11-19 20:39:36",
+      "updatedAt": "2021-11-19 20:39:36" ,
+    }
+    ```
+
+- Error response: Body validation error
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Validation error",
+      "statusCode": 400,
+      "errors": {
+        "body": "Review body text is required"
+      }
+    }
+    ```
+
+- Error response: Couldn't find the Review with the specified id
+
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Couldn't find review",
+      "statusCode": 404
+    }
+    ```
+
 ### Delete review
+
+Removes an existing review
+
+- Require Authentication: true
+- Require proper authorization: Review must belong to the current user
+- Request
+  - Method: DELETE
+  - URL: api/reviews/:reviewId
+  - Body: none
+
+- Successful Response
+  - Status Code: 200
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Successfully deleted",
+      "statusCode": 200
+    }
+    ```
+
+- Error response: Couldn't find a Review with the specified id
+  - Status Code: 404
+  - Headers:
+    - Content-Type: application/json
+  - Body:
+
+    ```json
+    {
+      "message": "Review couldn't be found",
+      "statusCode": 404
+    }
+    ```
 
 ## Browser Application (Frontend)
 
