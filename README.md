@@ -573,6 +573,7 @@ Gets all reviews of a beer
 - Require Authentication: false
 - Require proper authorization: Spot must belong to the current user
 - Request
+
   - Method: GET
   - URL: api/beer/:beerId/reviews
   - Body: none
@@ -626,6 +627,7 @@ Create and return a new review for a beer specified by id.
 - Require Authentication: True
 - Require proper authorization: User must be logged in
 - Request
+
   - Method: POST
   - URL: api/beer/:beerId/reviews
   - Headers:
@@ -647,7 +649,6 @@ Create and return a new review for a beer specified by id.
     - Content-Type: application/json
   - Body:
 
-
     ```json
     {
       "id": 1,
@@ -657,7 +658,7 @@ Create and return a new review for a beer specified by id.
       "images": "stringURLs",
       "ratings": 4.5,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36" ,
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
@@ -699,6 +700,7 @@ Edit an existing review of a beer
 - Require Authentication: True
 - Require proper authorization: Review must be created by same user editing
 - Request
+
   - Method: PUT
   - URL: api/reviews/:reviewId
   - Headers:
@@ -719,7 +721,6 @@ Edit an existing review of a beer
     - Content-Type: application/json
   - Body:
 
-
     ```json
     {
       "id": 1,
@@ -729,7 +730,7 @@ Edit an existing review of a beer
       "images": "stringURLs",
       "ratings": 1,
       "createdAt": "2021-11-19 20:39:36",
-      "updatedAt": "2021-11-19 20:39:36" ,
+      "updatedAt": "2021-11-19 20:39:36"
     }
     ```
 
@@ -771,11 +772,13 @@ Removes an existing review
 - Require Authentication: true
 - Require proper authorization: Review must belong to the current user
 - Request
+
   - Method: DELETE
   - URL: api/reviews/:reviewId
   - Body: none
 
 - Successful Response
+
   - Status Code: 200
   - Headers:
     - Content-Type: application/json
@@ -789,6 +792,7 @@ Removes an existing review
     ```
 
 - Error response: Couldn't find a Review with the specified id
+
   - Status Code: 404
   - Headers:
     - Content-Type: application/json
