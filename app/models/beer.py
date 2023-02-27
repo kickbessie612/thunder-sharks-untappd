@@ -1,4 +1,4 @@
-from .db import db, environment, SCHEMA, add_prefix_for_prod, relationship
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 class Beer(db.Model):
@@ -14,6 +14,7 @@ class Beer(db.Model):
     ibu = db.Column(db.Number(255))
     style = db.Column(db.String, nullable=False)
     label = db.Column(db.String)
+    year = db.Column(db.Integer)
 
     user_id = db.Column(db.Integer, db.ForeignKey(
         'user.id'), nullable=False)
@@ -21,9 +22,9 @@ class Beer(db.Model):
     brewery_id = db.Column(db.Integer, db.ForeignKey(
         'brewery.id'), nullable=False)
 
-    user = relationship('User', back_populates='beers')
-    brewery = relationship('Brewery', back_populates='beers')
-    reviews = relationship('Review', back_populates='beers')
+    user = db.relationship('User', back_populates='beers')
+    brewery = db.relationship('Brewery', back_populates='beers')
+    reviews = db.relationship('Review', back_populates='beers')
 
     def to_dict(self):
         return {
