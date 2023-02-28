@@ -1,4 +1,4 @@
-from app.models import db, Beer, environment, SCHEMA
+from app.models.beer import db, Beer, environment, SCHEMA
 
 
 def seed_beers():
