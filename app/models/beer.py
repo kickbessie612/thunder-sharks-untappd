@@ -24,7 +24,7 @@ class Beer(db.Model):
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
-    reviews = db.relationship('Review', back_populates='beers')
+    reviews = db.relationship('Review', back_populates='beer')
 
     def to_dict(self):
         return {

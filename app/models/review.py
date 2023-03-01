@@ -16,7 +16,7 @@ class Review(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user = db.relationship('User', back_populates='reviews')
-    beers = db.relationship('Beer', back_populates='reviews')
+    beer = db.relationship('Beer', back_populates='reviews')
 
     def to_dict(self):
         return {
