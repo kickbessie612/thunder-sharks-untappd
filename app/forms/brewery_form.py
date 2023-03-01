@@ -14,6 +14,5 @@ class BreweryForm(FlaskForm):
                                         ('Contract Brewery', 'Contract Brewery'),
                                         ('Regional Brewery', 'Regional Brewery')], validators=[DataRequired()])
     description = TextAreaField('Description', validators=[DataRequired(), Length(max=255)])
-    picture = StringField('Picture URL', validators=[Length(max=255)])
+    picture = StringField('Picture URL')
     submit = SubmitField('Submit Brewery')
-
