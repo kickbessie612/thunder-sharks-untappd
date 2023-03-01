@@ -11,8 +11,8 @@ class Brewery(db.Model):
         __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(40), nullable=False, unique=True)
-    address = db.Column(db.String(255), nullable=False, unique=True)
+    name = db.Column(db.String(40), nullable=False)
+    address = db.Column(db.String(255), nullable=False)
     city = db.Column(db.String(255), nullable=False)
     state = db.Column(db.String(255), nullable=False)
     country = db.Column(db.String(255), nullable=False)
@@ -20,7 +20,7 @@ class Brewery(db.Model):
     description = db.Column(db.String(255), nullable=False)
     picture = db.Column(db.String(255), nullable=False)
 
-    beers = db.relationship('Beer', back_populates='brewery', lazy=True)
+    beers = db.relationship('Beer', back_populates='brewery')
 
 
     def to_dict(self):
@@ -34,5 +34,4 @@ class Brewery(db.Model):
             'type': self.type,
             'description': self.description,
             'picture': self.picture,
-            'beers': self.beers
         }

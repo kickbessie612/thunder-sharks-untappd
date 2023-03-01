@@ -37,6 +37,7 @@ def user(id):
     return user.to_dict()
 
 
+
 @user_routes.route('/<int:id>', methods=['POST'])
 @login_required
 def update_user(id):
