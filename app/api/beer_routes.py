@@ -1,8 +1,8 @@
 from flask import Blueprint, request, redirect, url_for, jsonify
 from flask_login import login_required
 from app.models import db, Beer
-from app.forms.brewery_form import BreweryForm
-# from app.forms.beer_form import BeerForm
+# from app.forms.brewery_form import BreweryForm
+from app.forms.beer_form import BeerForm
 
 beer_bp = Blueprint('beer', __name__)
 
