@@ -1,5 +1,5 @@
 from flask import Blueprint, request, redirect, url_for, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db, Beer
 # from app.forms.brewery_form import BreweryForm
 from app.forms.beer_form import BeerForm
@@ -55,6 +55,7 @@ def create_beer():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_beer = Beer()
+        new_beer.user_id = current_user.id
         form.populate_obj(new_beer)
         db.session.add(new_beer)
         db.session.commit()
@@ -67,9 +68,9 @@ def create_beer():
 
 
 # UPDATE A BEER
-@beer_bp.route('/<int:id>', methods=['POST'])
+@beer_bp.route('/<int:id>', methods=['PUT'])
 @login_required
-def edit_beer():
+def edit_beer(id):
     """
     Update a beer
     """
