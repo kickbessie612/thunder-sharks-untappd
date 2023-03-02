@@ -7,3 +7,4 @@ class AddReviewForm(FlaskForm):
     comment = TextAreaField('Comment', validators=[Length(max=200)])
     user_id = IntegerField('User ID', validators=[DataRequired(), NumberRange(min=1)])
     beer_id = IntegerField('Beer ID', validators=[DataRequired(), NumberRange(min=1)])
+    
