@@ -15,4 +15,3 @@ class BeerForm(FlaskForm):
     year = IntegerField('Year')
 
     brewery_id = IntegerField('brewery_id')
-    submit = SubmitField('Submit Beer')
