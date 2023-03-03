@@ -1,11 +1,24 @@
 from flask import Blueprint, request, redirect, url_for, jsonify
+from flask_login import login_required
 from app.models import db, Brewery
 from app.forms.brewery_form import BreweryForm
 
-brewery_bp = Blueprint('brewery', __name__, url_prefix='/brewery')
+brewery_bp = Blueprint('brewery', __name__)
 
-#GET ALL BREWERIES
-@brewery_bp.route('/breweries')
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
+# GET ALL BREWERIES
+@brewery_bp.route('/')
 def get_all_breweries():
     """
     Query for all breweries and returns them in a list of brewery dictionaries
@@ -14,7 +27,7 @@ def get_all_breweries():
     return {'breweries': [brewery.to_dict() for brewery in breweries]}
 
 
-#GET BREWERY BY ID
+# GET BREWERY BY ID
 @brewery_bp.route('/<int:id>')
 def get_brewery(id):
     """
@@ -30,9 +43,9 @@ def get_brewery(id):
         })
 
 
-
-#CREATE A BREWERY
-@brewery_bp.route('/create', methods=['POST'])
+# CREATE A BREWERY
+@brewery_bp.route('/', methods=['POST'])
+@login_required
 def create_brewery():
     """
     Query for creating a brewery and returning it as a dictionary
@@ -45,30 +58,29 @@ def create_brewery():
         db.session.add(new_brewery)
         db.session.commit()
         return jsonify({
-                'success': True,
-                'message': 'Brewery created successfully!',
-                'brewery': [new_brewery.to_dict()]
-                 })
+            'success': True,
+            'message': 'Brewery created successfully!',
+            'brewery': [new_brewery.to_dict()]
+        })
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-#EDIT A BREWERY
+# EDIT A BREWERY
 
 
-
-#NOTES
+# NOTES
     #    new_brewery = Brewery()
     #       form.populate_obj(new_brewery)
 
     #  replaces
 
-        # new_brewery = Brewery(
-        #     name=form.name.data,
-        #     address=form.address.data,
-        #     city=form.city.data,
-        #     state=form.state.data,
-        #     country=form.country.data,
-        #     type=form.type.data,
-        #     description=form.description.data,
-        #     picture=form.picture.data
-        # )
+    # new_brewery = Brewery(
+    #     name=form.name.data,
+    #     address=form.address.data,
+    #     city=form.city.data,
+    #     state=form.state.data,
+    #     country=form.country.data,
+    #     type=form.type.data,
+    #     description=form.description.data,
+    #     picture=form.picture.data
+    # )

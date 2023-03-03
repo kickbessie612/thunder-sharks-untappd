@@ -37,7 +37,7 @@ def user(id):
     return user.to_dict()
 
 
-
+# UPDATE A USER
 @user_routes.route('/<int:id>', methods=['POST'])
 @login_required
 def update_user(id):
@@ -48,8 +48,7 @@ def update_user(id):
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User.query.get(id)
-        user.first_name = form.data['first_name']
-        user.last_name = form.data['last_name']
+        form.populate_obj(user)
         db.session.commit()
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
