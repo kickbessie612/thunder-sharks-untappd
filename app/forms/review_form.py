@@ -3,8 +3,8 @@ from wtforms import StringField, FloatField, IntegerField, TextAreaField, Select
 from wtforms.validators import DataRequired, Length, NumberRange
 
 class AddReviewForm(FlaskForm):
-    rating = FloatField('Rating', validators=[DataRequired(), NumberRange(min=0, max=5)])
-    comment = TextAreaField('Comment', validators=[Length(max=200)])
+    body = StringField('Body', validators=[DataRequired()])
+    images = StringField('Images', validators=[Length(max=1000)])
+    ratings = FloatField('Ratings', validators=[DataRequired(), NumberRange(min=0, max=5)])
     user_id = IntegerField('User ID', validators=[DataRequired(), NumberRange(min=1)])
     beer_id = IntegerField('Beer ID', validators=[DataRequired(), NumberRange(min=1)])
-    

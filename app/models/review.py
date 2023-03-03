@@ -10,8 +10,8 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Float, nullable=False)
-    body = db.Column(db.String(200), nullable=False)
-    images = db.Column(db.String(2000))
+    body = db.Column(db.String(1000), nullable=False)
+    images = db.Column(db.String(500))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     beer_id = db.Column(db.Integer, db.ForeignKey('beers.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
@@ -31,4 +31,3 @@ class Review(db.Model):
             'createdAt': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
             'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S')
         }
-
