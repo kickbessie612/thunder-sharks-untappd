@@ -17,10 +17,19 @@ export const removeBeer = beerId => {
 
 // GET all beers
 export const fetchBeers = () => async dispatch => {
-  const res = await fetch('/api/beers');
-  const beers = await res.json();
-  dispatch(setBeers(beers));
-  return res;
+  const res = await fetch('/api/beers', {
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (res.ok) {
+    const data = await res.json();
+    if (data.errors) {
+      return;
+    }
+
+    dispatch(setBeers(data));
+  }
 };
 
 // GET a beer by id
