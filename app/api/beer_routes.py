@@ -19,13 +19,13 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # GET ALL BEERS
-@beer_bp.route('/')
+@beer_bp.route('')
 def get_all_beers():
     """
     Query for all beers and returns them in a list of beer dictionaries
     """
     beers = Beer.query.all()
-    return {'beers': [beer.to_dict() for beer in beers]}
+    return [beer.to_dict() for beer in beers]
 
 
 # GET BEER BY ID

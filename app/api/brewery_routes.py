@@ -52,7 +52,7 @@ def create_brewery():
     """
     form = BreweryForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    if request.method == 'POST' and form.validate_on_submit():
+    if form.validate_on_submit():
         new_brewery = Brewery()
         form.populate_obj(new_brewery)
         db.session.add(new_brewery)
