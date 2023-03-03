@@ -10,7 +10,8 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     rating = db.Column(db.Float, nullable=False)
-    comment = db.Column(db.String(200), nullable=False)
+    comment = db.Column(db.String(1000), nullable=False)
+    pictures = db.Column(db.String(500))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     beer_id = db.Column(db.Integer, db.ForeignKey('beers.id'), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
