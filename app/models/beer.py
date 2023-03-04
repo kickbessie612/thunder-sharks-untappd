@@ -35,5 +35,6 @@ class Beer(db.Model):
             'ibu': self.ibu,
             'style': self.style,
             'label': self.label,
-            'year': self.year
+            'year': self.year,
+            'average_rating': sum(review.rating for review in self.reviews) / len(self.reviews)
         }

@@ -25,7 +25,7 @@ def get_all_beers():
     """
     Query for all beers and returns them in a list of beer dictionaries
     """
-    beers = Beer.query.all()
+    beers = Beer.query.options(joinedload(Beer.reviews)).all()
     return [beer.to_dict() for beer in beers]
 
 
@@ -35,7 +35,7 @@ def get_beer(id):
     """
     Query for a beer by id and returns that beer in a dictionary
     """
-    beer = Beer.query.get(id)
+    beer = Beer.query.options(joinedload(Beer.reviews)).get(id)
     if beer:
         return jsonify(beer.to_dict())
     else:
@@ -78,7 +78,7 @@ def edit_beer(id):
     form = BeerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        beer = Beer.query.get(id)
+        beer = Beer.query.options(joinedload(Beer.reviews)).get(id)
         form.populate_obj(beer)
         db.session.commit()
         return jsonify({
