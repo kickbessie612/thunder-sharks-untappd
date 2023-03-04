@@ -4,22 +4,23 @@ from app import db
 from app.models import Review, Beer, User
 from app.forms.review_form import AddReviewForm
 
-review_bp = Blueprint('review', __name__, url_prefix='/reviews')
-
-
+review_bp = Blueprint('review', __name__)
 
 # Get all reviews for a beer by ID
+
+
 @review_bp.route('/beer/<int:id>', methods=['GET'])
 def get_reviews(id):
-    page = request.args.get('page', 1, type=int)
-    per_page = request.args.get('per_page', 10, type=int)
-    offset = (page - 1) * per_page
+    # page = request.args.get('page', 1, type=int)
+    # per_page = request.args.get('per_page', 10, type=int)
+    # offset = (page - 1) * per_page
 
     beer = Beer.query.get(id)
     if not beer:
         return jsonify({'message': 'Beer not found', 'statusCode': 404}), 404
 
-    reviews = Review.query.filter_by(beer_id=id).offset(offset).limit(per_page).all()
+    reviews = Review.query.filter_by(
+        beer_id=id).all()
     if not reviews:
         return jsonify({'message': 'Reviews couldn\'t be found', 'statusCode': 404}), 404
 
@@ -40,7 +41,8 @@ def add_review(beer_id):
 
     form = AddReviewForm()
     if form.validate_on_submit():
-        review = Review(rating=form.rating.data, comment=form.comment.data, user_id=current_user.id, beer_id=beer_id)
+        review = Review(rating=form.rating.data, comment=form.comment.data,
+                        user_id=current_user.id, beer_id=beer_id)
         db.session.add(review)
         db.session.commit()
         return jsonify(review.to_dict()), 200
