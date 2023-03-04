@@ -28,7 +28,8 @@ class Review(db.Model):
             'beerId': self.beer_id,
             'body': self.body,
             'images': self.images,
-            'ratings': self.rating,
+            'rating': self.rating,
             'createdAt': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
-            'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S')
+            'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'user': self.user.to_dict()
         }

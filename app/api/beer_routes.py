@@ -1,8 +1,9 @@
-from flask import Blueprint, request, redirect, url_for, jsonify
+from flask import Blueprint, request, jsonify
 from flask_login import login_required, current_user
-from app.models import db, Beer
-# from app.forms.brewery_form import BreweryForm
-from app.forms.beer_form import BeerForm
+from sqlalchemy.orm import joinedload
+from app.models import db, Beer, Review
+from app.forms import BeerForm, ReviewForm
+
 
 beer_bp = Blueprint('beer', __name__)
 
@@ -87,9 +88,8 @@ def edit_beer(id):
         })
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+
 # DELETE A BEER
-
-
 @beer_bp.route('/<int:id>', methods=['DELETE'])
 @login_required
 def delete_beer(id):
@@ -105,3 +105,52 @@ def delete_beer(id):
         'success': True,
         'message': 'Beer deleted successfully!'
     })
+
+
+# GET ALL REVIEWS OF A BEER BY BEER ID
+@beer_bp.route('/<int:id>/reviews')
+def get_reviews(id):
+    # page = request.args.get('page', 1, type=int)
+    # per_page = request.args.get('per_page', 10, type=int)
+    # offset = (page - 1) * per_page
+
+    # beer = Beer.query.get(id)
+    # if not beer:
+    #     return jsonify({'message': 'Beer not found', 'statusCode': 404}), 404
+
+    reviews = Review.query.options(joinedload(Review.user)).filter_by(
+        beer_id=id).all()
+    if not reviews:
+        return jsonify({'message': 'Reviews couldn\'t be found', 'statusCode': 404}), 404
+
+    review_list = [review.to_dict() for review in reviews]
+    # for review in review_list:
+    #     review['User'] = User.query.get(review['userId']).to_dict()
+
+    return jsonify({'Reviews': review_list}), 200
+
+
+# CREATE A REVIEW BY BEER ID
+@beer_bp.route('/<int:beer_id>/reviews', methods=['POST'])
+@login_required
+def add_review(beer_id):
+    beer = Beer.query.get(beer_id)
+    if not beer:
+        return jsonify({'message': 'Beer ID couldn\'t be found', 'statusCode': 404}), 404
+
+    form = ReviewForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        review = Review()
+        review.user_id = current_user.id
+        review.beer_id = beer_id
+        form.populate_obj(review)
+        db.session.add(review)
+        db.session.commit()
+        return jsonify(review.to_dict()), 200
+    else:
+        errors = {}
+        for field, messages in form.errors.items():
+            for message in messages:
+                errors[field] = message
+        return jsonify({'message': 'Validation error', 'statusCode': 400, 'errors': errors}), 400

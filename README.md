@@ -575,7 +575,7 @@ Gets all reviews of a beer
 - Request
 
   - Method: GET
-  - URL: api/beer/:beerId/reviews
+  - URL: api/beers/:beerId/reviews
   - Body: none
 
 - Successful Response
@@ -629,7 +629,7 @@ Create and return a new review for a beer specified by id.
 - Request
 
   - Method: POST
-  - URL: api/beer/:beerId/reviews
+  - URL: api/beers/:beerId/reviews
   - Headers:
     - Content-Type: application/json
   - Body:
