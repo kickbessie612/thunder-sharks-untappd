@@ -47,9 +47,13 @@ export const createBrewery = brewery => async dispatch => {
     body: JSON.stringify(brewery)
   });
 
-  const data = await res.json();
-  dispatch(setBreweries([data]));
-  return data;
+  if(res.ok) {
+
+      const brewery = await res.json();
+      dispatch(setBreweries([brewery]));
+      return brewery;
+  }
+  return res
 };
 
 // PUT edit a brewery
