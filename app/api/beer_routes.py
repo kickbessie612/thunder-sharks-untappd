@@ -107,7 +107,7 @@ def delete_beer(id):
     })
 
 
-# GET ALL REVIEWS OF A BEER BY BEER ID
+# GET ALL REVIEWS BY BEER ID
 @beer_bp.route('/<int:id>/reviews')
 def get_reviews(id):
     # page = request.args.get('page', 1, type=int)

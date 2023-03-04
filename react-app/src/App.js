@@ -6,7 +6,12 @@ import LoginFormPage from './components/LoginFormPage';
 import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 
+// import * as sessionActions from './store/session';
+
 import BeerIndex from './components/beers/BeerIndex';
+import BeerShow from './components/beers/BeerShow';
+import CreateBeerForm from './components/beers/CreateBeerForm';
+import EditBeerForm from './components/beers/EditBeerForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +35,18 @@ function App() {
 
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+
+          <Route path='/beers/new'>
+            <CreateBeerForm />
+          </Route>
+
+          <Route exact path='/beers/:beerId'>
+            <BeerShow />
+          </Route>
+
+          <Route path='/beers/:beerId/edit'>
+            <EditBeerForm />
           </Route>
         </Switch>
       )}
