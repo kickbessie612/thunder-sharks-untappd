@@ -86,7 +86,7 @@ const BeerForm = ({ beer }) => {
         />
         <input
           type='text'
-          placeholder='upload beer label image url'
+          placeholder='beer label image url'
           value={label}
           onChange={e => setLabel(e.target.value)}
         />

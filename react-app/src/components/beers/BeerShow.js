@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { fetchBeer, deleteBeer } from '../../store/beers';
+import ReviewIndex from '../reviews/ReviewIndex';
+import ReviewForm from '../reviews/ReviewForm';
 // import BookingIndex from '../bookings/BookingIndex';
 // import CreateBookingForm from '../bookings/CreateBookingForm';
 
@@ -51,7 +53,7 @@ const BeerShow = () => {
       <div>{beer.brewery_id}</div>
       <hr />
 
-      {sessionUser && beer.user_id === sessionUser.id && (
+      {sessionUser && beer.userId === sessionUser.id && (
         <>
           <div>
             <Link to={`/beers/${beer.id}/edit`}>Edit</Link>
@@ -60,6 +62,10 @@ const BeerShow = () => {
         </>
       )}
       <hr />
+
+      <ReviewIndex beer={beer} />
+
+      <ReviewForm beer={beer} />
 
       {/* {sessionUser && (
         <div>

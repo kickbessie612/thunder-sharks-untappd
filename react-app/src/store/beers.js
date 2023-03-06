@@ -44,7 +44,10 @@ export const fetchBeer = beerId => async dispatch => {
 export const createBeer = beer => async dispatch => {
   const res = await fetch('/api/beers', {
     method: 'POST',
-    body: JSON.stringify(beer)
+    body: JSON.stringify(beer),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
 
   const data = await res.json();
@@ -56,7 +59,10 @@ export const createBeer = beer => async dispatch => {
 export const updateBeer = beer => async dispatch => {
   const res = await fetch(`/api/beers/${beer.id}`, {
     method: 'PUT',
-    body: JSON.stringify(beer)
+    body: JSON.stringify(beer),
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
 
   const data = await res.json();

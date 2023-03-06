@@ -36,5 +36,7 @@ class Beer(db.Model):
             'style': self.style,
             'label': self.label,
             'year': self.year,
-            'average_rating': sum(review.rating for review in self.reviews) / len(self.reviews)
+            'userId': self.user_id,
+            'brewery': self.brewery.to_dict(),
+            'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews)
         }

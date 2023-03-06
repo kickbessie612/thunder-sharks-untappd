@@ -25,7 +25,8 @@ def get_all_beers():
     """
     Query for all beers and returns them in a list of beer dictionaries
     """
-    beers = Beer.query.options(joinedload(Beer.reviews)).all()
+    beers = Beer.query.options(joinedload(
+        Beer.reviews), joinedload(Beer.brewery)).all()
     return [beer.to_dict() for beer in beers]
 
 
@@ -35,7 +36,8 @@ def get_beer(id):
     """
     Query for a beer by id and returns that beer in a dictionary
     """
-    beer = Beer.query.options(joinedload(Beer.reviews)).get(id)
+    beer = Beer.query.options(joinedload(
+        Beer.reviews), joinedload(Beer.brewery)).get(id)
     if beer:
         return jsonify(beer.to_dict())
     else:
@@ -46,7 +48,7 @@ def get_beer(id):
 
 
 # CREATE A BEER
-@beer_bp.route('/', methods=['POST'])
+@beer_bp.route('', methods=['POST'])
 @login_required
 def create_beer():
     """
@@ -78,7 +80,8 @@ def edit_beer(id):
     form = BeerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        beer = Beer.query.options(joinedload(Beer.reviews)).get(id)
+        beer = Beer.query.options(joinedload(
+            Beer.reviews), joinedload(Beer.brewery)).get(id)
         form.populate_obj(beer)
         db.session.commit()
         return jsonify({
@@ -127,7 +130,7 @@ def get_reviews(id):
     # for review in review_list:
     #     review['User'] = User.query.get(review['userId']).to_dict()
 
-    return jsonify({'Reviews': review_list}), 200
+    return jsonify(review_list), 200
 
 
 # CREATE A REVIEW BY BEER ID
@@ -137,7 +140,7 @@ def add_review(beer_id):
     beer = Beer.query.get(beer_id)
     if not beer:
         return jsonify({'message': 'Beer ID couldn\'t be found', 'statusCode': 404}), 404
-
+    print(request.json)
     form = ReviewForm()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
