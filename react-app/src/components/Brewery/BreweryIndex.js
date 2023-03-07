@@ -1,30 +1,65 @@
+// import { useEffect } from 'react';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getBreweries } from '../../store/brewery';
+// import BreweryIndexItem from './BreweryIndexItem';
+// import './BreweryForm.css';
+
+// const BreweryIndex = () => {
+//   const dispatch = useDispatch();
+//   console.log( "HELLOOOOOO")
+//   const currentUser = useSelector((state) => state.session.user);
+//   console.log(currentUser, "CURRENT USER")
+//   const breweries = useSelector((state)=> (state.breweries));
+// console.log(breweries, "BREWERIESSSS")
+
+//   useEffect(() => {
+//     dispatch(getBreweries());
+//   }, [dispatch]);
+
+// //   if (breweries.length === 0) {
+// //     return null;
+// //   }
+
+//   return (
+//     <>
+//       <div>
+//         {breweries.map(brewery => (
+//           <BreweryIndexItem brewery={brewery} key={brewery.id} currentUser={currentUser}/>
+//         ))}
+//       </div>
+//     </>
+//   );
+// };
+
+// export default BreweryIndex;
+
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchBeers } from '../../store/beers';
+import { getBreweries } from '../../store/brewery';
 import BreweryIndexItem from './BreweryIndexItem';
 import './BreweryForm.css';
 
 const BreweryIndex = () => {
   const dispatch = useDispatch();
-  const beers = useSelector(state => Object.values(state.beers));
-
+  const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+console.log(breweries, 'BREWWERIESSSSSSS')
   useEffect(() => {
-    dispatch(fetchBeers());
+    dispatch(getBreweries());
   }, [dispatch]);
 
-  if (beers.length === 0) {
+  if (breweries.length === 0) {
     return null;
   }
 
   return (
     <>
       <div>
-        {beers.map(beer => (
-          <BeerIndexItem beer={beer} key={beer.id} />
+        {breweries.map(brewery => (
+          <BreweryIndexItem brewery={brewery} key={brewery.id} />
         ))}
       </div>
     </>
   );
 };
 
-export default BeerIndex;
+export default BreweryIndex;

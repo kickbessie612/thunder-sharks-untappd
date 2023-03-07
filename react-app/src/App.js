@@ -7,6 +7,8 @@ import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 
 import BeerIndex from './components/beers/BeerIndex';
+import BreweryIndex from './components/Brewery/BreweryIndex';
+import BreweryFormPage from './components/Brewery/BreweryFormPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -30,6 +32,13 @@ function App() {
 
           <Route path='/signup'>
             <SignupFormPage />
+          </Route>
+
+          <Route exact path='/breweries'>
+            <BreweryIndex />
+          </Route>
+          <Route exact path='/breweries/create'>
+            <BreweryFormPage />
           </Route>
         </Switch>
       )}

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import "./BreweryForm.css";
+import { createBrewery } from "../../store/brewery";
 
 function BreweryFormPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -118,7 +120,7 @@ function BreweryFormPage() {
             Type
             <input
               type="select"
-              value={confirmPassword}
+              value={type}
               onChange={(e) => setType(e.target.value)}
               required
             />
@@ -150,4 +152,5 @@ function BreweryFormPage() {
     );
   };
 }
+
 export default BreweryFormPage;
