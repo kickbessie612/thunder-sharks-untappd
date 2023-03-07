@@ -3,14 +3,14 @@ const REMOVE_BREWERY = 'breweries/REMOVE_brewery';
 
 export const setBreweries = breweries => {
   return {
-    type: SET_breweries,
+    type: SET_BREWERIES,
     breweries
   };
 };
 
 export const removeBrewery = breweryId => {
   return {
-    type: REMOVE_brewery,
+    type: REMOVE_BREWERY,
     breweryId
   };
 };
