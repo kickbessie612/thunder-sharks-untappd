@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link, useHistory } from 'react-router-dom';
+import { useParams, Link, useHistory, NavLink } from 'react-router-dom';
 import { fetchBeer, deleteBeer } from '../../store/beers';
 import ReviewIndex from '../reviews/ReviewIndex';
 import ReviewForm from '../reviews/ReviewForm';
@@ -35,6 +35,9 @@ const BeerShow = () => {
     return null;
   }
 
+  const reviews = beer?.reviews;
+  const canAddReview = reviews && reviews.length > 0;
+
   return (
     <>
       <h2>
@@ -63,9 +66,16 @@ const BeerShow = () => {
       )}
       <hr />
 
-      <ReviewIndex beer={beer} />
+      {canAddReview ? (
+        <NavLink to={`/beers/${beerId}/reviews`}>Add Review</NavLink>
+      ) : (
+        <p>No reviews yet!</p>
+      )}
+      {ReviewForm && <ReviewForm beerId={beer.id} />}
 
-      <ReviewForm beer={beer} />
+      {/* <ReviewIndex beer={beer} />
+
+      <ReviewForm beer={beer} /> */}
 
       {/* {sessionUser && (
         <div>

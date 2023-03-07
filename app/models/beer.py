@@ -20,7 +20,7 @@ class Beer(db.Model):
         'users.id'), nullable=False)
 
     brewery_id = db.Column(db.Integer, db.ForeignKey(
-        'breweries.id'), nullable=False)
+        'breweries.id'), nullable=True)
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
@@ -36,7 +36,7 @@ class Beer(db.Model):
             'style': self.style,
             'label': self.label,
             'year': self.year,
-            'userId': self.user_id,
-            'brewery': self.brewery.to_dict(),
-            'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews)
+            'userId': self.user_id
+            # 'brewery': self.brewery.to_dict(),
+            # 'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews)
         }
