@@ -19,7 +19,7 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # GET ALL BEERS
-@beer_bp.route('')
+@beer_bp.route('/', methods=['GET'])
 def get_all_beers():
     """
     Query for all beers and returns them in a list of beer dictionaries

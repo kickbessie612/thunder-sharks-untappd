@@ -2,13 +2,13 @@
 
 const LOAD_BREWERIES = "breweries/LOAD_breweries";
 const ADD_BREWERY = "breweries/ADD_brewery";
-const REMOVE_BREWERY = "breweries/REMOVE_brewery";
+// const REMOVE_BREWERY = "breweries/REMOVE_brewery";
 
 export const loadBreweries = (breweries) => {
     console.log(breweries, "HEYYYY")
   return {
     type: LOAD_BREWERIES,
-    breweries: breweries
+    breweries
   };
 
 };
@@ -29,7 +29,6 @@ export const addBreweries = (payload) => {
 
 // GET all breweries
 export const getBreweries = () => async (dispatch) => {
-    console.log("YOYOYOYOY")
   const res = await fetch("/api/breweries", {
     headers: {
       'Content-Type': 'application/json'
@@ -42,8 +41,8 @@ export const getBreweries = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-console.log(data.breweries, "DATAAA BREWERIESSS")
-    dispatch(loadBreweries(data.breweries));
+console.log(data, "DATAAA BREWERIESSS")
+    dispatch(loadBreweries(data));
   }
 };
 
