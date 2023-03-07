@@ -17,30 +17,30 @@ const BeerForm = ({ beer }) => {
 
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setErrors([]);
-
     const payload = {
       ...beer,
       name,
       description,
       abv,
-      ibu,
       style,
-      label,
-      year
+      label
     };
-
+    if (ibu) {
+      payload['ibu'] = ibu;
+    }
+    if (year) {
+      payload['year'] = year;
+    }
     const action = beer.id ? updateBeer : createBeer;
-
-    dispatch(action(payload))
-      .then(newBeer => history.push(`/beers/${newBeer.id}`))
-      .catch(async res => {
-        const data = await res.json();
-        console.log(data);
-        if (data && data.errors) setErrors(data.errors);
-      });
+    const data = await dispatch(action(payload));
+    if (data.errors) {
+      setErrors(data.errors);
+    } else {
+      history.push(`/beers/${data.id}`);
+    }
   };
 
   return (

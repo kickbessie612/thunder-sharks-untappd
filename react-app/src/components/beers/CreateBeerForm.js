@@ -5,10 +5,8 @@ const CreateBeerForm = () => {
     name: '',
     description: '',
     abv: '',
-    ibu: '',
     style: '',
-    label: '',
-    year: ''
+    label: ''
   };
   return <BeerForm beer={beer} />;
 };
