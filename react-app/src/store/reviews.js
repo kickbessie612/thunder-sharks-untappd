@@ -15,19 +15,21 @@ export const removeReview = reviewId => {
   };
 };
 
-// GET all reviews of current user
-export const fetchMyReviews = () => async dispatch => {
-  const res = await fetch(`/api/me/reviews`);
-  const reviews = await res.json();
-  dispatch(setReviews(reviews));
-  return res;
-};
+// // GET all reviews of current user
+// export const fetchMyReviews = () => async dispatch => {
+//   const res = await fetch(`/api/me/reviews`);
+//   const reviews = await res.json();
+//   dispatch(setReviews(reviews));
+//   return res;
+// };
 
 // GET all reviews based on a beer id
 export const fetchReviews = beerId => async dispatch => {
   const res = await fetch(`/api/beers/${beerId}/reviews`);
   const data = await res.json();
-  dispatch(setReviews(data));
+  if (res.ok) {
+    dispatch(setReviews(data));
+  }
   return res;
 };
 
