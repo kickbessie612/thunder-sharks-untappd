@@ -41,17 +41,16 @@ import './BreweryForm.css';
 
 const BreweryIndex = () => {
   const dispatch = useDispatch();
-  const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+//   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+
+const breweries = useSelector(state => (state.breweries))
 console.log(breweries, 'BREWWERIESSSSSSS')
   useEffect(() => {
     dispatch(getBreweries());
   }, [dispatch]);
 
-  if (breweries.length === 0) {
-    return null;
-  }
 
-  return (
+  return breweries ? (
     <>
       <div>
         {breweries.map(brewery => (
@@ -59,7 +58,7 @@ console.log(breweries, 'BREWWERIESSSSSSS')
         ))}
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default BreweryIndex;

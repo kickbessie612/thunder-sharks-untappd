@@ -42,8 +42,8 @@ export const getBreweries = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-
-    dispatch(loadBreweries(data));
+console.log(data.breweries, "DATAAA BREWERIESSS")
+    dispatch(loadBreweries(data.breweries));
   }
 };
 
@@ -98,11 +98,14 @@ const breweriesReducer = (state = {}, action) => {
     switch (action.type) {
       case LOAD_BREWERIES:
         console.log(action.breweries, 'CORYYYBAKreducerr BREWEIES')
-        action.breweries.forEach((brewery) => {
+
+        // console.log(newState, "NEw   NEWWW")
+        action.breweries.map((brewery) => {
           newState[brewery.id] = brewery;
         });
-        console.log(newState, "NEWSTATE BREWEWRIES");
+        console.log(newState, "NEWSTATE LOAD BREWEWRIES");
         return newState;
+
       case ADD_BREWERY:
         newState[action.payload.id] = action.payload;
         console.log(newState, "NEWSTATEEE ADD BREWERY")
