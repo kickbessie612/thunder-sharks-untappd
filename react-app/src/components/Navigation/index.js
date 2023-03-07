@@ -9,7 +9,7 @@ function Navigation({ isLoaded }) {
 
 	return (
 		<nav>
-			<NavLink exact to="/"><i class="fa-brands fa-untappd">UNTAPPD</i></NavLink>
+			<NavLink exact to="/"><i className="fa-brands fa-untappd">UNTAPPD</i></NavLink>
 			{isLoaded && (<ProfileButton user={sessionUser} />)}
 		</nav>
 	);
