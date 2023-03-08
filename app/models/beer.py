@@ -24,7 +24,14 @@ class Beer(db.Model):
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
-    reviews = db.relationship('Review', back_populates='beer')
+    reviews = db.relationship('Review', backref='beer', lazy=True)
+
+    @property
+    def average_rating(self):
+        if self.reviews:
+            return sum(review.rating for review in self.reviews) / len(self.reviews)
+        else:
+            return 0
 
     def to_dict(self):
         return {
@@ -38,5 +45,5 @@ class Beer(db.Model):
             'year': self.year,
             'userId': self.user_id,
             'brewery': self.brewery.to_dict() if self.brewery else None,
-            'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews) if len(self.reviews) else 0
+            'averageRating': self.average_rating
         }

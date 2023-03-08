@@ -45,6 +45,16 @@ def delete_review(id):
     db.session.commit()
     return jsonify({'message': 'Successfully deleted', 'statusCode': 200}), 200
 
+#Review Feed
+@review_bp.route('/feed', methods=['GET'])
+def review_feed():
+    try:
+        reviews = Review.query.order_by(Review.created_at.desc()).limit(10).all()
+        review_list = [review.to_dict() for review in reviews]
+        return jsonify({'Reviews': review_list}), 200
+    except:
+        return jsonify({'error': 'Unable to Display Reviews At This Point', 'statusCode': 500}), 500
+
 
 # Get all reviews
 # @review_bp.route('', methods=['GET'])

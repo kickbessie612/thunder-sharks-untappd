@@ -36,15 +36,22 @@ def get_beer(id):
     """
     Query for a beer by id and returns that beer in a dictionary
     """
-    beer = Beer.query.options(joinedload(
-        Beer.reviews), joinedload(Beer.brewery)).get(id)
+    beer = Beer.query.options(joinedload(Beer.reviews), joinedload(Beer.brewery)).get(id)
     if beer:
-        return jsonify(beer.to_dict())
+        # Get the 10 most recent reviews for the beer
+        recent_reviews = sorted(beer.reviews, key=lambda x: x.created_at, reverse=True)[:10]
+        recent_reviews_dict = [review.to_dict() for review in recent_reviews]
+
+        return jsonify({
+            'beer': beer.to_dict(),
+            'recent_reviews': recent_reviews_dict
+        })
     else:
         return jsonify({
             'success': False,
             'message': 'Beer not found'
         })
+
 
 
 # CREATE A BEER

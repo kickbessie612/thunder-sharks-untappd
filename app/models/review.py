@@ -14,6 +14,7 @@ class Review(db.Model):
     image = db.Column(db.String(500))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     beer_id = db.Column(db.Integer, db.ForeignKey('beers.id'), nullable=False)
+
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(
         db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
