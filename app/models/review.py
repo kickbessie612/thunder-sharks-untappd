@@ -32,5 +32,6 @@ class Review(db.Model):
             'rating': self.rating,
             'createdAt': self.created_at.strftime('%Y-%m-%d %H:%M:%S'),
             'updatedAt': self.updated_at.strftime('%Y-%m-%d %H:%M:%S'),
-            'user': self.user.to_dict()
+            'user': self.user.to_dict(),
+            'beer': self.beer.to_dict()
         }

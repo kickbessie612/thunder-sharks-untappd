@@ -47,14 +47,20 @@ def delete_review(id):
 
 #Review Feed
 @review_bp.route('/feed', methods=['GET'])
-def review_feed():
-    try:
-        reviews = Review.query.order_by(Review.created_at.desc()).limit(10).all()
-        review_list = [review.to_dict() for review in reviews]
-        return jsonify({'Reviews': review_list}), 200
-    except:
-        return jsonify({'error': 'Unable to Display Reviews At This Point', 'statusCode': 500}), 500
+def get_review_feed():
+    reviews = Review.query.order_by(Review.created_at.desc()).limit(10).all()
+    if not reviews:
+        return jsonify({'error': 'Unable to Display Reviews At This Point'}), 500
 
+    review_list = []
+    for review in reviews:
+        beer = Beer.query.get(review.beer_id)
+        if beer:
+            review_dict = review.to_dict()
+            review_dict['beer'] = beer.to_dict()
+            review_list.append(review_dict)
+
+    return jsonify({'reviews': review_list}), 200
 
 # Get all reviews
 # @review_bp.route('', methods=['GET'])
