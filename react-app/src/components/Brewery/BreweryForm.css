@@ -1,4 +1,35 @@
-/* 
+
+.brewery-box {
+
+        display: flex;
+        border-style: solid;
+        border-width: 5px;
+        border-radius: 5px;
+        width: 1000px;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-left: 10px;
+        background-color: rgba(201, 193, 117, 0.782);
+
+}
+
+img {
+    width: 150px;
+    height: 150px
+}
+
+ul {
+    list-style-type: none;
+  }
+
+  .brewery-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+  }
+/*
 
 form {
     background-color: white;

@@ -59,7 +59,7 @@ console.log(breweries, 'BREWWERIESSSSSSS')
 
   return breweries ? (
     <>
-      <div>
+      <div className='brewery-box'>
         {breweries.map(brewery => (
           <BreweryIndexItem brewery={brewery} key={brewery.id} />
         ))}
