@@ -9,7 +9,7 @@ import reducer from './session';
 const rootReducer = combineReducers({
   session: reducer,
   beers: beersReducer,
-  brewery: breweriesReducer
+  breweries: breweriesReducer
 });
 
 let enhancer;

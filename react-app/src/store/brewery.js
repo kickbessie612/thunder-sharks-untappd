@@ -96,18 +96,18 @@ const breweriesReducer = (state = {}, action) => {
     let newState = { ...state };
     switch (action.type) {
       case LOAD_BREWERIES:
-        console.log(action.breweries, 'CORYYYBAKreducerr BREWEIES')
+        console.log(newState, "**** NEWSTATEEE")
+        console.log(action.breweries, '****** ACTION.BREWERIES')
 
-        // console.log(newState, "NEw   NEWWW")
         action.breweries.map((brewery) => {
           newState[brewery.id] = brewery;
         });
-        console.log(newState, "NEWSTATE LOAD BREWEWRIES");
+        console.log(newState, "***** NEWSTATE LOAD BREWEWRIES");
         return newState;
 
       case ADD_BREWERY:
         newState[action.payload.id] = action.payload;
-        console.log(newState, "NEWSTATEEE ADD BREWERY")
+        console.log(newState, "***** NEWSTATEEE ADD BREWERY")
         return newState;
       default:
         return state;

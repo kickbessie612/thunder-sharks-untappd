@@ -42,9 +42,16 @@ import './BreweryForm.css';
 const BreweryIndex = () => {
   const dispatch = useDispatch();
 //   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+const breweriesState = useSelector(state => (state.breweries))
 
-const breweries = useSelector(state => (state.breweries))
+let breweries;
+if (breweriesState) {
+    breweries = Object.values(breweriesState)
+    }
+
 console.log(breweries, 'BREWWERIESSSSSSS')
+
+
   useEffect(() => {
     dispatch(getBreweries());
   }, [dispatch]);
