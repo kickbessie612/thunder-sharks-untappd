@@ -51,7 +51,9 @@ export const createBeer = beer => async dispatch => {
   });
 
   const data = await res.json();
-  dispatch(setBeers([data]));
+  if (res.ok) {
+    dispatch(setBeers([data]));
+  }
   return data;
 };
 
@@ -66,7 +68,9 @@ export const updateBeer = beer => async dispatch => {
   });
 
   const data = await res.json();
-  dispatch(setBeers([data]));
+  if (res.ok) {
+    dispatch(setBeers([data]));
+  }
   return data;
 };
 
