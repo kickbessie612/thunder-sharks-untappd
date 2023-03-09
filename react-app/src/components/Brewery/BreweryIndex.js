@@ -38,6 +38,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBreweries } from '../../store/brewery';
 import BreweryIndexItem from './BreweryIndexItem';
 import './BreweryForm.css';
+import BreweryFormPage from './BreweryFormPage';
 
 const BreweryIndex = () => {
   const dispatch = useDispatch();

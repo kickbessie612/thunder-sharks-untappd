@@ -43,13 +43,13 @@ console.log(brewery, "BREWERY PROFILE PAGEEEE")
 
   return (
     <div>
-      <h2>{brewery.name}</h2>
+      <h2>Brewery Name: {brewery.name}</h2>
       <img src={brewery.picture} alt={brewery.name} />
       <ul>
-      <p>{brewery.type}</p>
-      <p>{brewery.city}</p>
-      <p>{brewery.description}</p>
-      <BreweryBeerList />
+      <p>Brewery Type: {brewery.type}</p>
+      <p>City: {brewery.city}</p>
+      <p>Description: {brewery.description}</p>
+      {/* <BreweryBeerList /> */}
       </ul>
       {/* <ul>
         {brewery.beers.map(beer => (

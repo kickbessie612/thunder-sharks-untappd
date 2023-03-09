@@ -24,7 +24,8 @@ import breweries from './brewery';
 const rootReducer = combineReducers({
   session,
   beers,
-  breweries
+  breweries,
+  //reviews
 });
 
 let enhancer;

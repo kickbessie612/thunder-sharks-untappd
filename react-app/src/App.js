@@ -39,9 +39,9 @@ function App() {
           <Route exact path='/breweries'>
             <BreweryIndex />
           </Route>
-          <Route exact path='/breweries/create'>
+          {/* <Route exact path='/breweries/create'>
             <BreweryFormPage />
-          </Route>
+          </Route> */}
           <Route exact path={`/breweries/:breweryId`}>
             <BreweryProfilePage />
           </Route>
