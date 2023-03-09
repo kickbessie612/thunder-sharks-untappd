@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createBeer, updateBeer } from '../../store/beers';
 
 const BeerForm = ({ beer }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const breweries = useSelector(state => state.breweries)
 
   const [name, setName] = useState(beer.name);
   const [description, setDescription] = useState(beer.description);
@@ -14,6 +15,7 @@ const BeerForm = ({ beer }) => {
   const [style, setStyle] = useState(beer.style);
   const [label, setLabel] = useState(beer.label);
   const [year, setYear] = useState(beer.year);
+  const [brewery_id, setBreweryId] = useState(beer.brewery_id);
 
   const [errors, setErrors] = useState([]);
 
@@ -97,6 +99,13 @@ const BeerForm = ({ beer }) => {
           value={year}
           onChange={e => setYear(e.target.value)}
         />
+        <select
+          placeholder='Select Brewery'
+        >
+          {breweries.map(({ id, name }) => (
+            <option value={id}>{name}</option>
+          ))}
+        </select>
 
         <button>{beer.id ? 'update' : 'create'}</button>
       </form>
