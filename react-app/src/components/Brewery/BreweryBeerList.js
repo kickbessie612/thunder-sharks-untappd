@@ -15,7 +15,7 @@ const BreweryBeerList = () => {
     console.log(beers, 'BEERS')
 
   const breweryBeers = beers.filter(beer => {
-    return beer.brewerId === breweryId
+    return beer.breweryId === breweryId
        })
   console.log(breweryBeers, 'BreweryBeers!')
 
