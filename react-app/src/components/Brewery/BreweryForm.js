@@ -1,10 +1,10 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import "./BreweryForm.css";
 import { createBrewery } from "../../store/brewery";
 
-function BreweryFormPage() {
+function BreweryForm() {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
@@ -57,10 +57,10 @@ function BreweryFormPage() {
     //   };
 
     // ******* CANCEL BUTTON *******
-    const handleCancelClick = (e) => {
-      e.preventDefault();
-      history.push("./");
-    };
+    // const handleCancelClick = (e) => {
+    //   e.preventDefault();
+    //   history.push("./breweries");
+    // };
 
     return (
       <>
@@ -144,13 +144,13 @@ function BreweryFormPage() {
             />
           </label>
           <button type="submit">Sign Up</button>
-          <button type="button" onClick={handleCancelClick}>
+          {/* <button type="button" onClick={handleCancelClick}>
             Cancel
-          </button>
+          </button> */}
         </form>
       </>
     );
   };
 }
 
-export default BreweryFormPage;
+export default BreweryForm;
