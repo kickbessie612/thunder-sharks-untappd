@@ -11,8 +11,9 @@ import BeerShow from './components/beers/BeerShow';
 import CreateBeerForm from './components/beers/CreateBeerForm';
 import EditBeerForm from './components/beers/EditBeerForm';
 import BreweryIndex from './components/Brewery/BreweryIndex';
-import BreweryFormPage from './components/Brewery/BreweryFormPage';
+// import BreweryFormPage from './components/Brewery/BreweryFormPage';
 import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
+import { getBreweries } from './store/brewery';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
+    dispatch(getBreweries());
   }, [dispatch]);
 
   return (

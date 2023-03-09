@@ -38,19 +38,19 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getBreweries } from '../../store/brewery';
 import BreweryIndexItem from './BreweryIndexItem';
 import './BreweryForm.css';
-import BreweryFormPage from './BreweryFormPage';
+// import BreweryFormPage from './BreweryFormPage';
 
 const BreweryIndex = () => {
   const dispatch = useDispatch();
-//   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
-const breweriesState = useSelector(state => (state.breweries))
+  //   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+  const breweriesState = useSelector(state => (state.breweries))
 
-let breweries;
-if (breweriesState) {
+  let breweries;
+  if (breweriesState) {
     breweries = Object.values(breweriesState)
-    }
+  }
 
-console.log(breweries, 'BREWWERIESSSSSSS')
+  console.log(breweries, 'BREWWERIESSSSSSS')
 
 
   useEffect(() => {

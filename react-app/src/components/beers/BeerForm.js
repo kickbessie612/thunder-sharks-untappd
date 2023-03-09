@@ -6,7 +6,7 @@ import { createBeer, updateBeer } from '../../store/beers';
 const BeerForm = ({ beer }) => {
   const history = useHistory();
   const dispatch = useDispatch();
-  const breweries = useSelector(state => state.breweries)
+  const breweries = useSelector(state => Object.values(state.breweries));
 
   const [name, setName] = useState(beer.name);
   const [description, setDescription] = useState(beer.description);
@@ -28,7 +28,8 @@ const BeerForm = ({ beer }) => {
       description,
       abv,
       style,
-      label
+      label,
+      brewery_id
     };
     if (ibu) {
       payload['ibu'] = ibu;
@@ -99,14 +100,14 @@ const BeerForm = ({ beer }) => {
           value={year}
           onChange={e => setYear(e.target.value)}
         />
-        <select
-          placeholder='Select Brewery'
-        >
-          {breweries.map(({ id, name }) => (
-            <option value={id}>{name}</option>
-          ))}
-        </select>
-
+        {!beer.id && (
+          <select onChange={e => setBreweryId(e.target.value)}>
+            <option value=''>Select Brewery</option>
+            {breweries.map(({ id, name }) => (
+              <option value={id}>{name}</option>
+            ))}
+          </select>
+        )}
         <button>{beer.id ? 'update' : 'create'}</button>
       </form>
     </div>
