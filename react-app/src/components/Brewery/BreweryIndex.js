@@ -15,7 +15,7 @@ const BreweryIndex = () => {
     breweries = Object.values(breweriesState);
   }
 
-  console.log(breweries, "BREWWERIESSSSSSS");
+  // console.log(breweries, "BREWWERIESSSSSSS");
 
   useEffect(() => {
     dispatch(getBreweries());
@@ -23,14 +23,18 @@ const BreweryIndex = () => {
 
   return breweries ? (
     <>
-      <div className="brewery-box">
+    <div id='breweriespage'>
+
+      <div className="total-breweries">
         {breweries.map((brewery) => (
-          <BreweryIndexItem brewery={brewery} key={brewery.id} />
+          <BreweryIndexItem brewery={brewery} key={brewery.id} assName="brewery-box"/>
         ))}
       </div>
       <div>
-        {/* <CreateBreweryForm /> */}
+        <CreateBreweryForm />
       </div>
+
+    </div>
     </>
   ) : null;
 };

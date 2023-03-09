@@ -18,7 +18,6 @@ function BreweryForm() {
   const [picture, setPicture] = useState("");
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +41,7 @@ function BreweryForm() {
         console.log(data.errors, "DATAAA for ERRORSSS");
         if (data && data.errors) setErrors(data.errors);
       });
-
+    }
     //     //   const data = await dispatch(
     //     //     brewery(name, address, city, state, country, type, description, picture)
     //     //   );
@@ -143,14 +142,14 @@ function BreweryForm() {
               required
             />
           </label>
-          <button type="submit">Sign Up</button>
+          <button type="submit">Add Brewery</button>
           {/* <button type="button" onClick={handleCancelClick}>
             Cancel
           </button> */}
         </form>
       </>
     );
-  };
+
 }
 
 export default BreweryForm;
