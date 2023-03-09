@@ -61,7 +61,7 @@ def create_beer():
         new_beer.user_id = current_user.id
         form.populate_obj(new_beer)
         db.session.add(new_beer)
-        print(new_beer)
+        # print(new_beer)
         db.session.commit()
         return jsonify(
 
@@ -84,11 +84,7 @@ def edit_beer(id):
             Beer.reviews), joinedload(Beer.brewery)).get(id)
         form.populate_obj(beer)
         db.session.commit()
-        return jsonify({
-            'success': True,
-            'message': 'Beer created successfully!',
-            'beer': [beer.to_dict()]
-        })
+        return jsonify(beer.to_dict())
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
