@@ -38,17 +38,16 @@ const BeerShow = () => {
   return (
     <>
       <h2>
-        {beer.name},{beer.year}
+        <div>{beer.name}</div>
+        {beer.year > 1950 && <div>{beer.year}</div>}
       </h2>
       <div>{beer.description}</div>
-      <div>
-        abv:{beer.abv}, ibu:{beer.ibu}, style:{beer.style}
-      </div>
+      <div>abv:{beer.abv}</div>
+      {beer.ibu > -1 && <div>ibu:{beer.ibu}</div>}
+
+      <div>style:{beer.style}</div>
       <div>
         <img src={beer.label} alt={beer.name} />
-        {/* {spot.SpotImages.map(image => (
-          <img src={image.url} key={image.id} />
-        ))} */}
       </div>
       <div>{beer.brewery_id}</div>
       <hr />
