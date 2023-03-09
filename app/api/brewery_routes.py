@@ -18,13 +18,13 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # GET ALL BREWERIES
-@brewery_bp.route('/')
+@brewery_bp.route('/', methods=['GET'])
 def get_all_breweries():
     """
     Query for all breweries and returns them in a list of brewery dictionaries
     """
     breweries = Brewery.query.all()
-    return {'breweries': [brewery.to_dict() for brewery in breweries]}
+    return [brewery.to_dict() for brewery in breweries]
 
 
 # GET BREWERY BY ID

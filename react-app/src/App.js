@@ -10,6 +10,10 @@ import BeerIndex from './components/beers/BeerIndex';
 import BeerShow from './components/beers/BeerShow';
 import CreateBeerForm from './components/beers/CreateBeerForm';
 import EditBeerForm from './components/beers/EditBeerForm';
+import BreweryIndex from './components/Brewery/BreweryIndex';
+import BreweryFormPage from './components/Brewery/BreweryFormPage';
+import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -37,6 +41,16 @@ function App() {
 
           <Route path='/beers/:beerId/edit'>
             <EditBeerForm />
+          </Route>
+
+          <Route exact path='/breweries'>
+            <BreweryIndex />
+          </Route>
+          {/* <Route exact path='/breweries/create'>
+            <BreweryFormPage />
+          </Route> */}
+          <Route exact path={`/breweries/:breweryId`}>
+            <BreweryProfilePage />
           </Route>
         </Switch>
       )}
