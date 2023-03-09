@@ -1,31 +1,16 @@
-// import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-// import thunk from 'redux-thunk';
-// import beersReducer from './beers';
-// import breweriesReducer from './brewery';
-// import reducer from './session';
-
-
-// // ASK YUAN ABOUT YOUR UPDATE TO THIS SECTION OF CODE ADDING the  Reducer portion
-// const rootReducer = combineReducers({
-//   session: reducer,
-//   beers: beersReducer,
-//   breweries: breweriesReducer
-// });
-
-
 
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session';
 import beers from './beers';
-// import reviews from './reviews';
 import breweries from './brewery';
+import reviews from './reviews';
 
 const rootReducer = combineReducers({
   session,
   beers,
   breweries,
-  //reviews
+  reviews
 });
 
 let enhancer;

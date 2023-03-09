@@ -11,16 +11,16 @@ class Beer(db.Model):
     name = db.Column(db.String(255), nullable=False, unique=True)
     description = db.Column(db.String, nullable=False, unique=True)
     abv = db.Column(db.Float, nullable=False)
-    ibu = db.Column(db.Float)
+    ibu = db.Column(db.Float, nullable=True)
     style = db.Column(db.String, nullable=False)
     label = db.Column(db.String)
-    year = db.Column(db.Integer)
+    year = db.Column(db.Integer, nullable=True)
 
     user_id = db.Column(db.Integer, db.ForeignKey(
         'users.id'), nullable=False)
 
     brewery_id = db.Column(db.Integer, db.ForeignKey(
-        'breweries.id'), nullable=False)
+        'breweries.id'), nullable=True)
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
@@ -35,5 +35,8 @@ class Beer(db.Model):
             'ibu': self.ibu,
             'style': self.style,
             'label': self.label,
-            'year': self.year
+            'year': self.year,
+            'userId': self.user_id,
+            'brewery': self.brewery.to_dict() if self.brewery else None,
+            'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews) if len(self.reviews) else 0
         }

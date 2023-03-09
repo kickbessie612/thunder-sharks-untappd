@@ -1,5 +1,6 @@
 .profile-dropdown {
-  position: absolute;
+  position: relative;
+  list-style: none;
 }
 
 .hidden {

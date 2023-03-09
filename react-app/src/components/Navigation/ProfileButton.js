@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { logout } from "../../store/session";
+import { login, logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
@@ -28,6 +28,12 @@ function ProfileButton({ user }) {
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+
+  const demoLogin = () => {
+    const email = 'demo@aa.io'
+    const password = 'password'
+    dispatch(login(email, password))
+  }
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -64,6 +70,8 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
             />
+
+            <button className='demo-button' onClick={demoLogin}>Demo</button>
           </>
         )}
       </ul>

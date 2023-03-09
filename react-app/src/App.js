@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
-import SignupFormPage from './components/SignupFormPage';
-import LoginFormPage from './components/LoginFormPage';
 import { authenticate } from './store/session';
 import Navigation from './components/Navigation';
 
+// import * as sessionActions from './store/session';
+
 import BeerIndex from './components/beers/BeerIndex';
+import BeerShow from './components/beers/BeerShow';
+import CreateBeerForm from './components/beers/CreateBeerForm';
+import EditBeerForm from './components/beers/EditBeerForm';
 import BreweryIndex from './components/Brewery/BreweryIndex';
 import BreweryFormPage from './components/Brewery/BreweryFormPage';
 import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
@@ -28,12 +31,16 @@ function App() {
             <BeerIndex />
           </Route>
 
-          <Route path='/login'>
-            <LoginFormPage />
+          <Route path='/beers/new'>
+            <CreateBeerForm />
           </Route>
 
-          <Route path='/signup'>
-            <SignupFormPage />
+          <Route exact path='/beers/:beerId'>
+            <BeerShow />
+          </Route>
+
+          <Route path='/beers/:beerId/edit'>
+            <EditBeerForm />
           </Route>
 
           <Route exact path='/breweries'>
