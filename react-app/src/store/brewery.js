@@ -1,5 +1,6 @@
 const LOAD_BREWERIES = 'breweries/LOAD_breweries';
 const ADD_BREWERY = 'breweries/ADD_brewery';
+const REMOVE_BREWERY = 'brewery/REMOVE_BREWERY'
 // const REMOVE_BREWERY = "breweries/REMOVE_brewery";
 
 export const loadBreweries = (breweries) => {
@@ -7,6 +8,13 @@ export const loadBreweries = (breweries) => {
   return {
     type: LOAD_BREWERIES,
     breweries
+  };
+};
+
+export const removeBrewery= breweryId => {
+  return {
+    type: REMOVE_BREWERY,
+    breweryId
   };
 };
 
@@ -69,6 +77,10 @@ export const createBrewery = payload => async dispatch => {
   return brewery;
 };
 
+
+
+
+
 // // PUT edit a brewery
 // export const updateBrewery = (brewery) => async (dispatch) => {
 //   const res = await fetch(`/api/breweries/${brewery.id}`, {
@@ -81,15 +93,15 @@ export const createBrewery = payload => async dispatch => {
 //   return data;
 // };
 
-// //DELETE a brewery
-// export const deletebrewery = (breweryId) => async (dispatch) => {
-//   const res = await fetch(`/api/breweries/${breweryId}`, {
-//     method: "DELETE",
-//   });
+//DELETE a brewery
+export const deleteBrewery = (breweryId) => async (dispatch) => {
+  const res = await fetch(`/api/breweries/${breweryId}`, {
+    method: "DELETE",
+  });
 
-//   dispatch(removeBrewery(breweryId));
-//   return res;
-// };
+  dispatch(removeBrewery(breweryId));
+  return res;
+};
 
 const breweriesReducer = (state = {}, action) => {
   let newState = { ...state };
@@ -106,6 +118,9 @@ const breweriesReducer = (state = {}, action) => {
       newState[action.payload.id] = action.payload;
       console.log(newState, "***** NEWSTATEEE ADD BREWERY")
       return newState;
+    case REMOVE_BREWERY:
+      delete newState[action.breweryId];
+      return newState
     default:
       return state;
   }

@@ -64,8 +64,22 @@ def create_brewery():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-# EDIT A BREWERY
+# DELETE A BREWERY
+@brewery_bp.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_brewery(id):
+    """
+    Delete a brewery
+    """
 
+    brewery = Brewery.query.get(id)
+
+    db.session.delete(brewery)
+    db.session.commit()
+    return jsonify({
+        'success': True,
+        'message': 'Brewery deleted successfully!'
+    })
 
 # NOTES
     #    new_brewery = Brewery()

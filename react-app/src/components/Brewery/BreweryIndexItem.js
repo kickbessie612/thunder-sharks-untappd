@@ -1,12 +1,18 @@
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./BreweryForm.css";
 import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { deleteBrewery } from "../../store/brewery";
 
 const BreweryIndexItem = ({ brewery, currentUser }) => {
-  //   const dispatch = useDispatch();
-  //   const history = useHistory();
-
+    const dispatch = useDispatch();
+    const history = useHistory();
+  const handleDelete = async e => {
+    e.preventDefault();
+    if (!window.confirm('Do you want to delete this brewery?')) return;
+    await dispatch(deleteBrewery(brewery.id));
+    history.push('/breweries');
+  };
   return (
     <div className="brewery-box">
       <ul className="brewery-card">
@@ -15,11 +21,12 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
         <Link to={`/breweries/${brewery.id}`}>
           {brewery.name}
         </Link>
-        <li>Beer LIst</li>
         <li>Description: {brewery.description}</li>
       </ul>
 
-      <div className="brewery-buttons"></div>
+      <div className="brewery-buttons">
+      <button onClick={handleDelete}>Delete</button>
+      </div>
     </div>
   );
 };
