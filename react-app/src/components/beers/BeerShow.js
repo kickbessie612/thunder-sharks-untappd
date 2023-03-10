@@ -46,9 +46,6 @@ const BeerShow = () => {
       </div>
       <div>
         <img src={beer.label} alt={beer.name} />
-        {/* {spot.SpotImages.map(image => (
-          <img src={image.url} key={image.id} />
-        ))} */}
       </div>
       <div>{beer.brewery_id}</div>
       <hr />

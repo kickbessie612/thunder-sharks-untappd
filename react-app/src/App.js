@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import { authenticate } from './store/session';
-import Navigation from './components/Navigation';
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { Route, Switch } from "react-router-dom";
+import { authenticate } from "./store/session";
+import Navigation from "./components/Navigation";
 
 // import * as sessionActions from './store/session';
 
-import BeerIndex from './components/beers/BeerIndex';
-import BeerShow from './components/beers/BeerShow';
-import CreateBeerForm from './components/beers/CreateBeerForm';
-import EditBeerForm from './components/beers/EditBeerForm';
-import BreweryIndex from './components/Brewery/BreweryIndex';
-// import BreweryFormPage from './components/Brewery/BreweryFormPage';
-import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
-import { getBreweries } from './store/brewery';
-
+import BeerIndex from "./components/beers/BeerIndex";
+import BeerShow from "./components/beers/BeerShow";
+import CreateBeerForm from "./components/beers/CreateBeerForm";
+import EditBeerForm from "./components/beers/EditBeerForm";
+import BreweryIndex from "./components/Brewery/BreweryIndex";
+import CreateBreweryForm from "./components/Brewery/BreweryForm";
+import BreweryProfilePage from "./components/Brewery/BreweryProfilePage";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,28 +27,30 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <BeerIndex />
           </Route>
 
-          <Route path='/beers/new'>
+          <Route path="/beers/new">
             <CreateBeerForm />
           </Route>
 
-          <Route exact path='/beers/:beerId'>
+          <Route exact path="/beers/:beerId">
             <BeerShow />
           </Route>
 
-          <Route path='/beers/:beerId/edit'>
+          <Route path="/beers/:beerId/edit">
             <EditBeerForm />
           </Route>
 
-          <Route exact path='/breweries'>
+          <Route exact path="/breweries">
             <BreweryIndex />
           </Route>
-          {/* <Route exact path='/breweries/create'>
-            <BreweryFormPage />
-          </Route> */}
+
+          <Route exact path='/breweries/new'>
+            <CreateBreweryForm />
+          </Route>
+
           <Route exact path={`/breweries/:breweryId`}>
             <BreweryProfilePage />
           </Route>
