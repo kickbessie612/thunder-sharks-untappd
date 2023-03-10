@@ -43,11 +43,7 @@ export const getBreweries = () => async dispatch => {
     if (data.errors) {
       return;
     }
-<<<<<<< HEAD
-    console.log(data, 'DATAAA BREWERIESSS');
-=======
     console.log(data, "DATAAA BREWERIESSS")
->>>>>>> frontend-nav
     dispatch(loadBreweries(data));
   }
 };
