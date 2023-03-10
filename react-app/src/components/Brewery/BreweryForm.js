@@ -35,6 +35,7 @@ function BreweryForm() {
     };
 
     const newBrewery = await dispatch(createBrewery(payload))
+    console.log("HEELLOOO BREwERY FORM")
       .then((brewery) => history.push(`/breweries/${brewery.id}`))
       .catch(async (res) => {
         const data = await res.json();

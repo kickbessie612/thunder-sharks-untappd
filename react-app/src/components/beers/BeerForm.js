@@ -25,15 +25,12 @@ const BeerForm = ({ beer }) => {
       name,
       description,
       abv,
+      ibu,
       style,
-      label
+      label,
+      year
     };
-    if (ibu) {
-      payload['ibu'] = ibu;
-    }
-    if (year) {
-      payload['year'] = year;
-    }
+
     const action = beer.id ? updateBeer : createBeer;
     const data = await dispatch(action(payload));
     if (data.errors) {
