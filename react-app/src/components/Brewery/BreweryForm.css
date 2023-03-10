@@ -5,15 +5,15 @@
 
 .brewery-box {
 
-        display: flex;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 1px;
-        width: 350px;
-        flex-direction: column;
-        align-items: center;
-        padding-left: 10px;
-        background-color: rgba(201, 193, 117, 0.782);
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 1px;
+    width: 350px;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
+    background-color: rgba(201, 193, 117, 0.782);
 
 }
 
@@ -24,14 +24,14 @@ img {
 
 ul {
     list-style-type: none;
-  }
+}
 
-  .brewery-card {
+.brewery-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 0px;
-  }
+}
 
 
 form {
@@ -41,7 +41,8 @@ form {
     width: 300px;
 }
 
-input {
+input,
+select {
     margin: 2px;
     background-color: rgb(255, 255, 255);
     margin-top: 5px;
@@ -53,7 +54,7 @@ input {
 
 label {
     color: rgb(111, 68, 220);
-    display: inline-block;
+    /* display: inline-block; */
     display: flex;
     justify-content: space-between;
     align-items: center;

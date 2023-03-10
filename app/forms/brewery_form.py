@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, TextAreaField, SubmitField
+from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import Length, DataRequired
 
 
@@ -11,11 +11,7 @@ class BreweryForm(FlaskForm):
     state = StringField('State', validators=[DataRequired(), Length(max=255)])
     country = StringField('Country', validators=[
                           DataRequired(), Length(max=255)])
-    type = SelectField('Type', choices=[('Microbrewery', 'Microbrewery'),
-                                        ('Nano Brewery', 'Nano Brewery '),
-                                        ('Meadery', 'Meadery'),
-                                        ('Contract Brewery', 'Contract Brewery'),
-                                        ('Regional Brewery', 'Regional Brewery')], validators=[DataRequired()])
+    type = StringField('Type', validators=[DataRequired()])
     description = TextAreaField('Description', validators=[
                                 DataRequired(), Length(max=255)])
     picture = StringField('Picture URL')

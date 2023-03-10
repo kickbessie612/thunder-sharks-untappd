@@ -40,18 +40,13 @@ function BreweryForm() {
       history.push(`/breweries/${data.id}`);
     }
   };
-  //     //   const data = await dispatch(
-  //     //     brewery(name, address, city, state, country, type, description, picture)
-  //     //   );
-  //     //   if (data) {
-  //     //     setErrors(data);
-  //     //   }
-  //     // } else {
-  //     //   setErrors([
-  //     //     'Confirm Password field must be the same as the Password field'
-  //     //   ]);
-  //     // }
-  //   };
+  const brewery_types = [
+    'Microbrewery',
+    'Nano Brewery',
+    'Meadery',
+    'Contract Brewery',
+    'Regional Brewery'
+  ]
 
   // ******* CANCEL BUTTON *******
   // const handleCancelClick = (e) => {
@@ -115,12 +110,12 @@ function BreweryForm() {
         </label>
         <label>
           Type
-          <input
-            type='select'
-            value={type}
-            onChange={e => setType(e.target.value)}
-            required
-          />
+          <select onChange={e => setType(e.target.value)}>
+            <option value={''}>Brewery Type</option>
+            {brewery_types.map((type, idx) => (
+              <option key={idx} value={type}>{type}</option>
+            ))}
+          </select>
         </label>
         <label>
           Description
