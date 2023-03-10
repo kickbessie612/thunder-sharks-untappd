@@ -61,12 +61,12 @@ export const createBrewery = payload => async dispatch => {
     body: JSON.stringify(payload)
   });
 
-  const data = await res.json();
+  const brewery = await res.json();
   if (res.ok) {
-    dispatch(addBreweries(data));
+    dispatch(addBreweries(brewery));
   }
 
-  return data;
+  return brewery;
 };
 
 // // PUT edit a brewery
