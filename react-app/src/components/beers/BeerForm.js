@@ -11,11 +11,11 @@ const BeerForm = ({ beer }) => {
   const [name, setName] = useState(beer.name);
   const [description, setDescription] = useState(beer.description);
   const [abv, setAbv] = useState(beer.abv);
-  const [ibu, setIbu] = useState(beer.ibu);
+  const [ibu, setIbu] = useState(beer.ibu ? beer.ibu : '');
   const [style, setStyle] = useState(beer.style);
   const [label, setLabel] = useState(beer.label);
-  const [year, setYear] = useState(beer.year);
-  const [brewery_id, setBreweryId] = useState(beer.brewery_id);
+  const [year, setYear] = useState(beer.year ? beer.year : '');
+  const [brewery_id, setBreweryId] = useState(beer.brewery ? beer.brewery.id : '');
 
   const [errors, setErrors] = useState([]);
 
@@ -27,16 +27,16 @@ const BeerForm = ({ beer }) => {
       name,
       description,
       abv,
+      ibu: ibu ? ibu : -0,
       style,
       label,
-      brewery_id
+      year: year ? year : -0,
+      brewery_id: brewery_id ? brewery_id : -0
     };
-    if (ibu) {
-      payload['ibu'] = ibu;
-    }
-    if (year) {
-      payload['year'] = year;
-    }
+    // ibu ? payload['ibu'] = ibu : payload['ibu'] = -0
+    // year ? payload['year'] = year : payload['year'] = -0
+    // brewery_id ? payload['brewery_id'] = brewery_id : payload['brewery_id'] = -0
+
     const action = beer.id ? updateBeer : createBeer;
     const data = await dispatch(action(payload));
     if (data.errors) {
@@ -102,9 +102,9 @@ const BeerForm = ({ beer }) => {
         />
         {!beer.id && (
           <select onChange={e => setBreweryId(e.target.value)}>
-            <option value=''>Select Brewery</option>
-            {breweries.map(({ id, name }) => (
-              <option value={id}>{name}</option>
+            <option value={null}>Select Brewery</option>
+            {breweries.map(({ id, name }, idx) => (
+              <option key={idx} value={id}>{name}</option>
             ))}
           </select>
         )}

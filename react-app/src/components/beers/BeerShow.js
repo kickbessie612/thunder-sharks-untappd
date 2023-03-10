@@ -38,11 +38,11 @@ const BeerShow = () => {
   return (
     <>
       <h2>
-        {beer.name} {beer.year && (<> {beer.year}</>)}
+        {beer.name} {beer.year ? (<> {beer.year}</>) : ''}
       </h2>
       <div>{beer.description}</div>
       <div>
-        abv: {beer.abv}, {beer.ibu && (<>ibu: {beer.ibu},</>)} style: {beer.style}
+        abv: {beer.abv}, {beer.ibu ? (<>ibu: {beer.ibu},</>) : ''} style: {beer.style}
       </div>
       <div>
         <img src={beer.label} alt={beer.name} />

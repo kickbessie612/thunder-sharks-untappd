@@ -5,7 +5,7 @@ const ADD_BREWERY = "breweries/ADD_brewery";
 // const REMOVE_BREWERY = "breweries/REMOVE_brewery";
 
 export const loadBreweries = (breweries) => {
-    console.log(breweries, "HEYYYY")
+  console.log(breweries, "HEYYYY")
   return {
     type: LOAD_BREWERIES,
     breweries
@@ -41,7 +41,7 @@ export const getBreweries = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-console.log(data, "DATAAA BREWERIESSS")
+    console.log(data, "DATAAA BREWERIESSS")
     dispatch(loadBreweries(data));
   }
 };
@@ -93,24 +93,22 @@ export const createBrewery = (payload) => async (dispatch) => {
 // };
 
 const breweriesReducer = (state = {}, action) => {
-    let newState = { ...state };
-    switch (action.type) {
-      case LOAD_BREWERIES:
-        console.log(newState, "**** NEWSTATEEE")
-        console.log(action.breweries, '****** ACTION.BREWERIES')
+  let newState = { ...state };
+  switch (action.type) {
+    case LOAD_BREWERIES:
+      console.log(newState, "**** NEWSTATEEE")
+      console.log(action.breweries, '****** ACTION.BREWERIES')
 
-        action.breweries.map((brewery) => {
-          newState[brewery.id] = brewery;
-        });
-        console.log(newState, "***** NEWSTATE LOAD BREWEWRIES");
-        return newState;
+      action.breweries.map((brewery) => newState[brewery.id] = brewery);
+      console.log(newState, "***** NEWSTATE LOAD BREWEWRIES");
+      return newState;
 
-      case ADD_BREWERY:
-        newState[action.payload.id] = action.payload;
-        console.log(newState, "***** NEWSTATEEE ADD BREWERY")
-        return newState;
-      default:
-        return state;
-    }
-  };
+    case ADD_BREWERY:
+      newState[action.payload.id] = action.payload;
+      console.log(newState, "***** NEWSTATEEE ADD BREWERY")
+      return newState;
+    default:
+      return state;
+  }
+};
 export default breweriesReducer;
