@@ -2,13 +2,8 @@ const LOAD_BREWERIES = 'breweries/LOAD_breweries';
 const ADD_BREWERY = 'breweries/ADD_brewery';
 // const REMOVE_BREWERY = "breweries/REMOVE_brewery";
 
-<<<<<<< HEAD
-export const loadBreweries = breweries => {
-  console.log(breweries, 'HEYYYY');
-=======
 export const loadBreweries = (breweries) => {
   console.log(breweries, "HEYYYY")
->>>>>>> frontend-nav
   return {
     type: LOAD_BREWERIES,
     breweries
@@ -100,30 +95,16 @@ const breweriesReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_BREWERIES:
-<<<<<<< HEAD
-      console.log(newState, '**** NEWSTATEEE');
-      console.log(action.breweries, '****** ACTION.BREWERIES');
-
-      action.breweries.map(brewery => {
-        newState[brewery.id] = brewery;
-      });
-      console.log(newState, '***** NEWSTATE LOAD BREWEWRIES');
-=======
       console.log(newState, "**** NEWSTATEEE")
       console.log(action.breweries, '****** ACTION.BREWERIES')
 
       action.breweries.map((brewery) => newState[brewery.id] = brewery);
       console.log(newState, "***** NEWSTATE LOAD BREWEWRIES");
->>>>>>> frontend-nav
       return newState;
 
     case ADD_BREWERY:
       newState[action.payload.id] = action.payload;
-<<<<<<< HEAD
-      console.log(newState, '***** NEWSTATEEE ADD BREWERY');
-=======
       console.log(newState, "***** NEWSTATEEE ADD BREWERY")
->>>>>>> frontend-nav
       return newState;
     default:
       return state;
