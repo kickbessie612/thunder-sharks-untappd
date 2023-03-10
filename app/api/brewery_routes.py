@@ -44,7 +44,7 @@ def get_brewery(id):
 
 
 # CREATE A BREWERY
-@brewery_bp.route('/', methods=['POST'])
+@brewery_bp.route('', methods=['POST'])
 @login_required
 def create_brewery():
     """
@@ -57,11 +57,10 @@ def create_brewery():
         form.populate_obj(new_brewery)
         db.session.add(new_brewery)
         db.session.commit()
-        return jsonify({
-            'success': True,
-            'message': 'Brewery created successfully!',
-            'brewery': [new_brewery.to_dict()]
-        })
+        return jsonify(
+
+            new_brewery.to_dict()
+        )
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
