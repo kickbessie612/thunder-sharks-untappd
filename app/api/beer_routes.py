@@ -20,24 +20,14 @@ def validation_errors_to_error_messages(validation_errors):
 
 
 # GET ALL BEERS
-@beer_bp.route('/')
+@beer_bp.route('')
 def get_all_beers():
     """
     Query for all beers and returns them in a list of beer dictionaries
     """
-    beers = Beer.query.all()
-    beer_list = [beer.to_dict() for beer in beers]
-
-    # Calculate average rating for each beer
-    for beer in beer_list:
-        reviews = beer['reviews']
-        if len(reviews) > 0:
-            beer['averageRating'] = sum(review['rating'] for review in reviews) / len(reviews)
-        else:
-            beer['averageRating'] = 0
-
-    return {'beers': beer_list}
-
+    beers = Beer.query.options(joinedload(
+        Beer.reviews), joinedload(Beer.brewery)).all()
+    return [beer.to_dict() for beer in beers]
 
 # GET BEER BY ID
 @beer_bp.route('/<int:id>')
@@ -48,16 +38,13 @@ def get_beer(id):
     beer = Beer.query.options(joinedload(
         Beer.reviews), joinedload(Beer.brewery)).get(id)
     if beer:
-        # the average rating for beer
-        reviews = beer.reviews
-        if len(reviews) > 0:
-            beer_dict = beer.to_dict()
-            beer_dict['averageRating'] = sum(review.rating for review in reviews) / len(reviews)
-            recent_reviews = Review.query.filter_by(beer_id=id).order_by(Review.created_at.desc()).limit(10).all()
-            beer_dict['recentReviews'] = [review.to_dict() for review in recent_reviews]
-            return jsonify(beer_dict)
-        else:
-            return jsonify(beer.to_dict())
+        # Get the 10 most recent reviews for this beer
+        recent_reviews = Review.query.filter_by(
+            beer_id=id).order_by(Review.created_at.desc()).limit(10).all()
+        recent_reviews_dict = [review.to_dict() for review in recent_reviews]
+        beer_dict = beer.to_dict()
+        beer_dict['recentReviews'] = recent_reviews_dict
+        return jsonify(beer_dict)
     else:
         return jsonify({
             'success': False,

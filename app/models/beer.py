@@ -1,6 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
 
-
 class Beer(db.Model):
     __tablename__ = 'beers'
 
@@ -24,7 +23,7 @@ class Beer(db.Model):
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
-    reviews = db.relationship('Review', backref='beer', lazy=True)
+    reviews = db.relationship('Review', back_populates='beer')
 
     @property
     def average_rating(self):
@@ -47,3 +46,4 @@ class Beer(db.Model):
             'brewery': self.brewery.to_dict() if self.brewery else None,
             'averageRating': self.average_rating
         }
+
