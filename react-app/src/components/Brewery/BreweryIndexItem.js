@@ -4,16 +4,16 @@ import { Link } from "react-router-dom";
 // import { useHistory } from "react-router-dom";
 
 const BreweryIndexItem = ({ brewery, currentUser }) => {
-//   const dispatch = useDispatch();
-//   const history = useHistory();
+  //   const dispatch = useDispatch();
+  //   const history = useHistory();
 
   return (
     <div className="brewery-box">
       <ul className="brewery-card">
-        <img src={brewery.picture} />
+        <img src={brewery.picture} alt={`Brewery: ${brewery.name}`} />
         <li>ID: {brewery.id}</li>
         <Link to={`/breweries/${brewery.id}`}>
-          Brewery Name: {brewery.title}
+          {brewery.name}
         </Link>
         <li>Beer LIst</li>
         <li>Description: {brewery.description}</li>

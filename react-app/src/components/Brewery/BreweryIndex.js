@@ -23,18 +23,18 @@ const BreweryIndex = () => {
 
   return breweries ? (
     <>
-    <div id='breweriespage'>
+      <div id='breweriespage'>
 
-      <div className="total-breweries">
-        {breweries.map((brewery) => (
-          <BreweryIndexItem brewery={brewery} key={brewery.id} assName="brewery-box"/>
-        ))}
-      </div>
-      <div>
-        <CreateBreweryForm />
-      </div>
+        <div className="total-breweries">
+          {breweries.map((brewery) => (
+            <BreweryIndexItem brewery={brewery} key={brewery.id} assName="brewery-box" />
+          ))}
+        </div>
+        <div>
+          <CreateBreweryForm />
+        </div>
 
-    </div>
+      </div>
     </>
   ) : null;
 };

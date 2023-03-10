@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { login, logout } from "../../store/session";
 import OpenModalButton from "../OpenModalButton";
@@ -53,6 +54,9 @@ function ProfileButton({ user }) {
           <>
             <li>{user.username}</li>
             <li>{user.email}</li>
+            <li>
+              <NavLink to='/beers/new'><button>Add Beer</button></NavLink>
+            </li>
             <li>
               <button onClick={handleLogout}>Log Out</button>
             </li>

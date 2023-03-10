@@ -1,19 +1,21 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { createBeer, updateBeer } from '../../store/beers';
 
 const BeerForm = ({ beer }) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const breweries = useSelector(state => Object.values(state.breweries));
 
   const [name, setName] = useState(beer.name);
   const [description, setDescription] = useState(beer.description);
   const [abv, setAbv] = useState(beer.abv);
-  const [ibu, setIbu] = useState(beer.ibu);
+  const [ibu, setIbu] = useState(beer.ibu ? beer.ibu : '');
   const [style, setStyle] = useState(beer.style);
   const [label, setLabel] = useState(beer.label);
-  const [year, setYear] = useState(beer.year);
+  const [year, setYear] = useState(beer.year ? beer.year : '');
+  const [brewery_id, setBreweryId] = useState(beer.brewery ? beer.brewery.id : '');
 
   const [errors, setErrors] = useState([]);
 
@@ -25,11 +27,15 @@ const BeerForm = ({ beer }) => {
       name,
       description,
       abv,
-      ibu,
+      ibu: ibu ? ibu : -0,
       style,
       label,
-      year
+      year: year ? year : -0,
+      brewery_id: brewery_id ? brewery_id : -0
     };
+    // ibu ? payload['ibu'] = ibu : payload['ibu'] = -0
+    // year ? payload['year'] = year : payload['year'] = -0
+    // brewery_id ? payload['brewery_id'] = brewery_id : payload['brewery_id'] = -0
 
     const action = beer.id ? updateBeer : createBeer;
     const data = await dispatch(action(payload));
@@ -94,7 +100,14 @@ const BeerForm = ({ beer }) => {
           value={year}
           onChange={e => setYear(e.target.value)}
         />
-
+        {!beer.id && (
+          <select onChange={e => setBreweryId(e.target.value)}>
+            <option value={null}>Select Brewery</option>
+            {breweries.map(({ id, name }, idx) => (
+              <option key={idx} value={id}>{name}</option>
+            ))}
+          </select>
+        )}
         <button>{beer.id ? 'update' : 'create'}</button>
       </form>
     </div>

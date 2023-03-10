@@ -38,14 +38,12 @@ const BeerShow = () => {
   return (
     <>
       <h2>
-        <div>{beer.name}</div>
-        {beer.year > 1950 && <div>{beer.year}</div>}
+        {beer.name} {beer.year ? (<> {beer.year}</>) : ''}
       </h2>
       <div>{beer.description}</div>
-      <div>abv:{beer.abv}</div>
-      {beer.ibu > -1 && <div>ibu:{beer.ibu}</div>}
-
-      <div>style:{beer.style}</div>
+      <div>
+        abv: {beer.abv}, {beer.ibu ? (<>ibu: {beer.ibu},</>) : ''} style: {beer.style}
+      </div>
       <div>
         <img src={beer.label} alt={beer.name} />
       </div>
@@ -55,7 +53,7 @@ const BeerShow = () => {
       {sessionUser && beer.userId === sessionUser.id && (
         <>
           <div>
-            <Link to={`/beers/${beer.id}/edit`}>Edit</Link>
+            <button><Link to={`/beers/${beer.id}/edit`}>Edit</Link></button>
             <button onClick={handleDelete}>Delete</button>
           </div>
         </>
