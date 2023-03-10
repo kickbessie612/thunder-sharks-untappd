@@ -13,7 +13,7 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
         <img src={brewery.picture} alt={`Brewery: ${brewery.name}`} />
         <li>ID: {brewery.id}</li>
         <Link to={`/breweries/${brewery.id}`}>
-          Brewery Name: {brewery.name}
+          {brewery.name}
         </Link>
         <li>Beer LIst</li>
         <li>Description: {brewery.description}</li>
