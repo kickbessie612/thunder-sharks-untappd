@@ -7,7 +7,6 @@ import { createBrewery, updateBrewery } from '../../store/brewery';
 function BreweryForm({ brewery }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector(state => state.session.user);
   const [name, setName] = useState(brewery.name);
   const [address, setAddress] = useState(brewery.address);
   const [city, setCity] = useState(brewery.city);
@@ -113,11 +112,12 @@ function BreweryForm({ brewery }) {
         <label>
           Type
           <select onChange={e => setType(e.target.value)}>
-            <option value={''}>Brewery Type</option>
+            <option value={-0}>Brewery Type</option>
             {brewery_types.map((type, idx) => (
-              <option key={idx} value={type}>
-                {type}
-              </option>
+              type === brewery.type ?
+                <option key={idx} value={type} selected>{type}</option>
+                :
+                <option key={idx} value={type}>{type}</option>
             ))}
           </select>
         </label>

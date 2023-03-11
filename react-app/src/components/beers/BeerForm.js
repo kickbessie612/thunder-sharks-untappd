@@ -100,14 +100,15 @@ const BeerForm = ({ beer }) => {
           value={year}
           onChange={e => setYear(e.target.value)}
         />
-        {!beer.id && (
-          <select onChange={e => setBreweryId(e.target.value)}>
-            <option value={null}>Select Brewery</option>
-            {breweries.map(({ id, name }, idx) => (
+        <select onChange={e => setBreweryId(e.target.value)}>
+          <option value={-0}>Select Brewery</option>
+          {breweries.map(({ id, name }, idx) => (
+            beer.id && beer.brewery && id === beer.brewery.id ?
+              <option key={idx} value={id} selected>{name}</option>
+              :
               <option key={idx} value={id}>{name}</option>
-            ))}
-          </select>
-        )}
+          ))}
+        </select>
         <button>{beer.id ? 'update' : 'create'}</button>
       </form>
     </div>
