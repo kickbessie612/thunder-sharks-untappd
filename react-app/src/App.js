@@ -12,6 +12,7 @@ import BreweryIndex from './components/Brewery/BreweryIndex';
 import CreateBreweryForm from './components/Brewery/BreweryForm';
 import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
 import EditBreweryFrom from './components/Brewery/EditBreweryForm';
+import Home from './components/Home';
 
 function App() {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ function App() {
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
-            <BeerIndex />
+            <Home />
           </Route>
 
           <Route path='/beers/new'>
@@ -51,6 +52,10 @@ function App() {
 
           <Route path='/beers/:beerId/edit'>
             <EditBeerForm />
+          </Route>
+
+          <Route exact path='/beers'>
+            <BeerIndex />
           </Route>
 
           <Route exact path='/breweries'>
