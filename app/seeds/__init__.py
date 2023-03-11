@@ -22,19 +22,19 @@ def seed():
 
         # Before seeding, truncate all tables prefixed with schema name
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.beers RESTART IDENTITY CASCADE;")
         db.session.execute(
             f"TRUNCATE table {SCHEMA}.breweries RESTART IDENTITY CASCADE;")
         db.session.execute(
-            f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
+            f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
         # Add a truncate command here for every table that will be seeded.
         db.session.commit()
 
     seed_users()
-    seed_beers()
     seed_breweries()
+    seed_beers()
     seed_reviews()
     # Add other seed functions here
 
