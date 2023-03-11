@@ -42,7 +42,7 @@ function BreweryForm({ brewery }) {
     }
   };
   const brewery_types = [
-    'Microbrewery',
+    'Micro Brewery',
     'Nano Brewery',
     'Meadery',
     'Contract Brewery',
