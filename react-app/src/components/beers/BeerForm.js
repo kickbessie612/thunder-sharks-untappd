@@ -101,7 +101,7 @@ const BeerForm = ({ beer }) => {
           <option value={-0}>Select Brewery</option>
           {breweries.map(({ id, name }, idx) => (
             beer.id && beer.brewery && id === beer.brewery.id ?
-              <option key={idx} value={id} selected>{name}</option>
+              <option key={idx} defaultValue={id} selected>{name}</option>
               :
               <option key={idx} value={id}>{name}</option>
           ))}
