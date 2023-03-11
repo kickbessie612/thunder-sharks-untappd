@@ -18,11 +18,14 @@
 }
 
 img {
-    width: 150px;
-    height: 150px;
-    border: goldenrod, solid, 5px;
-
-}
+    margin: 30px;
+    width: 200px;
+    height: 200px;
+    border-style: double;
+    border-color: black;
+    border-width: 5px;
+    border-radius: 2px;
+  }
 
 ul {
     list-style-type: none;
