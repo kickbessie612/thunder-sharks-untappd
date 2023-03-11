@@ -14,7 +14,7 @@ def seed_breweries():
     brewery5 = Brewery(
         name="Goose Island Beer Co.", address='1800 N Clybourn Ave', city='Chicago', state='IL', country='USA', type='Macro Brewery', description='Our famous beer began with a trip across Europe, when Goose Island founder (and unabashed beer lover) John Hall took a tour across the continent. Pint by pint, he savored the styles and selections of brews in every region, and thought to himself, “America deserves some damn fine beer like this, too.” ', picture='https://assets.untappd.com/site/brewery_logos/brewery-2898_7588b.jpeg')
     brewery6 = Brewery(
-        name="3 Floyds Brewing", address='9750 Indiana Pkwy', city='Munster', state='IN', country='USA', type='Micro', description="Nick Floyd founded 3 Floyds in a Hammond, Indiana, garage in 1996. The then-small brewery with the \"It's Not Normal\" motto set out to stand out with bold, aggressive, highly hopped beers. In 2000, 3 Floyds moved to nearby Munster, Indiana, and added a brewpub a few years later.", picture='https: // assets.untappd.com/site/brewery_logos/brewery-2470_fbcd9.jpeg')
+        name="3 Floyds Brewing", address='9750 Indiana Pkwy', city='Munster', state='IN', country='USA', type='Micro', description="Nick Floyd founded 3 Floyds in a Hammond, Indiana, garage in 1996. The then-small brewery with the \"It's Not Normal\" motto set out to stand out with bold, aggressive, highly hopped beers. In 2000, 3 Floyds moved to nearby Munster, Indiana, and added a brewpub a few years later.", picture='https://assets.untappd.com/site/brewery_logos/brewery-2470_fbcd9.jpeg')
 
     db.session.add(brewery1)
     db.session.add(brewery2)

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './BreweryForm.css';
 import { createBrewery, updateBrewery } from '../../store/brewery';
 
 function BreweryForm({ brewery }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const sessionUser = useSelector(state => state.session.user);
+
   const [name, setName] = useState(brewery.name);
   const [address, setAddress] = useState(brewery.address);
   const [city, setCity] = useState(brewery.city);
