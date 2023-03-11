@@ -37,6 +37,9 @@ def upgrade():
                         length=255), nullable=False),
                     sa.PrimaryKeyConstraint('id')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE breweries SET SCHEMA {SCHEMA};")
+
     op.create_table('users',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('username', sa.String(
@@ -52,6 +55,9 @@ def upgrade():
                     sa.UniqueConstraint('email'),
                     sa.UniqueConstraint('username')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
+
     op.create_table('beers',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('name', sa.String(length=255), nullable=False),
@@ -70,6 +76,9 @@ def upgrade():
                     sa.UniqueConstraint('description'),
                     sa.UniqueConstraint('name')
                     )
+    if environment == "production":
+        op.execute(f"ALTER TABLE beers SET SCHEMA {SCHEMA};")
+
     op.create_table('reviews',
                     sa.Column('id', sa.Integer(), nullable=False),
                     sa.Column('rating', sa.Float(), nullable=False),
@@ -83,9 +92,8 @@ def upgrade():
                     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
                     sa.PrimaryKeyConstraint('id')
                     )
-    # ### end Alembic commands ###
     if environment == "production":
-        op.execute(f"ALTER TABLE <table_name> SET SCHEMA {SCHEMA};")
+        op.execute(f"ALTER TABLE reviews SET SCHEMA {SCHEMA};")
 
 
 def downgrade():
