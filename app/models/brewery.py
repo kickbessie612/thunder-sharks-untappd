@@ -17,7 +17,7 @@ class Brewery(db.Model):
     state = db.Column(db.String(255), nullable=False)
     country = db.Column(db.String(255), nullable=False)
     type = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.String(1000), nullable=False)
     picture = db.Column(db.String(255), nullable=False)
 
     beers = db.relationship('Beer', back_populates='brewery')
