@@ -1,34 +1,14 @@
-// import { useParams, useHistory } from "react-router-dom";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useState } from "react";
 
-
-// import { getBreweries } from "../../store/brewery";
-// import { useEffect } from "react";
-
-
-
-// const BreweryProfilePage = () => {
-//     const dispatch = useDispatch();
-//     const history = useHistory();
-
-
-
-//     return (
-//     <p1>Hello World</p1>
-//     )
-// }
-
-
-// export default BreweryProfilePage;
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBrewery } from "../../store/brewery";
-import { useParams } from "react-router-dom"
-// import BreweryBeerList from "./BreweryBeerList";
+import { getBrewery, deleteBrewery } from "../../store/brewery";
+import { useParams, useHistory } from "react-router-dom"
+
+
 
 const BreweryProfilePage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const { breweryId } = useParams();
   const brewery = useSelector(state => state.breweries[breweryId]);
   console.log(brewery, "BREWERY PROFILE PAGEEEE")
@@ -36,6 +16,13 @@ const BreweryProfilePage = () => {
   useEffect(() => {
     dispatch(getBrewery(breweryId));
   }, [dispatch, breweryId]);
+
+  const handleDelete = async e => {
+    e.preventDefault();
+    if (!window.confirm('Do you want to delete this brewery?')) return;
+    await dispatch(deleteBrewery(breweryId));
+    history.push('/breweries');
+  };
 
   if (!brewery) {
     return null;
@@ -49,13 +36,11 @@ const BreweryProfilePage = () => {
         <p>Brewery Type: {brewery.type}</p>
         <p>City: {brewery.city}</p>
         <p>Description: {brewery.description}</p>
-        {/* <BreweryBeerList /> */}
       </ul>
-      {/* <ul>
-        {brewery.beers.map(beer => (
-          <li key={beer.id}>{beer.name}</li>
-        ))}
-      </ul> */}
+
+      <div>
+      <button onClick={handleDelete}>Delete</button>
+      </div>
     </div>
   );
 };
