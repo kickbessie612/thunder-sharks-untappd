@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, useHistory } from 'react-router-dom';
 import './BreweryForm.css';
-import { createBrewery } from '../../store/brewery';
+import { createBrewery, updateBrewery } from '../../store/brewery';
 
-function BreweryForm() {
+function BreweryForm({ brewery }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [country, setCountry] = useState('');
-  const [type, setType] = useState('');
-  const [description, setDescription] = useState('');
-  const [picture, setPicture] = useState('');
+  const [name, setName] = useState(brewery.name);
+  const [address, setAddress] = useState(brewery.address);
+  const [city, setCity] = useState(brewery.city);
+  const [state, setState] = useState(brewery.state);
+  const [country, setCountry] = useState(brewery.country);
+  const [type, setType] = useState(brewery.type);
+  const [description, setDescription] = useState(brewery.description);
+  const [picture, setPicture] = useState(brewery.picture);
   const [errors, setErrors] = useState([]);
 
   const handleSubmit = async e => {
@@ -23,6 +23,7 @@ function BreweryForm() {
 
     setErrors([]);
     const payload = {
+      ...brewery,
       name,
       address,
       city,
@@ -33,7 +34,8 @@ function BreweryForm() {
       picture
     };
 
-    const data = await dispatch(createBrewery(payload));
+    const action = brewery.id ? updateBrewery : createBrewery;
+    const data = await dispatch(action(payload));
     if (data.errors) {
       setErrors(data.errors);
     } else {
@@ -46,7 +48,7 @@ function BreweryForm() {
     'Meadery',
     'Contract Brewery',
     'Regional Brewery'
-  ]
+  ];
 
   // ******* CANCEL BUTTON *******
   // const handleCancelClick = (e) => {
@@ -56,7 +58,7 @@ function BreweryForm() {
 
   return (
     <>
-      <h1>Create Brewery</h1>
+      <h1>{brewery.id ? 'Edit' : 'Create'} Brewery</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
@@ -113,7 +115,9 @@ function BreweryForm() {
           <select onChange={e => setType(e.target.value)}>
             <option value={''}>Brewery Type</option>
             {brewery_types.map((type, idx) => (
-              <option key={idx} value={type}>{type}</option>
+              <option key={idx} value={type}>
+                {type}
+              </option>
             ))}
           </select>
         </label>
@@ -135,7 +139,7 @@ function BreweryForm() {
             required
           />
         </label>
-        <button type='submit'>Add Brewery</button>
+        <button type='submit'>Submit</button>
         {/* <button type="button" onClick={handleCancelClick}>
             Cancel
           </button> */}

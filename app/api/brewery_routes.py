@@ -64,6 +64,23 @@ def create_brewery():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+# UPDATE A BREWERY
+@brewery_bp.route('/<int:id>', methods=['PUT'])
+@login_required
+def edit_brewery(id):
+    """
+    Update a brewery
+    """
+    form = BreweryForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        brewery = Brewery.query.get(id)
+        form.populate_obj(brewery)
+        db.session.commit()
+        return jsonify(brewery.to_dict())
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
 # DELETE A BREWERY
 @brewery_bp.route('/<int:id>', methods=['DELETE'])
 @login_required
