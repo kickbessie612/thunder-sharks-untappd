@@ -5,8 +5,6 @@ import { useParams, Link, useHistory } from 'react-router-dom';
 import { fetchBeer, deleteBeer } from '../../store/beers';
 import ReviewIndex from '../reviews/ReviewIndex';
 import ReviewForm from '../reviews/ReviewForm';
-// import BookingIndex from '../bookings/BookingIndex';
-// import CreateBookingForm from '../bookings/CreateBookingForm';
 
 import './BeerShow.css';
 
@@ -66,21 +64,6 @@ const BeerShow = () => {
       <ReviewIndex beer={beer} />
 
       <ReviewForm beer={beer} />
-
-      {/* {sessionUser && (
-        <div>
-          <BookingIndex spot={spot} />
-        </div>
-      )}
-
-      {sessionUser && spot.ownerId !== sessionUser.id && (
-        <>
-          <div className='spot-create-booking'>Create a new booking</div>
-          <div>
-            <CreateBookingForm spot={spot} />
-          </div>
-        </>
-      )} */}
     </>
   );
 };
