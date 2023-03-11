@@ -25,8 +25,7 @@ const ReviewIndexItem = ({ review, beer }) => {
         ))}
       </ul>
       <div>
-        {review.user.firstName} is drinking a {beer.name} by ''''Brewery
-        name'''''
+        {review.user.firstName} is drinking a {beer.name}
       </div>
       <div>{review.body}</div>
       {sessionUser && review.userId === sessionUser.id && (

@@ -113,12 +113,17 @@ function BreweryForm({ brewery }) {
           Type
           <select onChange={e => setType(e.target.value)}>
             <option value={-0}>Brewery Type</option>
-            {brewery_types.map((type, idx) => (
-              type === brewery.type ?
-                <option key={idx} value={type} selected>{type}</option>
-                :
-                <option key={idx} value={type}>{type}</option>
-            ))}
+            {brewery_types.map((type, idx) =>
+              type === brewery.type ? (
+                <option key={idx} value={type} selected>
+                  {type}
+                </option>
+              ) : (
+                <option key={idx} value={type}>
+                  {type}
+                </option>
+              )
+            )}
           </select>
         </label>
         <label>

@@ -11,9 +11,21 @@ def seed_reviews():
     review3 = Review(
         rating=4, body='So smooth. Vanilla probably has faded a bit but still present rye spice still there. Real good.', user_id=1, beer_id=3)
 
+    review4 = Review(
+        rating=5, body='Decent but heavier than I expected. Casual beer, citrus was not bad.', user_id=3, beer_id=1)
+
+    review5 = Review(
+        rating=4, body="Very tasty lager! Quite good. Paired well with some homemade pizza!", user_id=1, beer_id=4)
+
+    review6 = Review(
+        rating=3, body='Celebration time! Got money back on taxes for the first time in YEARS.', user_id=2, beer_id=5)
+
     db.session.add(review1)
     db.session.add(review2)
     db.session.add(review3)
+    db.session.add(review4)
+    db.session.add(review5)
+    db.session.add(review6)
     db.session.commit()
 
 
