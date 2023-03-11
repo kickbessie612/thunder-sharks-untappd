@@ -19,7 +19,9 @@
 
 img {
     width: 150px;
-    height: 150px
+    height: 150px;
+    border: goldenrod, solid, 5px;
+
 }
 
 ul {
@@ -62,6 +64,7 @@ label {
 
 button {
     margin-top: 5px;
+    margin-bottom: 20px;
 }
 
 #breweriespage {
