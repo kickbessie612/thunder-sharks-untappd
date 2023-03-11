@@ -33,9 +33,6 @@ const BeerForm = ({ beer }) => {
       year: year ? year : -0,
       brewery_id: brewery_id ? brewery_id : -0
     };
-    // ibu ? payload['ibu'] = ibu : payload['ibu'] = -0
-    // year ? payload['year'] = year : payload['year'] = -0
-    // brewery_id ? payload['brewery_id'] = brewery_id : payload['brewery_id'] = -0
 
     const action = beer.id ? updateBeer : createBeer;
     const data = await dispatch(action(payload));
