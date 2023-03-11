@@ -16,15 +16,15 @@ def seed_beers():
 
     beer4 = Beer(
         name="Assassin", description="After endless hours of scorching in heat, brewing in turmoil, fermenting in angst, the Assassin's journey has just begun. Aged in 20 year Pappy Van Winkle barrels.",
-        abv=12.8, ibu=-1, style='Stout - Imperial / Double', year=2014, label='https://assets.untappd.com/site/beer_logos/beer-763835_d9736_sm.jpeg', user_id=1, brewery_id=1)
+        abv=12.8, ibu=-1, style='Stout - Imperial / Double', year=2014, label='https://assets.untappd.com/site/beer_logos/beer-763835_d9736_sm.jpeg', user_id=1, brewery_id=4)
 
     beer5 = Beer(
         name="King Henry", description="Aged in Pappy Van Winkle 23 bourbon barrels, previously used to age Rare Bourbon County Brand Stout. King Henry is a burgundy hued English-style barleywine with aromas of vanilla, oak, and dark fruit. Caramel and toffee flavors blend together with bold notes of bourbon delivered in a smooth body followed by a malty finish. ",
-        abv=13.4, ibu=60, style='Barleywine - English', year=0, label='https://assets.untappd.com/site/beer_logos/beer-43152_be811_sm.jpeg', user_id=2, brewery_id=2)
+        abv=13.4, ibu=60, style='Barleywine - English', year=0, label='https://assets.untappd.com/site/beer_logos/beer-43152_be811_sm.jpeg', user_id=2, brewery_id=5)
 
     beer6 = Beer(
         name="Dark Lord - Marshmallow Handjee", description="Dark Lord aged in bourbon barrels with vanilla beans bottled with a space-themed label.",
-        abv=15, ibu=-1, style='Stout - Russian Imperial', year=2016, label='https://assets.untappd.com/site/beer_logos/beer-1529002_336b3_sm.jpeg', user_id=3, brewery_id=3)
+        abv=15, ibu=-1, style='Stout - Russian Imperial', year=2016, label='https://assets.untappd.com/site/beer_logos/beer-1529002_336b3_sm.jpeg', user_id=3, brewery_id=6)
 
     db.session.add(beer1)
     db.session.add(beer2)
