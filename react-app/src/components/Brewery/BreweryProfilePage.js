@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getBrewery, deleteBrewery } from "../../store/brewery";
 import { useParams, useHistory, Link } from "react-router-dom"
+import BreweryBeerList from "./BreweryBeerList";
 
 
 
@@ -43,6 +44,9 @@ const BreweryProfilePage = () => {
           <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
         </button>
         <button onClick={handleDelete}>Delete</button>
+      </div>
+      <div>
+        < BreweryBeerList />
       </div>
     </div>
   );
