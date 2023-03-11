@@ -8,11 +8,24 @@ function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
-    <nav>
-      <NavLink exact to="/"><i className="fa-brands fa-untappd">UNTAPPD</i></NavLink>
-      <button><NavLink exact to="/breweries">Breweries</NavLink></button>
-      {isLoaded && (<ProfileButton user={sessionUser} />)}
-    </nav>
+    <div className='navbar'>
+      <div className='nav-links'>
+        <NavLink exact to='/'>
+          <i className='fa-brands fa-untappd'>UNTAPPD</i>
+        </NavLink>
+        <button>
+          <NavLink exact to='/beers'>
+            Beers
+          </NavLink>
+        </button>
+        <button>
+          <NavLink exact to='/breweries'>
+            Breweries
+          </NavLink>
+        </button>
+        {isLoaded && <ProfileButton user={sessionUser} />}
+      </div>
+    </div>
   );
 }
 
