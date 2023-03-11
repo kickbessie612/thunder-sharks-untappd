@@ -16,11 +16,11 @@ class Beer(db.Model):
     label = db.Column(db.String)
     year = db.Column(db.Integer, nullable=True)
 
-    user_id = db.Column(db.Integer, db.ForeignKey(
-        'users.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
+        'users.id')), nullable=False)
 
-    brewery_id = db.Column(db.Integer, db.ForeignKey(
-        'breweries.id'), nullable=True)
+    brewery_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
+        'breweries.id')), nullable=True)
 
     user = db.relationship('User', back_populates='beers')
     brewery = db.relationship('Brewery', back_populates='beers')
