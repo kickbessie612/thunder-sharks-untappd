@@ -1,1 +1,14 @@
 /* TODO Add site wide styles */
+.dark {
+  background-color: #05283a;
+  color: #fcfbf9;
+}
+
+.light {
+  background-color: #fcfbf9;
+  color: #05283a;
+}
+
+.main-button {
+  background-color: #5ca33e;
+}
