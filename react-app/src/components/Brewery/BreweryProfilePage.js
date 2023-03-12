@@ -40,10 +40,10 @@ const BreweryProfilePage = () => {
       </ul>
 
       <div>
-      <button>
-              <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
-      </button>
-      <button onClick={handleDelete}>Delete</button>
+        <button>
+          <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
+        </button>
+        <button onClick={handleDelete}>Delete</button>
       </div>
       <div>
         < BreweryBeerList />

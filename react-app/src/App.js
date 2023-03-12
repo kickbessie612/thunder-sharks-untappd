@@ -4,9 +4,6 @@ import { Route, Switch } from 'react-router-dom';
 import { authenticate } from './store/session';
 import { getBreweries } from './store/brewery';
 import Navigation from './components/Navigation';
-
-// import * as sessionActions from './store/session';
-
 import BeerIndex from './components/beers/BeerIndex';
 import BeerShow from './components/beers/BeerShow';
 import CreateBeerForm from './components/beers/CreateBeerForm';
@@ -20,14 +17,25 @@ import Home from './components/Home';
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  };
+
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getBreweries());
-  }, [dispatch]);
+    document.body.className = theme
+  }, [dispatch, theme]);
 
   return (
-    <>
-      <Navigation isLoaded={isLoaded} />
+    <div className={theme}>
+      <Navigation isLoaded={isLoaded} toggleTheme={toggleTheme} />
       {isLoaded && (
         <Switch>
           <Route exact path='/'>
@@ -67,7 +75,7 @@ function App() {
           </Route>
         </Switch>
       )}
-    </>
+    </div>
   );
 }
 

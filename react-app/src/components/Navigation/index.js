@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
-function Navigation({ isLoaded }) {
+function Navigation({ isLoaded, toggleTheme }) {
   const sessionUser = useSelector(state => state.session.user);
 
   return (
@@ -24,6 +24,7 @@ function Navigation({ isLoaded }) {
           </NavLink>
         </button>
         {isLoaded && <ProfileButton user={sessionUser} />}
+        <button onClick={toggleTheme} className='main-button'>Theme</button>
       </div>
     </div>
   );

@@ -23,12 +23,12 @@ const BreweryBeerList = () => {
         {breweryBeers.map((beer) => (
           <ul className="beer">
             <div>
-            <div>
-      <Link to={`/beers/${beer.id}`}>
-        <img src={beer.label} alt={beer.name} />
-        <div>{beer.name}</div>
-      </Link>
-    </div>
+              <div>
+                <Link to={`/beers/${beer.id}`}>
+                  <img src={beer.label} alt={beer.name} />
+                  <div>{beer.name}</div>
+                </Link>
+              </div>
             </div>
           </ul>
         ))}

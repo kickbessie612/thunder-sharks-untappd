@@ -3,12 +3,10 @@
   margin: 0;
   padding: 0;
   font-family: 'Quicksand', sans-serif;
-  color: #05283a;
 }
 
 html {
   height: 100%;
-  background-color: #fcfbf9;
   font-size: 14px;
 }
 
@@ -16,10 +14,24 @@ body {
   height: 100%;
 }
 
-.button {
+.dark {
+  background-color: #05283a;
+  color: #fcfbf9;
+}
+
+.light {
+  background-color: #fcfbf9;
+  color: #05283a;
+}
+
+button {
   border: 1px solid #cdcdcd;
   border-radius: 5px;
   padding: 4px 8px 4px 8px;
   color: #05283a;
   background-color: #fcfbf9;
+}
+
+.main-button {
+  background-color: #5ca33e;
 }
