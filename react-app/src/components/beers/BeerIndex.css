@@ -1,0 +1,89 @@
+.beer-list {
+  display: flex;
+}
+
+.beer-list-text {
+  width: 220px;
+  margin-left: 260px;
+  margin-top: 100px;
+}
+
+.introduction {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: 400;
+}
+
+.introduction > span {
+  color: #6fa0bb;
+}
+
+.subtitle-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.subtitle-container > h2 {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.people-name {
+  text-align: end;
+}
+
+.beer-index {
+  margin-top: 40px;
+  display: flex;
+
+  justify-content: space-between;
+  margin-left: 50px;
+  width: 1000px;
+  overflow: scroll;
+}
+
+.beer-detail {
+  flex-basis: 200px;
+  height: 400px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  /* border-radius: 25px; */
+  padding: 20px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.beer-detail img {
+  width: 280px;
+  height: 280px;
+  border: 1px solid #cdcdcd;
+  /* border-radius: 25px; */
+}
+
+.beer-detail:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.beer-name {
+  margin-top: 40px;
+  font-weight: bold;
+  color: #5ca33e;
+}
+
+.beer-list-attributes {
+  margin-top: 5px;
+}
+
+.beer-list-brewery {
+  margin-top: 5px;
+}
+
+.add-beer-button {
+  margin-left: 180px;
+  margin-top: 80px;
+  background-color: #5ca33e;
+  color: #fcfbf9;
+}
