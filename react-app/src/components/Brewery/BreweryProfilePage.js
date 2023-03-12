@@ -1,18 +1,15 @@
-
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getBrewery, deleteBrewery } from "../../store/brewery";
-import { useParams, useHistory, Link } from "react-router-dom"
-import BreweryBeerList from "./BreweryBeerList";
-
-
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getBrewery, deleteBrewery } from '../../store/brewery';
+import { useParams, useHistory, Link } from 'react-router-dom';
+import BreweryBeerList from './BreweryBeerList';
 
 const BreweryProfilePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { breweryId } = useParams();
   const brewery = useSelector(state => state.breweries[breweryId]);
-  console.log(brewery, "BREWERY PROFILE PAGEEEE")
+  console.log(brewery, 'BREWERY PROFILE PAGEEEE');
 
   useEffect(() => {
     dispatch(getBrewery(breweryId));
@@ -30,9 +27,13 @@ const BreweryProfilePage = () => {
   }
 
   return (
-    <div className="brewery-profile">
+    <div className='brewery-profile'>
       <h2>Brewery Name: {brewery.name}</h2>
-      <img src={brewery.picture} alt={brewery.name} />
+      <img
+        className='brewery-index-img'
+        src={brewery.picture}
+        alt={brewery.name}
+      />
       <ul>
         <p>Brewery Type: {brewery.type}</p>
         <p>City: {brewery.city}</p>
@@ -46,7 +47,7 @@ const BreweryProfilePage = () => {
         <button onClick={handleDelete}>Delete</button>
       </div>
       <div>
-        < BreweryBeerList />
+        <BreweryBeerList />
       </div>
     </div>
   );

@@ -16,17 +16,19 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
   return (
     <div className='brewery-box'>
       <ul className='brewery-card'>
-       <Link to={`/breweries/${brewery.id}`}>
-        <div className='brewery-links'>
-
-          <h1 className='brewery-font'>
-            {brewery.name}
-          </h1>
-        <img className='beer-index-img' src={brewery.picture} alt={`Brewery: ${brewery.name}`} />
-
-        </div>
-          </Link>
-          <p>{brewery.city}, {brewery.state}</p>
+        <Link to={`/breweries/${brewery.id}`}>
+          <div className='brewery-links'>
+            <h1 className='brewery-font'>{brewery.name}</h1>
+            <img
+              className='brewery-index-img'
+              src={brewery.picture}
+              alt={`Brewery: ${brewery.name}`}
+            />
+          </div>
+        </Link>
+        <p>
+          {brewery.city}, {brewery.state}
+        </p>
         <p>Description: {brewery.description}</p>
       </ul>
 
