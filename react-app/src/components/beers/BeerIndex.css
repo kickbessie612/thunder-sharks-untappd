@@ -71,6 +71,7 @@
   margin-top: 40px;
   font-weight: bold;
   color: #5ca33e;
+  font-weight: 600;
 }
 
 .beer-list-attributes {
@@ -79,6 +80,7 @@
 
 .beer-list-brewery {
   margin-top: 5px;
+  font-weight: 600;
 }
 
 .add-beer-button {
