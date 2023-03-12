@@ -9,23 +9,32 @@ function Navigation({ isLoaded, toggleTheme }) {
 
   return (
     <div className='navbar'>
-      <div className='nav-links'>
-        <NavLink exact to='/'>
-          <i className='fa-brands fa-untappd'>UNTAPPD</i>
-        </NavLink>
-        <button>
-          <NavLink exact to='/beers'>
-            Beers
-          </NavLink>
-        </button>
-        <button>
-          <NavLink exact to='/breweries'>
-            Breweries
-          </NavLink>
-        </button>
-        {isLoaded && <ProfileButton user={sessionUser} />}
-        <button onClick={toggleTheme} className='main-button'>Theme</button>
-      </div>
+      <NavLink exact to='/'>
+        <i className='fa-brands fa-untappd'></i>
+        &nbsp;&nbsp;&nbsp;RETAPPD
+      </NavLink>
+      <div className='divider'></div>
+
+      <NavLink exact to='/beers'>
+        Beers
+      </NavLink>
+      <div className='divider'></div>
+
+      <NavLink exact to='/breweries'>
+        Breweries
+      </NavLink>
+      <div className='divider'></div>
+      {isLoaded && (
+        <>
+          <div className='profile-button'>
+            <ProfileButton user={sessionUser} />
+          </div>
+          <div className='divider'></div>
+        </>
+      )}
+      <button onClick={toggleTheme} className='main-button theme-button'>
+        Theme
+      </button>
     </div>
   );
 }

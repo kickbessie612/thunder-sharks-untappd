@@ -58,92 +58,84 @@ function BreweryForm({ brewery }) {
   return (
     <>
       <h1>{brewery.id ? 'Edit' : 'Create'} Brewery</h1>
-      <form onSubmit={handleSubmit} >
+      <form className='brewery-form' onSubmit={handleSubmit} >
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Name
-          <input
-            type='text'
-            value={name}
-            onChange={e => setName(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Address
-          <input
-            type='text'
-            value={address}
-            onChange={e => setAddress(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          City
-          <input
-            type='text'
-            value={city}
-            onChange={e => setCity(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          State
-          <input
-            type='text'
-            value={state}
-            onChange={e => setState(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Country
-          <input
-            type='text'
-            value={country}
-            onChange={e => setCountry(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Type
-          <select onChange={e => setType(e.target.value)}>
-            <option value={-0}>Brewery Type</option>
-            {brewery_types.map((type, idx) =>
-              type === brewery.type ? (
-                <option key={idx} value={type} selected>
-                  {type}
-                </option>
-              ) : (
-                <option key={idx} value={type}>
-                  {type}
-                </option>
-              )
-            )}
-          </select>
-        </label>
-        <label>
-          Description
-          <input
-            type='text'
-            value={description}
-            onChange={e => setDescription(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Picture
-          <input
-            type='text'
-            value={picture}
-            onChange={e => setPicture(e.target.value)}
-            required
-          />
-        </label>
+
+        <input
+          type='text'
+          value={name}
+          placeholder='Brewery Name'
+          onChange={e => setName(e.target.value)}
+          required
+        />
+
+        <input
+          type='text'
+          value={address}
+          placeholder='Address'
+          onChange={e => setAddress(e.target.value)}
+          required
+        />
+
+        <input
+          type='text'
+          value={city}
+          placeholder='City'
+          onChange={e => setCity(e.target.value)}
+          required
+        />
+
+        <input
+          type='text'
+          value={state}
+          placeholder='State'
+          onChange={e => setState(e.target.value)}
+          required
+        />
+
+        <input
+          type='text'
+          value={country}
+          placeholder='Country'
+          onChange={e => setCountry(e.target.value)}
+          required
+        />
+
+        <select onChange={e => setType(e.target.value)}>
+          <option value={-0}>Brewery Type</option>
+          {brewery_types.map((type, idx) =>
+            type === brewery.type ? (
+              <option key={idx} value={type} selected>
+                {type}
+              </option>
+            ) : (
+              <option key={idx} value={type}>
+                {type}
+              </option>
+            )
+          )}
+        </select>
+
+        <input
+          type='text'
+          value={description}
+          placeholder='Description'
+          onChange={e => setDescription(e.target.value)}
+          required
+        />
+
+        <input
+          type='text'
+          value={picture}
+          placeholder='Brewery Logo Url'
+          onChange={e => setPicture(e.target.value)}
+          required
+        />
+
         <button type='submit'>Submit</button>
         {/* <button type="button" onClick={handleCancelClick}>
             Cancel
