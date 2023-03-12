@@ -30,7 +30,7 @@ const BreweryProfilePage = () => {
   }
 
   return (
-    <div>
+    <div className="brewery-profile">
       <h2>Brewery Name: {brewery.name}</h2>
       <img src={brewery.picture} alt={brewery.name} />
       <ul>

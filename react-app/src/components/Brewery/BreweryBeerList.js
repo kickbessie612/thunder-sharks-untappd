@@ -19,15 +19,20 @@ const BreweryBeerList = () => {
   return (
     <>
       <h1>{brewery ? `${brewery.name} Beers` : 'Loading...'}</h1>
-      <div>
+      <div className='beer-list-main'>
         {breweryBeers.map((beer) => (
           <ul className="beer">
             <div className='beer-list-box'>
               <div className='beer-list'>
 
                 <Link to={`/beers/${beer.id}`}>
+                  <div className='beer-list-link'>
+
                   <img className='beer-list-img' src={beer.label} alt={beer.name} />
-                  <div>{beer.name}</div>
+                  <h4>{beer.name}</h4>
+
+                  </div>
+
                 </Link>
 
 

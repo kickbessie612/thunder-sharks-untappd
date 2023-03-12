@@ -12,6 +12,12 @@ img {
   margin-left: 50px;
 }
 
+.brewery-profile {
+  display: flex;
+  align-items: baseline;
+  flex-direction: column;
+}
+
 
 .brewery-box {
   display: flex;
@@ -67,7 +73,7 @@ form {
 .beer-list{
 
     margin-left: 10px;
-    width: 500px
+    width: 200px
 }
 
 .beer-list-box{
@@ -77,8 +83,18 @@ form {
     border-color: black;
     border-width: 3px;
     border-radius: 2px;
+    width: 200px
 
 
+}
+
+.beer-list-main {
+margin-left: 20px;
+}
+.beer-list-link{
+display: flex;
+align-items: center;
+flex-direction: column;
 }
 .beer-list-img {
     height: 100px;
