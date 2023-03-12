@@ -16,7 +16,7 @@
 }
 
 .introduction > span {
-  color: #6fa0bb;
+  color: #5ca33e;
 }
 
 .subtitle-container {
@@ -29,6 +29,12 @@
 .subtitle-container > h2 {
   font-size: 18px;
   font-weight: 400;
+}
+
+.form-description {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
 }
 
 .people-name {
@@ -88,4 +94,11 @@
   margin-top: 80px;
   background-color: #5ca33e;
   color: #fcfbf9;
+}
+
+.beer-form {
+  padding: 20px;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 50px;
 }
