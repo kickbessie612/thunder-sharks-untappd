@@ -30,11 +30,11 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
     dispatch(getBreweries());
-    document.body.className = theme
+    document.body.className = theme;
   }, [dispatch, theme]);
 
   return (
-    <div className={theme}>
+    <>
       <Navigation isLoaded={isLoaded} toggleTheme={toggleTheme} />
       {isLoaded && (
         <Switch>
@@ -75,7 +75,7 @@ function App() {
           </Route>
         </Switch>
       )}
-    </div>
+    </>
   );
 }
 
