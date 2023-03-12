@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchReviews } from '../../store/reviews';
 import ReviewIndexItem from './ReviewIndexItem';
 
+import './ReviewIndex.css';
+
 const ReviewIndex = ({ beer }) => {
   const dispatch = useDispatch();
 
@@ -20,7 +22,7 @@ const ReviewIndex = ({ beer }) => {
 
   return (
     <>
-      <div>Global Recent Activity</div>
+      <div className='beer-name-detail-page'>Global Recent Activity</div>
       <ul>
         {beerReviews.map(review => (
           <li key={review.id}>
