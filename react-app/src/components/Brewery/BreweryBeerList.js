@@ -22,12 +22,15 @@ const BreweryBeerList = () => {
       <div>
         {breweryBeers.map((beer) => (
           <ul className="beer">
-            <div>
-              <div>
+            <div className='beer-list-box'>
+              <div className='beer-list'>
+
                 <Link to={`/beers/${beer.id}`}>
-                  <img src={beer.label} alt={beer.name} />
+                  <img className='beer-list-img' src={beer.label} alt={beer.name} />
                   <div>{beer.name}</div>
                 </Link>
+
+
               </div>
             </div>
           </ul>

@@ -22,7 +22,7 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
           <h1 className='brewery-font'>
             {brewery.name}
           </h1>
-        <img src={brewery.picture} alt={`Brewery: ${brewery.name}`} />
+        <img className='beer-index-img' src={brewery.picture} alt={`Brewery: ${brewery.name}`} />
 
         </div>
           </Link>
