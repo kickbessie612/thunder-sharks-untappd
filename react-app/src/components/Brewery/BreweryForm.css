@@ -3,6 +3,7 @@
   margin-left: 50px;
 }
 
+
 .brewery-box {
   display: flex;
   border-style: solid;
@@ -77,6 +78,10 @@ button {
   margin-right: 9px
 }
 
+button:hover {
+background-color: rgb(209, 209, 209);
+color: #5ca33e
+  }
 #breweriespage {
   display: flex;
 }

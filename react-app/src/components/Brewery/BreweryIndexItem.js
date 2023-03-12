@@ -26,6 +26,7 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
 
         </div>
           </Link>
+          <p>{brewery.city}, {brewery.state}</p>
         <p>Description: {brewery.description}</p>
       </ul>
 

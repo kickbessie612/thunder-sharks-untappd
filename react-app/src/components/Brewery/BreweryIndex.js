@@ -24,8 +24,8 @@ const BreweryIndex = () => {
   return breweries ? (
     <>
       <div id='breweriespage'>
-
         <div className="total-breweries">
+        <h1>Breweries</h1>
           {breweries.map((brewery) => (
             <BreweryIndexItem brewery={brewery} key={brewery.id} assName="brewery-box" />
           ))}
