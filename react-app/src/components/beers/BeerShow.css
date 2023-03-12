@@ -1,0 +1,40 @@
+.beer-detail-introduction {
+  font-size: 50px;
+  text-align: center;
+  margin-top: 60px;
+  font-weight: 400;
+}
+
+.beer-detail-introduction > span {
+  color: #5ca33e;
+}
+
+.beer-details-container {
+  display: flex;
+  justify-content: center;
+}
+
+.beer-name-detail-page {
+  margin-top: 120px;
+  font-size: 26px;
+  font-weight: 500;
+}
+
+.beer-detail-attributes {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.beer-detail-review-container {
+  margin-left: 100px;
+  width: 500px;
+}
+
+.create-review-introduction {
+  margin-top: 30px;
+  font-size: 26px;
+}
+
+.create-review-introduction > span {
+  color: #5ca33e;
+}

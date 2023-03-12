@@ -24,16 +24,26 @@ const ReviewIndexItem = ({ review, beer }) => {
           <li key={idx}>{error}</li>
         ))}
       </ul>
-      {beer.brewery ? (
-        <div>
-          {review.user.firstName} is drinking a {beer.name} by {beer.brewery.name}
-        </div>
-      ) : (
-        <div>
-          {review.user.firstName} is drinking a {beer.name}
-        </div>
-      )}
-      <div>{review.body}</div>
+      <div className='review-title'>
+        {beer.brewery ? (
+          <div>
+            <div>
+              {review.user.firstName} is drinking a {beer.name} by{' '}
+              {beer.brewery.name} || {review.rating} stars!
+            </div>
+            <hr />
+          </div>
+        ) : (
+          <div>
+            <div>
+              {review.user.firstName} is drinking a {beer.name} ||{' '}
+              {review.rating} stars!
+            </div>
+            <hr />
+          </div>
+        )}
+      </div>
+      <div className='review-body'>{review.body}</div>
       {sessionUser && review.userId === sessionUser.id && (
         <>
           <div>

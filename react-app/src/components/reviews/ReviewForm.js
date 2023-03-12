@@ -40,41 +40,43 @@ const ReviewForm = ({ review = { rating: '', body: '', image: '' }, beer }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
-        ))}
-      </ul>
-      <div>
-        <input
-          type='number'
-          step='0.25'
-          required
-          value={rating}
-          placeholder='rating'
-          onChange={e => setRating(e.target.value)}
-        />
-        <input
-          type='text'
-          required
-          value={body}
-          placeholder='body'
-          onChange={e => setBody(e.target.value)}
-        />
-        <input
-          type='text'
-          value={image}
-          placeholder='image url'
-          onChange={e => setImage(e.target.value)}
-        />
-      </div>
-      <div>
-        <button>{review.id ? 'Update' : 'Create'}</button>
+    <div className='review-form'>
+      <form onSubmit={handleSubmit}>
+        <ul>
+          {errors.map((error, idx) => (
+            <li key={idx}>{error}</li>
+          ))}
+        </ul>
+        <div>
+          <input
+            type='number'
+            step='0.25'
+            required
+            value={rating}
+            placeholder='rating'
+            onChange={e => setRating(e.target.value)}
+          />
+          <input
+            type='text'
+            required
+            value={body}
+            placeholder='body'
+            onChange={e => setBody(e.target.value)}
+          />
+          <input
+            type='text'
+            value={image}
+            placeholder='image url'
+            onChange={e => setImage(e.target.value)}
+          />
+        </div>
+        <div>
+          <button>{review.id ? 'Update' : 'Create'}</button>
 
-        {review.id && <button onClick={handleDelete}>Delete</button>}
-      </div>
-    </form>
+          {review.id && <button onClick={handleDelete}>Delete</button>}
+        </div>
+      </form>
+    </div>
   );
 };
 

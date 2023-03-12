@@ -35,35 +35,49 @@ const BeerShow = () => {
 
   return (
     <>
-      <h2>
-        {beer.name} {beer.year ? <> {beer.year}</> : ''}
-      </h2>
-      <div>{beer.description}</div>
-      <div>
-        abv: {beer.abv}, {beer.ibu ? <>ibu: {beer.ibu},</> : ''} style:{' '}
-        {beer.style}
-      </div>
-      <div>
-        <img src={beer.label} alt={beer.name} />
-      </div>
-      <div>{beer.brewery_id}</div>
-      <hr />
+      <h1 className='beer-detail-introduction'>
+        A drink to&nbsp;<span>explore</span>
+      </h1>
+      <div className='beer-details-container'>
+        <div className='beer-details'>
+          <h2 className='beer-name-detail-page'>
+            {beer.name} {beer.year ? <> {beer.year}</> : ''}
+          </h2>
 
-      {sessionUser && beer.userId === sessionUser.id && (
-        <>
-          <div>
-            <button>
-              <Link to={`/beers/${beer.id}/edit`}>Edit</Link>
-            </button>
-            <button onClick={handleDelete}>Delete</button>
+          <div className='beer-detail-attributes'>
+            ABV: {beer.abv} || {beer.ibu ? <>ibu: {beer.ibu},</> : ''} style:{' '}
+            {beer.style} || Rating: {beer.averageRating}
           </div>
-        </>
-      )}
-      <hr />
+          <hr />
+          <div className='beer-detail-attributes'>{beer.description}</div>
 
-      <ReviewIndex beer={beer} />
+          <div>{beer.brewery_id}</div>
+          <hr />
 
-      <ReviewForm beer={beer} />
+          {sessionUser && beer.userId === sessionUser.id && (
+            <>
+              <div>
+                <button>
+                  <Link to={`/beers/${beer.id}/edit`}>Edit</Link>
+                </button>
+                <button onClick={handleDelete}>Delete</button>
+              </div>
+            </>
+          )}
+          <hr />
+          <div>
+            <img src={beer.label} alt={beer.name} />
+          </div>
+        </div>
+
+        <div className='beer-detail-review-container'>
+          <ReviewIndex beer={beer} />
+          <div className='create-review-introduction'>
+            share your&nbsp;<span>thoughts</span> with us!
+          </div>
+          <ReviewForm beer={beer} />
+        </div>
+      </div>
     </>
   );
 };
