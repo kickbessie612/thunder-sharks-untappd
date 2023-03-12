@@ -32,7 +32,7 @@ function LoginFormModal() {
       <form onSubmit={handleSubmit}>
         <input
           type='text'
-          placeholder='username'
+          placeholder='Username'
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
@@ -40,7 +40,7 @@ function LoginFormModal() {
 
         <input
           type='password'
-          placeholder='password'
+          placeholder='Password'
           value={password}
           onChange={e => setPassword(e.target.value)}
           required

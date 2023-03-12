@@ -103,20 +103,20 @@ const BeerForm = ({ beer }) => {
         />
         <input
           type='text'
-          placeholder='style'
+          placeholder='Style'
           required
           value={style}
           onChange={e => setStyle(e.target.value)}
         />
         <input
           type='text'
-          placeholder='beer label image url'
+          placeholder='Beer Logo Url'
           value={label}
           onChange={e => setLabel(e.target.value)}
         />
         <input
           type='number'
-          placeholder='year'
+          placeholder='Year'
           value={year}
           onChange={e => setYear(e.target.value)}
         />
