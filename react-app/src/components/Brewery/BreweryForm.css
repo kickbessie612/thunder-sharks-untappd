@@ -1,72 +1,66 @@
 .total-breweries {
-    padding-right: 50px;
+  padding-right: 50px;
 }
 
-
 .brewery-box {
-
-    display: flex;
-    border-style: solid;
-    border-width: 1px;
-    border-radius: 1px;
-    width: 350px;
-    flex-direction: column;
-    align-items: center;
-    padding-left: 10px;
-    background-color: rgba(201, 193, 117, 0.782);
-
+  display: flex;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 1px;
+  width: 350px;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+  background-color: rgba(201, 193, 117, 0.782);
 }
 
 img {
-    width: 150px;
-    height: 150px;
-    border: goldenrod, solid, 5px;
-
+  width: 150px;
+  height: 150px;
+  border: goldenrod, solid, 5px;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .brewery-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
 }
 
-
-form {
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    width: 300px;
+.brewery-form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
 }
 
 input,
 select {
-    margin: 2px;
-    background-color: rgb(255, 255, 255);
-    margin-top: 5px;
-    justify-content: center;
-    align-items: center;
-    margin-right: 30px;
-
+  margin: 2px;
+  background-color: rgb(255, 255, 255);
+  margin-top: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30px;
 }
 
 label {
-    color: rgb(111, 68, 220);
-    /* display: inline-block; */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  color: rgb(111, 68, 220);
+  /* display: inline-block; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 button {
-    margin-top: 5px;
-    margin-bottom: 20px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 #breweriespage {
-    display: flex;
+  display: flex;
 }

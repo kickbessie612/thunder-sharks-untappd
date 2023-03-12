@@ -58,7 +58,7 @@ function BreweryForm({ brewery }) {
   return (
     <>
       <h1>{brewery.id ? 'Edit' : 'Create'} Brewery</h1>
-      <form onSubmit={handleSubmit}>
+      <form className='brewery-form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
