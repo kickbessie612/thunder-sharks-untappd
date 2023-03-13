@@ -66,7 +66,7 @@ const BeerShow = () => {
           )}
           <hr />
           <div>
-            <img src={beer.label} alt={beer.name} />
+            <img className='beer-show-img' src={beer.label} alt={beer.name} />
           </div>
         </div>
 

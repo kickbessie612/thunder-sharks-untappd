@@ -48,3 +48,7 @@
   border: solid 2px #e8e9eb;
   padding-left: 30px;
 }
+
+.beer-show-img {
+  width: 500px;
+}
