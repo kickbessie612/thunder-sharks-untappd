@@ -40,8 +40,6 @@ const BreweryBeerList = () => {
                 ABV: {beer.abv} || {beer.ibu ? <>ibu: {beer.ibu},</> : ''}{' '}
                 style: {beer.style} || Rating: {beer.averageRating}
               </div>
-              <hr />
-              <div className='beer-detail-attributes'>{beer.description}</div>
             </div>
           </Link>
         ))}
