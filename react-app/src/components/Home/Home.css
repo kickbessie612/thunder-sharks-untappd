@@ -4,6 +4,10 @@
   height: 100%;
 }
 
+.home {
+  color: #05283a;
+}
+
 .home-bg {
   background-image: url('./bg.jpg');
   background-size: cover;

@@ -35,9 +35,16 @@
 
 .create-review-introduction {
   margin-top: 30px;
+  margin-left: 18px;
   font-size: 26px;
 }
 
 .create-review-introduction > span {
   color: #5ca33e;
+}
+
+.new-review-container {
+  margin-top: 40px;
+  border: solid 2px #e8e9eb;
+  padding-left: 30px;
 }

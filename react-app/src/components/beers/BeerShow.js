@@ -72,10 +72,12 @@ const BeerShow = () => {
 
         <div className='beer-detail-review-container'>
           <ReviewIndex beer={beer} />
-          <div className='create-review-introduction'>
-            share your&nbsp;<span>thoughts</span> with us!
+          <div className='new-review-container'>
+            <div className='create-review-introduction'>
+              share your&nbsp;<span>thoughts</span> with us!
+            </div>
+            <ReviewForm beer={beer} />
           </div>
-          <ReviewForm beer={beer} />
         </div>
       </div>
     </>

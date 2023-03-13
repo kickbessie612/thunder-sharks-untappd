@@ -7,7 +7,16 @@ import './BeerIndex.css';
 
 const BeerIndex = () => {
   const dispatch = useDispatch();
-  const beers = useSelector(state => Object.values(state.beers));
+  const beers = useSelector(state => Object.values(state.beers)).sort(
+    (a, b) => {
+      if (a.id < b.id) {
+        return 1;
+      } else if (b.id < a.id) {
+        return -1;
+      }
+      return 0;
+    }
+  );
 
   useEffect(() => {
     dispatch(fetchBeers());

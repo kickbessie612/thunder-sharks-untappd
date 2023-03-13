@@ -6,7 +6,7 @@
   width: 1025px;
   height: 80px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: auto;
   align-items: center;
   background-color: #05283a;
@@ -31,10 +31,12 @@
 
 .profile-button {
   margin-top: 15px;
+  margin-left: 10px;
 }
 
 .theme-button {
   margin-top: 20px;
+  margin-left: 10px;
 }
 
 .profile-dropdown {

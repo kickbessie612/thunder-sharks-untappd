@@ -28,7 +28,7 @@ const ReviewIndexItem = ({ review }) => {
         <div>
           <div>
             {review.user.firstName} is drinking a {review.beer.name} (
-            {`${review.rating} stars`})
+            {`${review.rating} stars`}) {review.createdAt}
           </div>
           <hr />
         </div>

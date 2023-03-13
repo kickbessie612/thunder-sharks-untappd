@@ -9,9 +9,9 @@ const ReviewIndex = ({ beer }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(state => Object.values(state.reviews));
   let beerReviews = reviews.sort((a, b) => {
-    if (a.createdAt > b.createdAt) {
+    if (a.createdAt < b.createdAt) {
       return 1;
-    } else if (b.createdAt > a.createdAt) {
+    } else if (b.createdAt < a.createdAt) {
       return -1;
     }
     return 0;
