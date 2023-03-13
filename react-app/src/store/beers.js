@@ -95,7 +95,6 @@ const beersReducer = (state = {}, action) => {
         beersObj[beer.id] = beer;
       });
       newState = { ...newState, ...beersObj };
-      console.log(newState, 'BEERS NEWSTATEEE');
       return newState;
     case REMOVE_BEER:
       delete newState[action.beerId];

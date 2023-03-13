@@ -9,7 +9,7 @@ import BeerShow from './components/beers/BeerShow';
 import CreateBeerForm from './components/beers/CreateBeerForm';
 import EditBeerForm from './components/beers/EditBeerForm';
 import BreweryIndex from './components/Brewery/BreweryIndex';
-import CreateBreweryForm from './components/Brewery/BreweryForm';
+import CreateBreweryForm from './components/Brewery/CreateBreweryForm';
 import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
 import EditBreweryFrom from './components/Brewery/EditBreweryForm';
 import Home from './components/Home';

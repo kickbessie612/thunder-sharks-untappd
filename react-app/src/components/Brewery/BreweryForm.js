@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import './BreweryForm.css';
 import { createBrewery, updateBrewery } from '../../store/brewery';
 
-function BreweryForm({ brewery }) {
+import './BreweryForm.css';
+
+const BreweryForm = ({ brewery }) => {
+  console.log(brewery);
   const dispatch = useDispatch();
   const history = useHistory();
   const [name, setName] = useState(brewery.name);
@@ -58,7 +60,7 @@ function BreweryForm({ brewery }) {
   return (
     <>
       <h1>{brewery.id ? 'Edit' : 'Create'} Brewery</h1>
-      <form className='brewery-form' onSubmit={handleSubmit} >
+      <form className='brewery-form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -143,6 +145,6 @@ function BreweryForm({ brewery }) {
       </form>
     </>
   );
-}
+};
 
 export default BreweryForm;

@@ -4,7 +4,6 @@ const REMOVE_BREWERY = 'brewery/REMOVE_BREWERY';
 const UPDATE_BREWERY = 'brewery/UPDATE_BREWERY';
 
 export const loadBreweries = breweries => {
-  console.log(breweries, 'HEYYYY');
   return {
     type: LOAD_BREWERIES,
     breweries
@@ -46,12 +45,8 @@ export const getBreweries = () => async dispatch => {
       'Content-Type': 'application/json'
     }
   });
-  console.log(res, 'RESPONSEEEE');
   const data = await res.json();
   if (res.ok) {
-    console.log(data, 'THUNK BREWERIESS');
-
-    console.log(data, 'DATAAA BREWERIESSS');
     dispatch(loadBreweries(data));
   }
   return data;
@@ -118,21 +113,15 @@ const breweriesReducer = (state = {}, action) => {
   let newState = { ...state };
   switch (action.type) {
     case LOAD_BREWERIES:
-      console.log(newState, '**** NEWSTATEEE');
-      console.log(action.breweries, '****** ACTION.BREWERIES');
-
       action.breweries.map(brewery => (newState[brewery.id] = brewery));
-      console.log(newState, '***** NEWSTATE LOAD BREWEWRIES');
       return newState;
 
     case ADD_BREWERY:
       newState[action.payload.id] = action.payload;
-      console.log(newState, '***** NEWSTATEEE ADD BREWERY');
       return newState;
 
     case UPDATE_BREWERY:
       newState[action.payload.id] = action.payload;
-      console.log(newState, '***** UPDATE BREWERY');
       return newState;
 
     case REMOVE_BREWERY:

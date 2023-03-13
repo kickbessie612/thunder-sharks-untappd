@@ -45,7 +45,6 @@ export const fetchRecentReviews = () => async dispatch => {
 
 // POST create a review
 export const createReview = (review, beerId) => async dispatch => {
-  console.log(review);
   const res = await fetch(`/api/beers/${beerId}/reviews`, {
     method: 'POST',
     body: JSON.stringify(review),

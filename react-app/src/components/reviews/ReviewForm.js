@@ -24,7 +24,6 @@ const ReviewForm = ({ review = { rating: '', body: '', image: '' }, beer }) => {
 
     const data = await dispatch(action(payload, beerId));
     if (data.errors) {
-      console.log(data.errors);
       setErrors(data.errors);
     } else if (beer) {
       setRating('');

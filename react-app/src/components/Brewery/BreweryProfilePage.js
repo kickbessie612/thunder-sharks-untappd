@@ -10,7 +10,6 @@ const BreweryProfilePage = () => {
   const sessionUser = useSelector(state => state.session.user);
   const { breweryId } = useParams();
   const brewery = useSelector(state => state.breweries[breweryId]);
-  console.log(brewery, 'BREWERY PROFILE PAGEEEE');
 
   useEffect(() => {
     dispatch(getBrewery(breweryId));

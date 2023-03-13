@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBreweries } from '../../store/brewery';
+import { NavLink } from 'react-router-dom';
 import BreweryIndexItem from './BreweryIndexItem';
-import './BreweryForm.css';
-import CreateBreweryForm from './CreateBreweryForm';
 
 const BreweryIndex = () => {
   const dispatch = useDispatch();
@@ -15,27 +14,29 @@ const BreweryIndex = () => {
     breweries = Object.values(breweriesState);
   }
 
-  // console.log(breweries, "BREWWERIESSSSSSS");
-
   useEffect(() => {
     dispatch(getBreweries());
   }, [dispatch]);
 
   return breweries ? (
     <>
-      <div id='breweriespage'>
-        <div className='total-breweries'>
-          <h1>Breweries</h1>
-          {breweries.map(brewery => (
-            <BreweryIndexItem
-              brewery={brewery}
-              key={brewery.id}
-              className='brewery-box'
-            />
-          ))}
+      <div className='beer-list'>
+        <div className='beer-list-text'>
+          <h1 className='introduction'>Popular Breweries</h1>
+          <div className='subtitle-container'>
+            <div>
+              "It looks good, it tastes good, and by golly it does you good."
+            </div>
+            <div className='people-name'>----Mackeson's Brewery</div>
+            <NavLink to='/breweries/new'>
+              <button className='add-beer-button'>Add Brewery</button>
+            </NavLink>
+          </div>
         </div>
-        <div>
-          <CreateBreweryForm />
+        <div className='beer-index'>
+          {breweries.map(brewery => (
+            <BreweryIndexItem brewery={brewery} key={brewery.id} />
+          ))}
         </div>
       </div>
     </>

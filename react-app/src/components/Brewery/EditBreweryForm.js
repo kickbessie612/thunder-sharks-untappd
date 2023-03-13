@@ -17,8 +17,6 @@ const EditBreweryForm = () => {
     dispatch(getBreweries(breweryId));
   }, [dispatch, breweryId]);
 
-  console.log({ brewery });
-
   if (!brewery) {
     return null;
   }

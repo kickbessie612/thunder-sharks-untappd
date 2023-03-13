@@ -1,12 +1,16 @@
-import BreweryForm from "./BreweryForm";
+import BreweryForm from './BreweryForm';
 
 const CreateBreweryForm = () => {
   const brewery = {
     name: '',
     description: '',
-    abv: '',
-    style: '',
-    label: ''
+    address: '',
+    city: '',
+    state: '',
+    country: '',
+    type: '',
+    description: '',
+    picture: ''
   };
   return <BreweryForm brewery={brewery} />;
 };

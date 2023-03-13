@@ -30,7 +30,7 @@ const BeerIndex = () => {
     <>
       <div className='beer-list'>
         <div className='beer-list-text'>
-          <h1 className='introduction'>Popular Beer</h1>
+          <h1 className='introduction'>Popular Beers</h1>
           <div className='subtitle-container'>
             <div>"A drunk tongue is an honest one in my opinion."</div>
             <div className='people-name'>----Adele</div>
