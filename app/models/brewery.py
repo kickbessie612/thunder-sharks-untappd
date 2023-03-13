@@ -37,4 +37,5 @@ class Brewery(db.Model):
             'type': self.type,
             'description': self.description,
             'picture': self.picture,
+            'userId': self.user_id
         }

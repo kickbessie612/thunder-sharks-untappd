@@ -39,7 +39,7 @@ class Beer(db.Model):
             'userId': self.user_id
         }
         if include_relations:
-            data['brewery'] = self.brewery.to_dict() if self.brewery else None,
+            data['brewery'] = self.brewery.to_dict() if self.brewery else None
             data['averageRating'] = sum(
                 review.rating for review in self.reviews) / len(self.reviews) if len(self.reviews) else 0
         return data

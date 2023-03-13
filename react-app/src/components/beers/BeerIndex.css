@@ -64,7 +64,7 @@
 
 .beer-detail img {
   width: 280px;
-  height: 280px;
+  /* height: 280px; */
   border: 1px solid #cdcdcd;
   /* border-radius: 25px; */
 }
