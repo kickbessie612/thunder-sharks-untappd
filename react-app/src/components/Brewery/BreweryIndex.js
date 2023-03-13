@@ -22,6 +22,8 @@ const BreweryIndex = () => {
     <>
       <div className='beer-list'>
         <div className='beer-list-text'>
+          <div className='beer-color-block'></div>
+          <div className='beer-color-circle'></div>
           <h1 className='introduction'>Popular Breweries</h1>
           <div className='subtitle-container'>
             <div>

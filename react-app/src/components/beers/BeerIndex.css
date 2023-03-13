@@ -107,3 +107,24 @@
 .beer-image-container {
   height: 280px;
 }
+
+.beer-color-block {
+  height: 200px;
+  width: 200px;
+  top: 170px;
+  left: 370px;
+  position: absolute;
+  background-color: #f79f00;
+  z-index: -1;
+}
+
+.beer-color-circle {
+  height: 200px;
+  width: 200px;
+  top: 650px;
+  left: 1080px;
+  position: absolute;
+  background-color: #5ca33e;
+  border-radius: 50%;
+  z-index: -1;
+}

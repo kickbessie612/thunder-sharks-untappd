@@ -36,50 +36,70 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} toggleTheme={toggleTheme} />
-      {isLoaded && (
-        <Switch>
-          <Route exact path='/'>
-            <Home />
-          </Route>
+      <div>
+        <Navigation isLoaded={isLoaded} toggleTheme={toggleTheme} />
+        {isLoaded && (
+          <Switch>
+            <Route exact path='/'>
+              <Home />
+            </Route>
 
-          <Route path='/reviews'>
-            <ReviewFeed />
-          </Route>
+            <Route path='/reviews'>
+              <ReviewFeed />
+            </Route>
 
-          <Route path='/beers/new'>
-            <CreateBeerForm />
-          </Route>
+            <Route path='/beers/new'>
+              <CreateBeerForm />
+            </Route>
 
-          <Route exact path='/beers/:beerId'>
-            <BeerShow />
-          </Route>
+            <Route exact path='/beers/:beerId'>
+              <BeerShow />
+            </Route>
 
-          <Route path='/beers/:beerId/edit'>
-            <EditBeerForm />
-          </Route>
+            <Route path='/beers/:beerId/edit'>
+              <EditBeerForm />
+            </Route>
 
-          <Route exact path='/beers'>
-            <BeerIndex />
-          </Route>
+            <Route exact path='/beers'>
+              <BeerIndex />
+            </Route>
 
-          <Route exact path='/breweries'>
-            <BreweryIndex />
-          </Route>
+            <Route exact path='/breweries'>
+              <BreweryIndex />
+            </Route>
 
-          <Route exact path='/breweries/new'>
-            <CreateBreweryForm />
-          </Route>
+            <Route exact path='/breweries/new'>
+              <CreateBreweryForm />
+            </Route>
 
-          <Route exact path={`/breweries/:breweryId`}>
-            <BreweryProfilePage />
-          </Route>
+            <Route exact path={`/breweries/:breweryId`}>
+              <BreweryProfilePage />
+            </Route>
 
-          <Route exact path={`/breweries/:breweryId/edit`}>
-            <EditBreweryFrom />
-          </Route>
-        </Switch>
-      )}
+            <Route exact path={`/breweries/:breweryId/edit`}>
+              <EditBreweryFrom />
+            </Route>
+          </Switch>
+        )}
+      </div>
+      <div className='footer'>
+        Contributors:&nbsp;&nbsp;&nbsp;Cavin Timothy &nbsp;
+        <a href='https://www.linkedin.com/in/cavin-timothy//'>Linkedin</a>
+        &nbsp;|&nbsp;
+        <a href='https://github.com/CavinTimothy'>Github</a>
+        &nbsp;&nbsp;Cory Baker &nbsp;
+        <a href='https://www.linkedin.com/in/cory-baker-9738ba2a'>Linkedin</a>
+        &nbsp;|&nbsp;
+        <a href='https://github.com/Cbakes24'>Github</a>
+        &nbsp;&nbsp;Erena Li &nbsp;
+        <a href=''>Linkedin</a>
+        &nbsp;|&nbsp;
+        <a href='https://github.com/erenali22'>Github</a>
+        &nbsp;&nbsp;Yuan Wang &nbsp;
+        <a href='https://www.linkedin.com/in/yuan-wang-80613052/'>Linkedin</a>
+        &nbsp;|&nbsp;
+        <a href='https://github.com/kickbessie612'>Github</a>
+      </div>
     </>
   );
 }
