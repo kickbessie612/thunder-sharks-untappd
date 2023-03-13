@@ -13,7 +13,7 @@ import CreateBreweryForm from './components/Brewery/CreateBreweryForm';
 import BreweryProfilePage from './components/Brewery/BreweryProfilePage';
 import EditBreweryFrom from './components/Brewery/EditBreweryForm';
 import Home from './components/Home';
-import ReviewIndex from './components/reviews/ReviewIndex';
+import ReviewFeed from './components/reviews/ReviewFeed';
 
 function App() {
   const dispatch = useDispatch();
@@ -44,7 +44,7 @@ function App() {
           </Route>
 
           <Route path='/reviews'>
-            <ReviewIndex />
+            <ReviewFeed />
           </Route>
 
           <Route path='/beers/new'>

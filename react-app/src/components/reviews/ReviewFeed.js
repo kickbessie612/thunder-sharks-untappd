@@ -5,7 +5,7 @@ import ReviewIndexItem from './ReviewIndexItem';
 
 import './ReviewIndex.css';
 
-const ReviewIndex = ({ beer }) => {
+const ReviewFeed = ({ beer }) => {
   const dispatch = useDispatch();
   const reviews = useSelector(state => Object.values(state.reviews));
   let beerReviews = reviews.sort((a, b) => {
@@ -34,16 +34,20 @@ const ReviewIndex = ({ beer }) => {
 
   return (
     <>
-      <div className='beer-name-detail-page'>Recent Activity</div>
-      <ul>
-        {beerReviews.map(review => (
-          <li key={review.id}>
-            <ReviewIndexItem review={review} />
-          </li>
-        ))}
-      </ul>
+      <div className='beer-detail-introduction'>
+        Recent &nbsp;<span>Drink</span> Activity
+      </div>
+      <div className='review-feed-container'>
+        <ul>
+          {beerReviews.map(review => (
+            <li key={review.id}>
+              <ReviewIndexItem review={review} />
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
 
-export default ReviewIndex;
+export default ReviewFeed;
