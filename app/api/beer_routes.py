@@ -153,9 +153,4 @@ def add_review(beer_id):
         db.session.add(review)
         db.session.commit()
         return jsonify(review.to_dict()), 200
-    else:
-        errors = {}
-        for field, messages in form.errors.items():
-            for message in messages:
-                errors[field] = message
-        return jsonify({'message': 'Validation error', 'statusCode': 400, 'errors': errors}), 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401

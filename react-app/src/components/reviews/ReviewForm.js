@@ -13,7 +13,7 @@ const ReviewForm = ({ review = { rating: '', body: '', image: '' }, beer }) => {
   const [image, setImage] = useState(review.image);
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setErrors([]);
 
@@ -21,10 +21,16 @@ const ReviewForm = ({ review = { rating: '', body: '', image: '' }, beer }) => {
 
     const action = beer ? createReview : updateReview;
     const beerId = beer ? beer.id : review.beerId;
-    dispatch(action(payload, beerId)).catch(async res => {
-      const data = await res.json();
-      if (data && data.errors) setErrors(data.errors);
-    });
+
+    const data = await dispatch(action(payload, beerId));
+    if (data.errors) {
+      console.log(data.errors);
+      setErrors(data.errors);
+    } else if (beer) {
+      setRating('');
+      setBody('');
+      setImage('');
+    }
   };
 
   const handleDelete = e => {

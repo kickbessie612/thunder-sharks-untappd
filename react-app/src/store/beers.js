@@ -22,22 +22,22 @@ export const fetchBeers = () => async dispatch => {
       'Content-Type': 'application/json'
     }
   });
+  const data = await res.json();
   if (res.ok) {
-    const data = await res.json();
-    if (data.errors) {
-      return;
-    }
-
     dispatch(setBeers(data));
   }
+  return data;
 };
 
 // GET a beer by id
 export const fetchBeer = beerId => async dispatch => {
   const res = await fetch(`/api/beers/${beerId}`);
-  const beer = await res.json();
-  dispatch(setBeers([beer]));
-  return res;
+
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setBeers([data]));
+  }
+  return data;
 };
 
 // POST create a beer
@@ -79,8 +79,9 @@ export const deleteBeer = beerId => async dispatch => {
   const res = await fetch(`/api/beers/${beerId}`, {
     method: 'DELETE'
   });
-
-  dispatch(removeBeer(beerId));
+  if (res.ok) {
+    dispatch(removeBeer(beerId));
+  }
   return res;
 };
 
@@ -94,7 +95,7 @@ const beersReducer = (state = {}, action) => {
         beersObj[beer.id] = beer;
       });
       newState = { ...newState, ...beersObj };
-console.log(newState, "BEERS NEWSTATEEE")
+      console.log(newState, 'BEERS NEWSTATEEE');
       return newState;
     case REMOVE_BEER:
       delete newState[action.beerId];

@@ -47,22 +47,23 @@ export const getBreweries = () => async dispatch => {
     }
   });
   console.log(res, 'RESPONSEEEE');
+  const data = await res.json();
   if (res.ok) {
-    const data = await res.json();
     console.log(data, 'THUNK BREWERIESS');
-    if (data.errors) {
-      return;
-    }
+
     console.log(data, 'DATAAA BREWERIESSS');
     dispatch(loadBreweries(data));
   }
+  return data;
 };
 
 // GET a brewery by id
 export const getBrewery = breweryId => async dispatch => {
   const res = await fetch(`/api/breweries/${breweryId}`);
   const brewery = await res.json();
-  dispatch(getBreweries([brewery]));
+  if (res.ok) {
+    dispatch(getBreweries([brewery]));
+  }
   return res;
 };
 
@@ -107,8 +108,9 @@ export const deleteBrewery = breweryId => async dispatch => {
   const res = await fetch(`/api/breweries/${breweryId}`, {
     method: 'DELETE'
   });
-
-  dispatch(removeBrewery(breweryId));
+  if (res.ok) {
+    dispatch(removeBrewery(breweryId));
+  }
   return res;
 };
 

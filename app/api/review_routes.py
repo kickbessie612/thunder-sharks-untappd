@@ -8,6 +8,17 @@ from app.forms import ReviewForm
 review_bp = Blueprint('review', __name__)
 
 
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    errorMessages = []
+    for field in validation_errors:
+        for error in validation_errors[field]:
+            errorMessages.append(f'{field} : {error}')
+    return errorMessages
+
+
 # UPDATE A REVIEW
 @review_bp.route('/<int:id>', methods=['PUT'])
 @login_required
@@ -24,12 +35,7 @@ def edit_review(id):
         form.populate_obj(review)
         db.session.commit()
         return jsonify(review.to_dict()), 200
-    else:
-        errors = {}
-        for field, messages in form.errors.items():
-            for message in messages:
-                errors[field] = message
-        return jsonify({'message': 'Validation error', 'statusCode': 400, 'errors': errors}), 400
+    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 # DELETE A REVIEW

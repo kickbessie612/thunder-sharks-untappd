@@ -55,7 +55,9 @@ export const createReview = (review, beerId) => async dispatch => {
   });
 
   const data = await res.json();
-  dispatch(setReviews([data]));
+  if (res.ok) {
+    dispatch(setReviews([data]));
+  }
   return data;
 };
 
@@ -70,7 +72,9 @@ export const updateReview = review => async dispatch => {
   });
 
   const data = await res.json();
-  dispatch(setReviews([data]));
+  if (res.ok) {
+    dispatch(setReviews([data]));
+  }
   return data;
 };
 
@@ -79,7 +83,9 @@ export const deleteReview = reviewId => async dispatch => {
   const res = await fetch(`/api/reviews/${reviewId}`, {
     method: 'DELETE'
   });
-  dispatch(removeReview(reviewId));
+  if (res.ok) {
+    dispatch(removeReview(reviewId));
+  }
   return res;
 };
 
