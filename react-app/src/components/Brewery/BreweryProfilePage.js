@@ -4,6 +4,8 @@ import { getBrewery, deleteBrewery } from '../../store/brewery';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import BreweryBeerList from './BreweryBeerList';
 
+import './BreweryProfilePage.css';
+
 const BreweryProfilePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
@@ -27,31 +29,45 @@ const BreweryProfilePage = () => {
   }
 
   return (
-    <div className='brewery-profile'>
-      <h2>Brewery Name: {brewery.name}</h2>
-      <img
-        className='brewery-index-img'
-        src={brewery.picture}
-        alt={brewery.name}
-      />
-      <ul>
-        <p>Brewery Type: {brewery.type}</p>
-        <p>City: {brewery.city}</p>
-        <p>Description: {brewery.description}</p>
-      </ul>
+    <>
+      <h1 className='beer-detail-introduction'>
+        A brewery to&nbsp;<span>dive</span> in
+      </h1>
 
-      {sessionUser && brewery.userId === sessionUser.id && (
-        <div>
-          <button>
-            <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
-          </button>
-          <button onClick={handleDelete}>Delete</button>
+      <div className='beer-details-container'>
+        <div className='beer-details'>
+          <h2 className='beer-name-detail-page'>{brewery.name}</h2>
+          <div className='beer-detail-attributes'>
+            {brewery.type} from {brewery.city}
+          </div>
+          <hr />
+          <div className='beer-detail-attributes'>
+            Description: {brewery.description}
+          </div>
+          <hr />
+
+          {sessionUser && brewery.userId === sessionUser.id && (
+            <div>
+              <button>
+                <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
+              </button>
+              <button onClick={handleDelete}>Delete</button>
+            </div>
+          )}
+          <hr />
+
+          <img
+            className='beer-show-img'
+            src={brewery.picture}
+            alt={brewery.name}
+          />
         </div>
-      )}
-      <div>
-        <BreweryBeerList />
+
+        <div className='beer-detail-review-container'>
+          <BreweryBeerList />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

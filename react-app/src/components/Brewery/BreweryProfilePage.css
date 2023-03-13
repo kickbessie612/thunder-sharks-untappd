@@ -1,0 +1,15 @@
+.brewery-show-img {
+  width: 300px;
+}
+
+.brewery-profile-beer-card {
+  margin-top: 50px;
+  height: 350px;
+  margin-left: 20px;
+  padding: 20px;
+  color: #05283a;
+}
+
+.brewery-profile-beer-card:hover {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}

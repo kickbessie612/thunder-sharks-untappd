@@ -20,25 +20,30 @@ const BreweryBeerList = () => {
 
   return (
     <>
-      <h1>{brewery ? `${brewery.name} Beers` : 'Loading...'}</h1>
+      <div className='beer-name-detail-page'>Beers from this brewery</div>
       <div className='beer-list-main'>
         {breweryBeers.map(beer => (
-          <ul className='beer'>
-            <div className='beer-list-box'>
-              <div className='brewery-page-beer-list'>
-                <Link to={`/beers/${beer.id}`}>
-                  <div className='beer-list-link'>
-                    <img
-                      className='beer-list-img'
-                      src={beer.label}
-                      alt={beer.name}
-                    />
-                    <h4>{beer.name}</h4>
-                  </div>
-                </Link>
+          <Link to={`/beers/${beer.id}`}>
+            <div className='brewery-profile-beer-card'>
+              <div>
+                <img
+                  className='brewery-show-img'
+                  src={beer.label}
+                  alt={beer.name}
+                />
               </div>
+              <h2 className='beer-detail-attributes'>
+                {beer.name} {beer.year ? <> {beer.year}</> : ''}
+              </h2>
+
+              <div className='beer-detail-attributes'>
+                ABV: {beer.abv} || {beer.ibu ? <>ibu: {beer.ibu},</> : ''}{' '}
+                style: {beer.style} || Rating: {beer.averageRating}
+              </div>
+              <hr />
+              <div className='beer-detail-attributes'>{beer.description}</div>
             </div>
-          </ul>
+          </Link>
         ))}
       </div>
     </>
