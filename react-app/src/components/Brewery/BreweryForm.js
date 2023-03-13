@@ -59,8 +59,28 @@ const BreweryForm = ({ brewery }) => {
 
   return (
     <>
-      <h1>{brewery.id ? 'Edit' : 'Create'} Brewery</h1>
-      <form className='brewery-form' onSubmit={handleSubmit}>
+      <div>
+        {brewery.id ? (
+          <>
+            <h1 className='introduction'>
+              Edit a&nbsp;<span>unique</span>&nbsp;brewery
+            </h1>
+            <div className='form-description'>
+              Tell us about your new discovery!
+            </div>
+          </>
+        ) : (
+          <>
+            <h1 className='introduction'>
+              Add a&nbsp;<span>new</span>&nbsp;brewery
+            </h1>
+            <div className='form-description'>
+              Tell us about your new discovery!
+            </div>
+          </>
+        )}
+      </div>
+      <form className='beer-form' onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
