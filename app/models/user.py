@@ -18,6 +18,7 @@ class User(db.Model, UserMixin):
 
     beers = db.relationship('Beer', back_populates='user')
     reviews = db.relationship('Review', back_populates='user')
+    breweries = db.relationship('Brewery', back_populates='user')
 
     @property
     def password(self):

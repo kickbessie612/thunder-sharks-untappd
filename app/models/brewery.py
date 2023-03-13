@@ -20,8 +20,11 @@ class Brewery(db.Model):
     description = db.Column(db.String(1000), nullable=False)
     picture = db.Column(db.String(255), nullable=False)
 
-    beers = db.relationship('Beer', back_populates='brewery')
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod(
+        'users.id')), nullable=False)
 
+    beers = db.relationship('Beer', back_populates='brewery')
+    user = db.relationship('User', back_populates='breweries')
 
     def to_dict(self):
         return {
