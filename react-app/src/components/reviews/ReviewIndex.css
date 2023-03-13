@@ -6,3 +6,9 @@
 .review-body {
   margin-top: 10px;
 }
+
+.review-feed-container {
+  margin-left: 300px;
+  margin-top: 80px;
+  width: 1100px;
+}
