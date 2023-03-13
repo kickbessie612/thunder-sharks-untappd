@@ -35,7 +35,7 @@ const ReviewFeed = ({ beer }) => {
   return (
     <>
       <div className='beer-detail-introduction'>
-        Recent &nbsp;<span>Drink</span> Activity
+        Recent&nbsp;<span>Drink</span> Activity
       </div>
       <div className='review-feed-container'>
         <ul>

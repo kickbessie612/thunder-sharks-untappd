@@ -1,5 +1,6 @@
 from flask import Blueprint, request, redirect, url_for, jsonify
-from flask_login import login_required
+from flask_login import login_required, current_user
+
 from app.models import db, Brewery
 from app.forms.brewery_form import BreweryForm
 
@@ -54,6 +55,7 @@ def create_brewery():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         new_brewery = Brewery()
+        new_brewery.user_id = current_user.id
         form.populate_obj(new_brewery)
         db.session.add(new_brewery)
         db.session.commit()
