@@ -7,6 +7,7 @@ import BreweryBeerList from './BreweryBeerList';
 const BreweryProfilePage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user);
   const { breweryId } = useParams();
   const brewery = useSelector(state => state.breweries[breweryId]);
   console.log(brewery, 'BREWERY PROFILE PAGEEEE');
@@ -40,12 +41,14 @@ const BreweryProfilePage = () => {
         <p>Description: {brewery.description}</p>
       </ul>
 
-      <div>
-        <button>
-          <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
-        </button>
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+      {sessionUser && brewery.userId === sessionUser.id && (
+        <div>
+          <button>
+            <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
+          </button>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+      )}
       <div>
         <BreweryBeerList />
       </div>

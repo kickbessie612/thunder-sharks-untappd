@@ -1,12 +1,13 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import './BreweryForm.css';
 import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 import { deleteBrewery } from '../../store/brewery';
 
-const BreweryIndexItem = ({ brewery, currentUser }) => {
+const BreweryIndexItem = ({ brewery }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const sessionUser = useSelector(state => state.session.user);
   const handleDelete = async e => {
     e.preventDefault();
     if (!window.confirm('Do you want to delete this brewery?')) return;
@@ -32,12 +33,14 @@ const BreweryIndexItem = ({ brewery, currentUser }) => {
         <p>Description: {brewery.description}</p>
       </ul>
 
-      <div className='brewery-buttons'>
-        <button>
-          <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
-        </button>
-        <button onClick={handleDelete}>Delete</button>
-      </div>
+      {sessionUser && brewery.userId === sessionUser.id && (
+        <div className='brewery-buttons'>
+          <button>
+            <Link to={`/breweries/${brewery.id}/edit`}>Edit</Link>
+          </button>
+          <button onClick={handleDelete}>Delete</button>
+        </div>
+      )}
     </div>
   );
 };
