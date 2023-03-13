@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteReview } from '../../store/reviews';
 import { useState } from 'react';
 
-const ReviewIndexItem = ({ review, beer }) => {
+const ReviewIndexItem = ({ review }) => {
   const sessionUser = useSelector(state => state.session.user);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState([]);
@@ -25,23 +25,13 @@ const ReviewIndexItem = ({ review, beer }) => {
         ))}
       </ul>
       <div className='review-title'>
-        {beer.brewery ? (
+        <div>
           <div>
-            <div>
-              {review.user.firstName} is drinking a {beer.name} by{' '}
-              {beer.brewery.name} || {review.rating} stars!
-            </div>
-            <hr />
+            {review.user.firstName} is drinking a {review.beer.name} (
+            {`${review.rating} stars`})
           </div>
-        ) : (
-          <div>
-            <div>
-              {review.user.firstName} is drinking a {beer.name} ||{' '}
-              {review.rating} stars!
-            </div>
-            <hr />
-          </div>
-        )}
+          <hr />
+        </div>
       </div>
       <div className='review-body'>{review.body}</div>
       {sessionUser && review.userId === sessionUser.id && (

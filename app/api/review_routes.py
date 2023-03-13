@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from flask_login import current_user, login_required
+from sqlalchemy.orm import joinedload
 from app import db
 from app.models import Review
 from app.forms import ReviewForm
@@ -47,12 +48,10 @@ def delete_review(id):
 
 
 # Get all reviews
-# @review_bp.route('', methods=['GET'])
-# def get_all_reviews():
-#     page = request.args.get('page', 1, type=int)
-#     per_page = request.args.get('per_page', 10, type=int)
-#     offset = (page - 1) * per_page
-
-#     reviews = Review.query.offset(offset).limit(per_page).all()
-
-#     return jsonify([review.to_dict() for review in reviews]), 200
+@review_bp.route('', methods=['GET'])
+def get_recent_reviews():
+    reviews = Review.query.options(
+        joinedload(Review.user),
+        joinedload(Review.beer)
+    ).order_by(Review.created_at.desc()).limit(10)
+    return jsonify([review.to_dict() for review in reviews]), 200

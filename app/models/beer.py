@@ -26,8 +26,8 @@ class Beer(db.Model):
     brewery = db.relationship('Brewery', back_populates='beers')
     reviews = db.relationship('Review', back_populates='beer')
 
-    def to_dict(self):
-        return {
+    def to_dict(self, include_relations=True):
+        data = {
             'id': self.id,
             'name': self.name,
             'description': self.description,
@@ -36,7 +36,10 @@ class Beer(db.Model):
             'style': self.style,
             'label': self.label,
             'year': self.year,
-            'userId': self.user_id,
-            'brewery': self.brewery.to_dict() if self.brewery else None,
-            'averageRating': sum(review.rating for review in self.reviews) / len(self.reviews) if len(self.reviews) else 0
+            'userId': self.user_id
         }
+        if include_relations:
+            data['brewery'] = self.brewery.to_dict() if self.brewery else None,
+            data['averageRating'] = sum(
+                review.rating for review in self.reviews) / len(self.reviews) if len(self.reviews) else 0
+        return data

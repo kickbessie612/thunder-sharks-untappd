@@ -1,20 +1,32 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchReviews } from '../../store/reviews';
+import { fetchReviews, fetchRecentReviews } from '../../store/reviews';
 import ReviewIndexItem from './ReviewIndexItem';
 
 import './ReviewIndex.css';
 
 const ReviewIndex = ({ beer }) => {
   const dispatch = useDispatch();
-
   const reviews = useSelector(state => Object.values(state.reviews));
-
-  const beerReviews = reviews.filter(review => review.beerId === beer.id);
+  let beerReviews = reviews.sort((a, b) => {
+    if (a.createdAt > b.createdAt) {
+      return 1;
+    } else if (b.createdAt > a.createdAt) {
+      return -1;
+    }
+    return 0;
+  });
+  if (beer) {
+    beerReviews = beerReviews.filter(review => review.beerId === beer.id);
+  }
 
   useEffect(() => {
-    dispatch(fetchReviews(beer.id));
-  }, [dispatch, beer.id]);
+    if (beer) {
+      dispatch(fetchReviews(beer.id));
+    } else {
+      dispatch(fetchRecentReviews());
+    }
+  }, [dispatch, beer?.id]);
 
   if (beerReviews.length === 0) {
     return null;
@@ -22,11 +34,11 @@ const ReviewIndex = ({ beer }) => {
 
   return (
     <>
-      <div className='beer-name-detail-page'>Global Recent Activity</div>
+      <div className='beer-name-detail-page'>Recent Activity</div>
       <ul>
         {beerReviews.map(review => (
           <li key={review.id}>
-            <ReviewIndexItem review={review} beer={beer} />
+            <ReviewIndexItem review={review} />
           </li>
         ))}
       </ul>

@@ -24,6 +24,11 @@ function Navigation({ isLoaded, toggleTheme }) {
         Breweries
       </NavLink>
       <div className='divider'></div>
+
+      <NavLink exact to='/reviews'>
+        Reviews
+      </NavLink>
+      <div className='divider'></div>
       {isLoaded && (
         <>
           <div className='profile-button'>

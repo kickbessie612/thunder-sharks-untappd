@@ -33,6 +33,16 @@ export const fetchReviews = beerId => async dispatch => {
   return res;
 };
 
+// GET 10 most recent reviews
+export const fetchRecentReviews = () => async dispatch => {
+  const res = await fetch(`/api/reviews`);
+  const data = await res.json();
+  if (res.ok) {
+    dispatch(setReviews(data));
+  }
+  return res;
+};
+
 // POST create a review
 export const createReview = (review, beerId) => async dispatch => {
   console.log(review);
