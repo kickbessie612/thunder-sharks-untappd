@@ -26,7 +26,7 @@ const ReviewFeed = ({ beer }) => {
     } else {
       dispatch(fetchRecentReviews());
     }
-  }, [dispatch, beer?.id]);
+  }, [dispatch, beer]);
 
   if (beerReviews.length === 0) {
     return null;

@@ -83,19 +83,19 @@ function App() {
         )}
       </div>
       <div className='footer'>
-        Contributors:&nbsp;&nbsp;&nbsp;Cavin Timothy &nbsp;
-        <a href='https://www.linkedin.com/in/cavin-timothy//'>Linkedin</a>
+        Contributors:&nbsp;&nbsp;&nbsp;<b>Cavin Timothy</b> &nbsp;
+        <a href='https://www.linkedin.com/in/cavin-timothy/'>Linkedin</a>
         &nbsp;|&nbsp;
         <a href='https://github.com/CavinTimothy'>Github</a>
-        &nbsp;&nbsp;Cory Baker &nbsp;
+        &nbsp;<b>|</b>&nbsp;<b>Cory Baker</b> &nbsp;
         <a href='https://www.linkedin.com/in/cory-baker-9738ba2a'>Linkedin</a>
         &nbsp;|&nbsp;
         <a href='https://github.com/Cbakes24'>Github</a>
-        &nbsp;&nbsp;Erena Li &nbsp;
-        <a href=''>Linkedin</a>
-        &nbsp;|&nbsp;
+        &nbsp;<b>|</b>&nbsp;<b>Erena Li</b> &nbsp;
+        {/* <a href=''>Linkedin</a>
+        &nbsp;|&nbsp; */}
         <a href='https://github.com/erenali22'>Github</a>
-        &nbsp;&nbsp;Yuan Wang &nbsp;
+        &nbsp;<b>|</b>&nbsp;<b>Yuan Wang</b> &nbsp;
         <a href='https://www.linkedin.com/in/yuan-wang-80613052/'>Linkedin</a>
         &nbsp;|&nbsp;
         <a href='https://github.com/kickbessie612'>Github</a>

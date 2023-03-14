@@ -7,6 +7,7 @@ import BreweryIndexItem from './BreweryIndexItem';
 const BreweryIndex = () => {
   const dispatch = useDispatch();
   //   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+  const user = useSelector(state => state.session.user);
   const breweriesState = useSelector(state => state.breweries);
 
   let breweries;
@@ -30,9 +31,11 @@ const BreweryIndex = () => {
               "It looks good, it tastes good, and by golly it does you good."
             </div>
             <div className='people-name'>----Mackeson's Brewery</div>
-            <NavLink to='/breweries/new'>
-              <button className='add-beer-button'>Add Brewery</button>
-            </NavLink>
+            {user && (
+              <NavLink to='/breweries/new'>
+                <button className='add-beer-button'>Add Brewery</button>
+              </NavLink>
+            )}
           </div>
         </div>
         <div className='beer-index'>
