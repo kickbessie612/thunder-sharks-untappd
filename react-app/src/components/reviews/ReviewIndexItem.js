@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteReview } from '../../store/reviews';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const ReviewIndexItem = ({ review }) => {
   const sessionUser = useSelector(state => state.session.user);
@@ -27,7 +28,9 @@ const ReviewIndexItem = ({ review }) => {
       <div className='review-title'>
         <div>
           <div>
-            {review.user.firstName} is drinking a {review.beer.name} (
+            {review.user.firstName} is drinking a&nbsp;
+            <Link to={`/beers/${review.beerId}`}>{review.beer.name}</Link>
+            &nbsp;(
             {`${review.rating} stars`}) {review.createdAt}
           </div>
           <hr />
