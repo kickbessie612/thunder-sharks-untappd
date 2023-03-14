@@ -91,9 +91,7 @@ function App() {
         <a href='https://www.linkedin.com/in/cory-baker-9738ba2a'>Linkedin</a>
         &nbsp;|&nbsp;
         <a href='https://github.com/Cbakes24'>Github</a>
-        &nbsp;&nbsp;Erena Li &nbsp;
-        <a href=''>Linkedin</a>
-        &nbsp;|&nbsp;
+        &nbsp;&nbsp;Erena Li&nbsp;
         <a href='https://github.com/erenali22'>Github</a>
         &nbsp;&nbsp;Yuan Wang &nbsp;
         <a href='https://www.linkedin.com/in/yuan-wang-80613052/'>Linkedin</a>
