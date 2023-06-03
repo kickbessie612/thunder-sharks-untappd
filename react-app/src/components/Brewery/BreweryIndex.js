@@ -22,11 +22,11 @@ const BreweryIndex = () => {
   }, [dispatch]);
 
   const slideLeft = () => {
-    carouselRef.current.style.transform = "translateX(-100%)";
+    carouselRef.current.scrollLeft += 400; // Adjust this value to control the scroll distance
   };
 
   const slideRight = () => {
-    carouselRef.current.style.transform = "translateX(0)";
+    carouselRef.current.scrollLeft -= 400; // Adjust this value to control the scroll distance
   };
 
   return breweries ? (

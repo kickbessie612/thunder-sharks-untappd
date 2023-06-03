@@ -21,7 +21,7 @@
   width: 100%;
   max-width: 266px;
   position: relative;
-  left: 20%;
+  /* top: 10%; */
   margin: 0 auto;
 
 }
@@ -63,11 +63,13 @@
   margin-top: 40px;
   display: flex;
   justify-content: flex-start;
-  width: 95%;
+  width: 100%; /* Update the width to 100% */
   position: relative;
   height: 500px;
   transition: transform 0.9s ease-in-out;
   flex-direction: row;
+  overflow-x: scroll; /* Enable horizontal scrolling */
+  scroll-behavior: smooth; /* Optional: Enable smooth scrolling */
 }
 
 .beer-detail {
@@ -137,9 +139,9 @@
 .beer-color-block {
   height: 200px;
   width: 200px;
-  top: -94px;
+  top: 25%;
   left: 40px;
-  position: relative;
+  position: absolute;
   background-color: #f79f00;
   z-index: -1;
 
@@ -148,9 +150,9 @@
 .beer-color-circle {
   height: 200px;
   width: 200px;
-  top: 408px;
-  left: 30%;
-  position: relative;
+  top: 600px;
+  left: 70%;
+  position: absolute;
   background-color: #5ca33e;
   border-radius: 50%;
   z-index: -1;
