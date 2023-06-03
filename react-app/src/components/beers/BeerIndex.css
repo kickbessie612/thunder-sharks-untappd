@@ -1,14 +1,27 @@
 .beer-list {
   display: flex;
-  justify-content: center;
-  width: 100%;
+  width: 60%;
   overflow: hidden;
+  position: relative;
+  height: 500px;
+  border: dotted red 3px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.beer-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
 }
 
 .beer-list-text {
-  width: 220px;
-  /* margin-left: 200px; */
-  margin-top: 100px;
+  width: 100%;
+  max-width: 266px;
+  position: relative;
+  left: 20%;
+
 }
 
 .introduction {
@@ -47,11 +60,12 @@
 .beer-index {
   margin-top: 40px;
   display: flex;
-  justify-content: space-between;
-  margin-left: 50px;
-  width: 500px;
+  justify-content: flex-start;
+  width: 95%;
+  position: relative;
+  height: 500px;
   transition: transform 0.3s ease-in-out;
-  
+  flex-direction: row;
 }
 
 .beer-detail {
@@ -121,20 +135,28 @@
 .beer-color-block {
   height: 200px;
   width: 200px;
-  top: 170px;
-  left: 370px;
-  position: absolute;
+  top: -94px;
+  left: 40px;
+  position: relative;
   background-color: #f79f00;
   z-index: -1;
+
 }
 
 .beer-color-circle {
   height: 200px;
   width: 200px;
-  top: 650px;
-  left: 1080px;
-  position: absolute;
+  top: 408px;
+  left: 972px;
+  position: relative;
   background-color: #5ca33e;
   border-radius: 50%;
   z-index: -1;
+
+}
+
+.carousel-controls {
+  transform: translateX(0px);
+  position: inherit;
+  margin-bottom: -42px;
 }
