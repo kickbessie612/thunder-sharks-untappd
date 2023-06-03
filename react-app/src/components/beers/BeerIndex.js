@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchBeers } from '../../store/beers';
 import { NavLink } from 'react-router-dom';
@@ -18,9 +18,19 @@ const BeerIndex = () => {
     }
   );
 
+  const carouselRef = useRef(null);
+
   useEffect(() => {
     dispatch(fetchBeers());
   }, [dispatch]);
+
+  const slideLeft = () => {
+    carouselRef.current.style.transform = 'translateX(-100%)';
+  };
+
+  const slideRight = () => {
+    carouselRef.current.style.transform = 'translateX(0)';
+  };
 
   if (beers.length === 0) {
     return null;
@@ -41,10 +51,18 @@ const BeerIndex = () => {
             </NavLink>
           </div>
         </div>
-        <div className='beer-index'>
+        <div className='beer-index' ref={carouselRef}>
           {beers.map(beer => (
             <BeerIndexItem beer={beer} key={beer.id} />
           ))}
+        </div>
+        <div className='carousel-controls'>
+          <button className='prev-button' onClick={slideRight}>
+            Prev
+          </button>
+          <button className='next-button' onClick={slideLeft}>
+            Next
+          </button>
         </div>
       </div>
     </>
