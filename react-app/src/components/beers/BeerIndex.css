@@ -22,7 +22,7 @@
   max-width: 266px;
   position: relative;
   /* top: 10%; */
-  margin: 0 auto;
+  padding: 100px;
 
 }
 
@@ -68,7 +68,7 @@
   height: 550px;
   transition: transform 0.9s ease-in-out;
   flex-direction: row;
-  overflow:scroll; /* Enable horizontal scrolling */
+  overflow:auto; /* Enable horizontal scrolling */
   scroll-behavior: smooth; /* Optional: Enable smooth scrolling */
 }
 
@@ -160,7 +160,7 @@
   height: 200px;
   width: 200px;
   top: 600px;
-  left: 70%;
+  left: 83%;
   position: absolute;
   background-color: #5ca33e;
   border-radius: 50%;
