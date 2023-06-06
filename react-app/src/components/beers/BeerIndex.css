@@ -133,7 +133,16 @@
 }
 
 .beer-image-container {
-  height: 280px;
+  height: 15em;
+  width: 15em;
+  background-color: #ffffff;
+}
+
+.beer-image-container img {
+  height: 100%;
+  width: 100%;
+  object-fit:scale-down;
+
 }
 
 .beer-color-block {
@@ -164,3 +173,8 @@
   position: inherit;
   margin-bottom: -42px;
 }
+
+/* .beer-img {
+height: 100px;
+width: 100px
+} */

@@ -6,7 +6,7 @@ const BeerIndexItem = ({ beer }) => {
     <div className='beer-detail'>
       <Link to={`/beers/${beer.id}`}>
         <div className='beer-image-container'>
-          <img src={beer.label} alt={beer.name} />
+          <img className='beer-img' src={beer.label} alt={beer.name} />
         </div>
         <div className='beer-name'>{beer.name}</div>
       </Link>

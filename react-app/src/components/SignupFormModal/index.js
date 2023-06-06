@@ -22,7 +22,7 @@ function SignupFormModal() {
         signUp(username, email, password, firstName, lastName)
       );
       if (data) {
-        setErrors(data);
+        setErrors(["Please Fill Out All Fields"]);
       } else {
         closeModal();
       }
