@@ -87,7 +87,7 @@
   height: 200px;
   /* Add any desired styling */
   background-color: #f1f1f1;
-  margin-right: 10px;
+  margin-right: 25px;
 }
 
 .beer-detail img {
@@ -141,7 +141,7 @@
 .beer-image-container img {
   height: 100%;
   width: 100%;
-  object-fit:scale-down;
+  object-fit:cover
 
 }
 
@@ -174,7 +174,7 @@
   margin-bottom: -42px;
 }
 
-/* .beer-img {
+.beer-img {
 height: 100px;
 width: 100px
-} */
+}
