@@ -6,7 +6,6 @@ import { createBrewery, updateBrewery } from '../../store/brewery';
 import './BreweryForm.css';
 
 const BreweryForm = ({ brewery }) => {
-  console.log(brewery);
   const dispatch = useDispatch();
   const history = useHistory();
   const [name, setName] = useState(brewery.name);
