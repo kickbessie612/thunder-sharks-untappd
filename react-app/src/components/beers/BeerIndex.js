@@ -7,7 +7,7 @@ import "./BeerIndex.css";
 
 const BeerIndex = () => {
   const dispatch = useDispatch();
-  const beers = useSelector((state) => Object.values(state.beers)).sort(
+  const beers = useSelector(state => Object.values(state.beers)).sort(
     (a, b) => {
       if (a.id < b.id) {
         return 1;
@@ -60,16 +60,7 @@ const BeerIndex = () => {
               Next
             </button>
           </div>
-          {/* <div className='beer-list-text'>
-          <h1 className='introduction'>Popular Beers</h1>
-          <div className='subtitle-container'>
-            <div>"A drunk tongue is an honest one in my opinion."</div>
-            <div className='people-name'>----Adele</div>
-            <NavLink to='/beers/new'>
-              <button className='add-beer-button'>Add Beer</button>
-            </NavLink>
-          </div>
-        </div> */}
+
           <div className="beer-index" ref={carouselRef}>
             {beers.map((beer) => (
               <BeerIndexItem beer={beer} key={beer.id} />

@@ -12,7 +12,7 @@ const BreweryBeerList = () => {
   }, [dispatch]);
 
   const beers = useSelector(state => Object.values(state.beers));
-  const brewery = useSelector(state => state.breweries[breweryId]);
+  // const brewery = useSelector(state => state.breweries[breweryId]);
 
   const breweryBeers = beers.filter(
     beer => beer.brewery && beer.brewery.id === Number(breweryId)

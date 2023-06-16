@@ -21,7 +21,7 @@ def seed_breweries():
                        description='Our famous beer began with a trip across Europe, when Goose Island founder (and unabashed beer lover) John Hall took a tour across the continent. ',
                        picture='https://assets.untappd.com/site/brewery_logos_hd/brewery-2898_29dc8_hd.jpeg')
     brewery6 = Brewery(user_id=3,
-                       name="3 Floyds Brewing", address='9750 Indiana Pkwy', city='Munster', state='IN', country='USA', type='Micro',
+                       name="3 Floyds Brewing", address='9750 Indiana Pkwy', city='Munster', state='IN', country='USA', type='Micro Brewery',
                        description="Nick Floyd founded 3 Floyds in a Hammond, Indiana, garage in 1996. The then-small brewery with the \"It's Not Normal\" motto set out to stand out with bold, aggressive, highly hopped beers. ",
                        picture='https://assets.untappd.com/site/brewery_logos_hd/brewery-2470_61045_hd.jpeg')
 

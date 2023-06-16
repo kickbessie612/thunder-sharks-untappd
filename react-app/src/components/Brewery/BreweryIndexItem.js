@@ -1,12 +1,12 @@
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import './BreweryForm.css';
 import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router-dom';
-import { deleteBrewery } from '../../store/brewery';
+// import { useHistory } from 'react-router-dom';
+// import { deleteBrewery } from '../../store/brewery';
 
 const BreweryIndexItem = ({ brewery }) => {
-  const dispatch = useDispatch();
-  const history = useHistory();
+  // const dispatch = useDispatch();
+  // const history = useHistory();
 
   return (
     <div className='beer-detail'>

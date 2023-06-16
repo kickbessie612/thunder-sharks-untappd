@@ -9,7 +9,6 @@ const CreateBreweryForm = () => {
     state: '',
     country: '',
     type: '',
-    description: '',
     picture: ''
   };
   return <BreweryForm brewery={brewery} />;

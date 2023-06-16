@@ -8,7 +8,12 @@ import "../beers/BeerIndex.css";
 const BreweryIndex = () => {
   const dispatch = useDispatch();
   //   const breweries = useSelector(state => state.breweries ? Object.values(state.breweries) : []);
+<<<<<<< HEAD
   const breweriesState = useSelector((state) => state.breweries);
+=======
+  const user = useSelector(state => state.session.user);
+  const breweriesState = useSelector(state => state.breweries);
+>>>>>>> dev
 
   let breweries;
   if (breweriesState) {
@@ -38,10 +43,19 @@ const BreweryIndex = () => {
             <div>
               "It looks good, it tastes good, and by golly it does you good."
             </div>
+<<<<<<< HEAD
             <div className="people-name">----Mackeson's Brewery</div>
             <NavLink to="/breweries/new">
               <button className="add-beer-button">Add Brewery</button>
             </NavLink>
+=======
+            <div className='people-name'>----Mackeson's Brewery</div>
+            {user && (
+              <NavLink to='/breweries/new'>
+                <button className='add-beer-button'>Add Brewery</button>
+              </NavLink>
+            )}
+>>>>>>> dev
           </div>
         </div>
           <div className="beer-color-block"></div>
