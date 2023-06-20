@@ -20,5 +20,28 @@ https://thunder-shark.onrender.com/
 
 - Get / Create / Update / Delete beers
 - Get / Create / Update / Delete breweries
-- Get / Create / Update / Delete beer reviews
-- Get / Create / Update / Delete beer users
+- Get / Create / Delete beer reviews
+- Get / Create beer users
+
+### Screenshots
+
+##### Beer List
+
+![beer_list]
+
+##### Beer Detail and Create Beer Review
+
+![beer_detail]
+
+##### Create a beer
+
+![create_a_beer]
+
+##### Update or Delete a beer and Delete a beer review
+
+![update_delete_a_beer]
+
+[beer_list]: ./beer_list.jpg
+[beer_detail]: ./beer_detail.jpg
+[create_a_beer]: ./create_a_beer.jpg
+[update_delete_a_beer]: ./update_delete_a_beer.jpg
