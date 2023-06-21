@@ -41,7 +41,17 @@ https://thunder-shark.onrender.com/
 
 ![update_delete_a_beer]
 
+##### Brewery List
+
+![brewery_list]
+
+##### Update or Delete a brewery
+
+![update_delete_a_brewery]
+
 [beer_list]: ./beer_list.jpg
 [beer_detail]: ./beer_detail.jpg
 [create_a_beer]: ./create_a_beer.jpg
 [update_delete_a_beer]: ./update_delete_a_beer.jpg
+[brewery_list]: ./brewery_list.jpg
+[update_delete_a_brewery]: ./update_delete_a_brewery.jpg
