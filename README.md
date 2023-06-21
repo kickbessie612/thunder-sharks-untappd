@@ -20,8 +20,8 @@ https://thunder-shark.onrender.com/
 
 - Get / Create / Update / Delete beers
 - Get / Create / Update / Delete breweries
-- Get / Create / Update / Delete beer reviews
-- Get / Create / Update / Delete beer users
+- Get / Create / Delete beer reviews
+- Get / Create beer users
 
 ### Installation
 
@@ -67,3 +67,39 @@ flask seed all
 6. Run `npm install` in frontend folder (react-app).
 
 7. Run `npm start` in frontend folder.
+
+- Get / Create / Delete beer reviews
+- Get / Create beer users
+
+### Screenshots
+
+##### Beer List
+
+![beer_list]
+
+##### Beer Detail and Create Beer Review
+
+![beer_detail]
+
+##### Create a beer
+
+![create_a_beer]
+
+##### Update or Delete a beer and Delete a beer review
+
+![update_delete_a_beer]
+
+##### Brewery List
+
+![brewery_list]
+
+##### Update or Delete a brewery
+
+![update_delete_a_brewery]
+
+[beer_list]: ./beer_list.jpg
+[beer_detail]: ./beer_detail.jpg
+[create_a_beer]: ./create_a_beer.jpg
+[update_delete_a_beer]: ./update_delete_a_beer.jpg
+[brewery_list]: ./brewery_list.jpg
+[update_delete_a_brewery]: ./update_delete_a_brewery.jpg
